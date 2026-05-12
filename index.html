@@ -101,6 +101,13 @@
       display: flex; align-items: flex-end; justify-content: space-between;
       padding: 48px 56px;
     }
+    .project-wm {
+      position: absolute; z-index: 2;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 18%; opacity: 0.20;
+      filter: brightness(0) invert(1);
+      pointer-events: none;
+    }
     .project:hover .project-ov { background: rgba(0,0,0,.28); }
     .p-num { font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 10px; }
     .p-name { font-family: 'Bebas Neue'; font-size: clamp(2.8rem,5vw,5.5rem); letter-spacing: .04em; line-height: .92; color: #fff; margin-bottom: 10px; }
@@ -321,6 +328,7 @@
 
   <div class="project" onclick="lb('strozzi',0)">
     <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="Strozzi" loading="lazy">
+    <img class="project-wm" src="BAE LOGO 2.png" alt="">
     <div class="project-ov">
       <div>
         <div class="p-num">01 — Residential</div>
@@ -338,6 +346,7 @@
 
   <div class="project" onclick="lb('sunter',0)">
     <img src="00-Photoshoot/Sunter Meditenaria/0Z6A4251-Pano copy.jpg" alt="Sunter Mediterania" loading="lazy">
+    <img class="project-wm" src="BAE LOGO 2.png" alt="">
     <div class="project-ov">
       <div>
         <div class="p-num">02 — Residential</div>
@@ -355,6 +364,7 @@
 
   <div class="project" onclick="lb('bh',0)">
     <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="Bekasi House" loading="lazy">
+    <img class="project-wm" src="BAE LOGO 2.png" alt="">
     <div class="project-ov">
       <div>
         <div class="p-num">03 — Residential</div>
@@ -372,6 +382,7 @@
 
   <div class="project" onclick="lb('fayt',0)">
     <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="FAYT" loading="lazy">
+    <img class="project-wm" src="BAE LOGO 2.png" alt="">
     <div class="project-ov">
       <div>
         <div class="p-num">04 — Interior</div>
@@ -389,6 +400,7 @@
 
   <div class="project" onclick="lb('sdh',0)">
     <img src="00-Photoshoot/SDH Daan Mogot/SDH-DSC02085-Pano.jpg" alt="SDH Daan Mogot" loading="lazy">
+    <img class="project-wm" src="BAE LOGO 2.png" alt="">
     <div class="project-ov">
       <div>
         <div class="p-num">05 — Residential</div>
