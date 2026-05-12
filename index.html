@@ -55,8 +55,9 @@
       color: rgba(255,255,255,.25); margin-bottom: 12px;
     }
     .hero-bae {
-      font-family: 'Bebas Neue'; font-size: 30vw; line-height: .85;
-      letter-spacing: -.01em; color: #fff; user-select: none; text-align: center;
+      width: 64vw; max-width: 920px;
+      display: block; margin: 0 auto;
+      user-select: none;
     }
     .hero-tagline {
       margin-top: 28px; font-size: .65rem; font-weight: 400;
@@ -253,7 +254,7 @@
       .nav-menu.open { display: flex; }
       .nav-menu li a { padding: 16px 24px; display: block; border-bottom: 1px solid var(--border); }
       .hamburger { display: flex; }
-      .hero-bae { font-size: 38vw; }
+      .hero-bae { width: 82vw; }
       .hero-meta-l, .hero-scroll-r { display: none; }
       .works-header { padding: 48px 24px 28px; }
       .project { height: 60vh; }
@@ -276,7 +277,7 @@
       #lb-next { right: 8px; }
     }
     @media (max-width: 480px) {
-      .hero-bae { font-size: 33vw; }
+      .hero-bae { width: 88vw; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .contact-h { font-size: 2.6rem; }
       .svc-h { font-size: 2.8rem; }
@@ -307,7 +308,7 @@
 <!-- ── HERO ── -->
 <section id="hero">
   <p class="hero-eyebrow reveal">Jakarta &amp; Bekasi — Est. 2025</p>
-  <h1 class="hero-bae reveal rd1"><span style="color:#1a56db">B</span><span style="color:#e02424">A</span><span style="color:#1a56db">E</span></h1>
+  <img class="hero-bae reveal rd1" src="BAE LOGO 2.png" alt="BAE">
   <p class="hero-tagline reveal rd2">Building Ideas into Reality</p>
   <div class="hero-meta-l">
     Bangun Asa Ekosistem<br>
