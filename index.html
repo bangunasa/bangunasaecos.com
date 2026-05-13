@@ -131,10 +131,16 @@
     .about-h { font-family: 'Bebas Neue'; font-size: clamp(2.8rem,4.5vw,5rem); letter-spacing: .02em; line-height: .93; color: #111; margin-bottom: 28px; }
     .about-h .bl { color: var(--blue); }
     .about-p { font-size: .9rem; color: rgba(17,17,17,.6); line-height: 1.88; margin-bottom: 14px; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(17,17,17,.12); border: 1px solid rgba(17,17,17,.12); }
-    .stat-box { background: #e8e7e0; padding: 36px 28px; }
-    .stat-n { font-family: 'Bebas Neue'; font-size: 3.8rem; line-height: .88; letter-spacing: -.02em; color: #111; }
-    .stat-l { font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(17,17,17,.35); margin-top: 8px; }
+    .stats-free { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .sf-item { padding: 32px 24px 28px; border-top: 3px solid transparent; }
+    .sf-blue { border-top-color: var(--blue); }
+    .sf-red  { border-top-color: var(--red); }
+    .sf-dark { border-top-color: rgba(17,17,17,.4); }
+    .sf-n { font-family: 'Bebas Neue'; font-size: 4rem; line-height: .85; letter-spacing: -.02em; }
+    .sf-blue .sf-n { color: var(--blue); }
+    .sf-red  .sf-n { color: var(--red); }
+    .sf-dark .sf-n { color: #111; }
+    .sf-l { font-size: .6rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(17,17,17,.38); margin-top: 10px; }
 
     /* SERVICES */
     #services { background: #f2f1ec; padding: 120px 0; }
@@ -142,21 +148,24 @@
     .sec-hdr-row .sec-label { font-size: .9rem; }
     .sec-rule { flex: 1; height: 1px; background: var(--border); }
     .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .svc-card { border: 1px solid var(--border); padding: 56px 52px; position: relative; overflow: hidden; transition: border-color .35s, background .35s; background: #f8f7f2; }
-    .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transition: transform .45s; transform-origin: left; }
-    .svc-design::after { background: var(--blue); }
-    .svc-build::after  { background: var(--red); }
-    .svc-card:hover::after { transform: scaleX(1); }
-    .svc-card:hover { background: #fff; border-color: rgba(17,17,17,.18); }
-    .svc-bg-n { font-family: 'Bebas Neue'; font-size: 9rem; color: rgba(17,17,17,.04); position: absolute; top: 12px; right: 24px; line-height: 1; }
-    .svc-h { font-family: 'Bebas Neue'; font-size: 3.6rem; letter-spacing: .05em; line-height: 1; color: #111; margin-bottom: 20px; transition: color .3s; }
-    .svc-design:hover .svc-h { color: var(--blue); }
-    .svc-build:hover  .svc-h { color: var(--red); }
+    .svc-card { padding: 52px 48px 56px; position: relative; overflow: hidden; transition: transform .35s, box-shadow .35s; background: #f8f7f2; border-left: 4px solid transparent; }
+    .svc-design { border-left-color: var(--blue); }
+    .svc-build  { border-left-color: var(--red); }
+    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(17,17,17,.1); }
+    .svc-bg-n { font-family: 'Bebas Neue'; font-size: 13rem; color: rgba(17,17,17,.04); position: absolute; top: -16px; right: 12px; line-height: 1; transform: rotate(-6deg); pointer-events: none; }
+    .svc-tag { display: inline-flex; align-items: center; color: #fff; font-size: .5rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; border-radius: 2px; }
+    .svc-design .svc-tag { background: var(--blue); }
+    .svc-build  .svc-tag { background: var(--red); }
+    .svc-h { font-family: 'Bebas Neue'; font-size: 4rem; letter-spacing: .03em; line-height: .95; color: #111; margin-bottom: 20px; }
     .svc-desc { font-size: .875rem; color: rgba(17,17,17,.5); line-height: 1.82; max-width: 380px; }
 
     /* CONTACT */
     #contact { background: #e8e7e0; padding: 120px 0 88px; border-top: 1px solid var(--border); }
-    .contact-h { font-family: 'Bebas Neue'; font-size: clamp(3rem,9vw,10rem); letter-spacing: -.01em; line-height: .88; color: #111; margin-bottom: 72px; }
+    .contact-h { margin-bottom: 72px; font-family: 'Bebas Neue'; line-height: .9; }
+    .ch-top { font-size: clamp(1.6rem,4.5vw,5.5rem); color: rgba(17,17,17,.3); letter-spacing: .08em; display: block; }
+    .ch-mid { font-size: clamp(2.8rem,8vw,9.5rem); color: transparent; -webkit-text-stroke: 2px #111; letter-spacing: .01em; display: block; }
+    .ch-bot { font-size: clamp(4.5rem,13vw,15rem); color: #111; letter-spacing: -.02em; line-height: .82; display: block; }
+    .ch-mark { color: var(--red); }
     .contact-row { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 56px; }
     .c-item { flex: 1; padding: 32px 28px; border-right: 1px solid var(--border); }
     .c-item:first-child { padding-left: 0; }
@@ -219,7 +228,7 @@
     @media (max-width: 480px) {
       .hero-bae { width: 88vw; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
-      .contact-h { font-size: 2.6rem; }
+      .ch-top { font-size: 1.4rem; } .ch-mid { font-size: 2.4rem; } .ch-bot { font-size: 3.6rem; }
       .svc-h { font-size: 2.8rem; }
     }
   </style>
@@ -456,11 +465,11 @@
         <p class="about-p reveal rd1">True to our name, <em>Bangun</em> reflects our commitment to actively shaping and building every project with purpose and care. <em>Asa</em> represents our dedication to turning each client's vision into reality through thoughtful design and precise execution. Meanwhile, <em>Ekosistem</em> embodies our belief that great spaces emerge from a healthy ecosystem — where clients, designers, and builders are deeply connected and working as one.</p>
       </div>
       <div class="reveal rd2">
-        <div class="stats-grid">
-          <div class="stat-box"><div class="stat-n">2025</div><div class="stat-l">Founded</div></div>
-          <div class="stat-box"><div class="stat-n">50+</div><div class="stat-l">Projects</div></div>
-          <div class="stat-box"><div class="stat-n">2</div><div class="stat-l">Cities</div></div>
-          <div class="stat-box"><div class="stat-n">D&amp;B</div><div class="stat-l">Design &amp; Build</div></div>
+        <div class="stats-free">
+          <div class="sf-item sf-blue"><div class="sf-n">2025</div><div class="sf-l">Founded</div></div>
+          <div class="sf-item sf-red"><div class="sf-n">50+</div><div class="sf-l">Projects</div></div>
+          <div class="sf-item sf-dark"><div class="sf-n">2</div><div class="sf-l">Cities</div></div>
+          <div class="sf-item sf-blue"><div class="sf-n">D&amp;B</div><div class="sf-l">Design &amp; Build</div></div>
         </div>
       </div>
     </div>
@@ -477,11 +486,13 @@
     <div class="svc-grid">
       <div class="svc-card svc-design reveal">
         <span class="svc-bg-n">01</span>
+        <div class="svc-tag">Architecture &amp; Interior</div>
         <h3 class="svc-h">Design</h3>
         <p class="svc-desc">Architecture, interior design, and master planning rooted in real thought. Every layout, every detail — carefully considered before a single line is drawn. We design spaces that are purposeful, livable, and built to endure.</p>
       </div>
       <div class="svc-card svc-build reveal rd2">
         <span class="svc-bg-n">02</span>
+        <div class="svc-tag">Construction</div>
         <h3 class="svc-h">Build</h3>
         <p class="svc-desc">We build what we design — with the same care and precision that went into every drawing. Construction carried out deliberately, with skilled hands and a genuine commitment to getting it right.</p>
       </div>
@@ -492,7 +503,11 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <h2 class="contact-h reveal">Let's Build<br>Something<br>Great</h2>
+    <div class="contact-h reveal">
+      <span class="ch-top">Let's Build</span>
+      <span class="ch-mid">Something</span>
+      <span class="ch-bot">Great<span class="ch-mark">.</span></span>
+    </div>
     <div class="contact-row reveal rd1">
       <div class="c-item">
         <div class="c-lbl">WhatsApp</div>
