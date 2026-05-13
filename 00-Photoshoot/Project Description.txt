@@ -1,0 +1,114 @@
+- (Office - Retail) Bed n Co - stacking
+status : on going project
+
+A composition of stacked building masses developed through an architectural massing study, in which each floor accommodates distinct functional programs. The building operates as a spatial framework for a multi-brand furniture company, while articulating an architectural expression that balances warmth and monumentality in its experience.
+
+
+- (Residential) C House - 2nd2nd
+status : on going project
+role : design only
+
+Driven by the owner’s dissatisfaction with the existing condition, the house was transformed through renovation, expanding its spatial capacity and embracing a more contemporary material expression.
+
+
+- (Residential) rrr House - boxy
+status : conceptual
+role : design
+
+A renovated house redefined with a modern architectural language, emphasizing a robust and solid presence.
+
+
+- (Residential) TA Condo - bend
+status : on going project
+role : design and build
+
+A condominium apartment conceived with a deliberate avoidance of sharp corners, favoring the dominance of curved elements to shape its spatial and formal language. The design emphasizes a minimalist and modern expression, where fluid geometries are articulated with restraint to create a calm, refined architectural identity.
+
+
+- (Residential) Grawisa - uncharted
+status : on going project
+
+3 groups of family living in 1 house creating various kinds of characteristic into one building
+
+
+- (Residnetial) Honolulu - sharpless
+status : completed (2024)
+role : design
+
+Small spaces apartment with curved edges with simple and beauty touch.
+
+
+- (Housing) HousingHousing
+status : conceptual & on going
+
+
+- (Residential) J House - fullfill
+status : completed (2025)
+role : design
+
+One strong box becomes the vocal point. Open and spacious become concern. Natural materials brings a more comfortable impression.
+
+
+- (Residential) KG - little
+status : on going project
+role : design and build
+
+An apartment transformed into a place of retreat, where every spatial component is optimized into a functional and purposeful space.
+
+
+- (Housing) Bekasi Boarding - cloudy
+status : on going project
+role : design and build
+
+A boarding house set within a green and tranquil setting, conceived as a gentle place to rest. Soft white tones shape the architecture, creating a light, clean, and bright atmosphere that feels calm and welcoming, allowing the building to sit quietly within its natural surroundings.
+
+
+- (Commercial) Padel Club - upup
+status : conceptual design
+role : design
+
+By lifting the main program upward, the building allows the lower level to operate more efficiently for operational needs while reducing its impact on the surrounding context. The façade is conceived as a critical interface, designed to capture public attention and define the identity of this commercial architecture.
+
+
+- (Residential) PIK two - home sheet home
+status : on going project
+role : design and build
+
+The house is articulated through layers of panels that sheath the interior spaces, bringing vitality to the architecture, while the color palette is curated to convey a subtle masculine character.
+
+- (Residential) Bekasi House - Hollow
+status : completed
+role : design and build
+
+A white and green palette creates a refreshing and calming atmosphere. Geometric openings across multiple axes shape a dynamic spatial composition through contrast and layering. Carefully placed apertures enhance natural ventilation and daylight, creating a comfortable and immersive spatial experience.
+
+
+- (Retail) FAYT - cutesy market
+status : completed (2024)
+role : design & build
+
+Fun and thematic store for the customers.
+
+
+- (Institutional) School Hall - layering
+status : completed (2025)
+role : design
+
+Creating a multifunctional space that provides a calm and layered atmosphere to introduce a new spatial typology within a school evoking a futuristic and modern impression, while also subtly serving as a form-based response to acoustic comfort within the space
+
+
+- (Residential) Strozzi - warm
+status : completed (2025)
+role : design
+
+A home with a warm and inviting atmosphere one that allows its residents to enjoy life, discover comfort, and even create their own. The spaces are wrapped with functional cabinetry, while a thoughtful palette reinforces a deep sense of warmth. Subtle shifts in volume shape intimate corners and generous moments, crafting a distinct spatial experience in every part of the house.
+
+
+- (Residential) Sunter House - modern elegant
+status : completed (2025)
+role : design
+
+Modern house with simple minimalist and elegant impression.
+
+
+

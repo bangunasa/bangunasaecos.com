@@ -31,29 +31,20 @@
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-thumb { background: #2a2a2a; }
 
-    :root {
-      --blue:   #1a56db;
-      --red:    #e02424;
-      --bg:     #0a0a0a;
-      --border: rgba(255,255,255,0.09);
-    }
+    :root { --blue: #1a56db; --red: #e02424; --bg: #0a0a0a; --border: rgba(255,255,255,0.09); }
 
-    /* ── NAV ── */
+    /* NAV */
     #nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      padding: 24px 48px;
-      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px; display: flex; align-items: center; justify-content: space-between;
       transition: background .4s, padding .3s, border-color .4s;
       border-bottom: 1px solid transparent;
     }
     #nav.solid { background: #0a0a0a; padding: 14px 48px; border-bottom-color: var(--border); }
-    .nav-logo img  { height: 30px; filter: brightness(0) invert(1); display: block; }
+    .nav-logo img { height: 30px; filter: brightness(0) invert(1); display: block; }
     .nav-logo-text { font-family: 'Bebas Neue'; font-size: 1.4rem; letter-spacing: .1em; color: #fff; display: none; }
     .nav-menu { display: flex; gap: 36px; list-style: none; }
-    .nav-menu a {
-      font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase;
-      color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s;
-    }
+    .nav-menu a { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
     .nav-menu a:hover { color: #fff; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: .25s; }
@@ -61,123 +52,98 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
 
-    /* ── HERO ── */
-    #hero {
-      height: 100vh; background: #0a0a0a;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-    .hero-eyebrow {
-      font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase;
-      color: rgba(255,255,255,.25); margin-bottom: 12px;
-    }
-    .hero-bae {
-      width: 64vw; max-width: 920px;
-      display: block; margin: 0 auto;
-      user-select: none;
-    }
-    .hero-tagline {
-      margin-top: 28px; font-size: .65rem; font-weight: 400;
-      letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.28);
-      text-align: center; max-width: 480px;
-    }
-    .hero-meta-l {
-      position: absolute; bottom: 40px; left: 48px;
-      font-size: .6rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
-      color: rgba(255,255,255,.18); line-height: 1.8;
-    }
-    .hero-scroll-r {
-      position: absolute; bottom: 40px; right: 48px;
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-    }
+    /* HERO */
+    #hero { height: 100vh; background: #0a0a0a; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .hero-eyebrow { font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 12px; }
+    .hero-bae { width: 64vw; max-width: 920px; display: block; margin: 0 auto; user-select: none; }
+    .hero-tagline { margin-top: 28px; font-size: .65rem; font-weight: 400; letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.28); text-align: center; max-width: 480px; }
+    .hero-meta-l { position: absolute; bottom: 40px; left: 48px; font-size: .6rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.18); line-height: 1.8; }
+    .hero-scroll-r { position: absolute; bottom: 40px; right: 48px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .hero-scroll-r span { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.2); }
     .scroll-line { width: 1px; height: 52px; background: linear-gradient(to bottom, rgba(255,255,255,.35), transparent); animation: sl 2.4s ease-in-out infinite; }
-    @keyframes sl { 0%,100%{opacity:.25; transform:scaleY(.4) translateY(-12px)} 50%{opacity:1; transform:scaleY(1) translateY(0)} }
+    @keyframes sl { 0%,100%{opacity:.25;transform:scaleY(.4) translateY(-12px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
 
-    /* ── WORKS ── */
+    /* WORKS */
     #works { background: #0a0a0a; }
-    .works-header {
-      padding: 72px 48px 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-    }
+    .works-header { padding: 72px 48px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
     .sec-label { font-family: 'Bebas Neue'; font-size: .95rem; letter-spacing: .3em; color: rgba(255,255,255,.28); }
     .works-count { font-size: .62rem; font-weight: 500; letter-spacing: .12em; color: rgba(255,255,255,.18); }
 
-    .project {
-      height: 70vh; position: relative; overflow: hidden; cursor: pointer;
-      border-bottom: 1px solid var(--border);
-    }
-    .project img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; transition: transform 1s cubic-bezier(.25,.46,.45,.94);
-    }
-    .project:hover img { transform: scale(1.06); }
-    .project-ov {
-      position: absolute; inset: 0; background: rgba(0,0,0,.52);
-      transition: background .45s;
-      display: flex; align-items: flex-end; justify-content: space-between;
-      padding: 48px 56px;
-    }
+    /* CATEGORY FILTER */
+    .cat-filter { padding: 0 48px; display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .cat-filter::-webkit-scrollbar { height: 0; }
+    .cat-btn { flex-shrink: 0; padding: 18px 24px; background: none; border: none; border-bottom: 2px solid transparent; color: rgba(255,255,255,.3); font-family: 'DM Sans'; font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; cursor: pointer; transition: color .2s, border-color .2s; white-space: nowrap; margin-bottom: -1px; }
+    .cat-btn span { margin-left: 5px; color: rgba(255,255,255,.15); }
+    .cat-btn:hover { color: rgba(255,255,255,.7); }
+    .cat-btn.active { color: #fff; border-bottom-color: #fff; }
+    .cat-btn.active span { color: rgba(255,255,255,.4); }
 
-    .project:hover .project-ov { background: rgba(0,0,0,.28); }
-    .p-num { font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 10px; }
-    .p-name { font-family: 'Bebas Neue'; font-size: clamp(2.8rem,5vw,5.5rem); letter-spacing: .04em; line-height: .92; color: #fff; margin-bottom: 10px; }
-    .p-cat { font-size: .7rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.42); }
-    .p-cta {
-      align-self: flex-end; opacity: 0; transform: translateY(14px);
-      transition: opacity .35s, transform .35s;
-    }
-    .project:hover .p-cta { opacity: 1; transform: none; }
-    .view-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 24px; border: 1px solid rgba(255,255,255,.4); color: #fff;
-      background: none; font-family: 'DM Sans'; font-size: .68rem;
-      font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
-      cursor: pointer; transition: all .25s; white-space: nowrap;
-    }
-    .view-btn:hover { background: var(--blue); border-color: var(--blue); }
-    .view-btn svg { width: 14px; height: 14px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; }
+    /* PROJECT GRID */
+    .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: #111; }
+    .proj-card { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; background: #111; }
+    .proj-card.hidden { display: none; }
+    .proj-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.25,.46,.45,.94); display: block; }
+    .proj-card:hover img { transform: scale(1.07); }
+    .proj-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.15) 55%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 30px; transition: background .35s; }
+    .proj-card:hover .proj-ov { background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.05) 100%); }
+    .proj-tagline { font-size: .55rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: 5px; }
+    .proj-name { font-family: 'Bebas Neue'; font-size: clamp(1.5rem,2.5vw,2.4rem); letter-spacing: .04em; line-height: .95; color: #fff; margin-bottom: 8px; }
+    .proj-sub { font-size: .58rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); display: flex; align-items: center; gap: 6px; }
+    .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .dot-done { background: #4ade80; }
+    .dot-wip  { background: var(--blue); }
+    .dot-idea { background: rgba(255,255,255,.3); }
 
-    /* ── ABOUT ── */
+    /* SECTION HEADERS inside grid */
+    .cat-hdr { grid-column: 1/-1; padding: 44px 30px 14px; display: flex; align-items: baseline; gap: 14px; background: #0a0a0a; border-bottom: 1px solid var(--border); }
+    .cat-hdr-title { font-family: 'Bebas Neue'; font-size: 1rem; letter-spacing: .32em; color: rgba(255,255,255,.22); }
+    .cat-hdr-count { font-size: .58rem; font-weight: 500; letter-spacing: .1em; color: rgba(255,255,255,.14); }
+
+    /* PROJECT MODAL */
+    #proj-modal { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.97); display: none; }
+    #proj-modal.open { display: flex; }
+    .pm-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,.45); font-size: 1.3rem; cursor: pointer; padding: 8px; z-index: 10; transition: color .2s; line-height: 1; }
+    .pm-close:hover { color: #fff; }
+    .pm-info { width: 360px; flex-shrink: 0; padding: 72px 44px 44px; border-right: 1px solid var(--border); overflow-y: auto; display: flex; flex-direction: column; gap: 18px; }
+    .pm-cat-badge { font-size: .55rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); }
+    .pm-title { font-family: 'Bebas Neue'; font-size: 3rem; letter-spacing: .03em; line-height: .9; color: #fff; }
+    .pm-tagline-txt { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-top: -4px; }
+    .pm-rule { height: 1px; background: var(--border); }
+    .pm-meta { display: flex; flex-direction: column; gap: 12px; }
+    .pm-meta-item { display: flex; flex-direction: column; gap: 3px; }
+    .pm-meta-lbl { font-size: .52rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .pm-meta-val { font-size: .82rem; color: rgba(255,255,255,.68); }
+    .pm-desc { font-size: .875rem; color: rgba(255,255,255,.48); line-height: 1.88; }
+    .pm-img-ctr { font-size: .6rem; letter-spacing: .1em; color: rgba(255,255,255,.18); margin-top: auto; padding-top: 12px; }
+    .pm-gallery { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; background: #050505; overflow: hidden; }
+    #pm-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; padding: 32px; }
+    .pm-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.5); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .pm-nav:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+    #pm-prev { left: 16px; }
+    #pm-next { right: 16px; }
+
+    /* ABOUT */
     #about { background: #f3f3f1; padding: 120px 0; color: #0a0a0a; }
     .container { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
-    .about-lbl {
-      font-size: .62rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
-      color: #aaa; margin-bottom: 56px; display: flex; align-items: center; gap: 16px;
-    }
+    .about-lbl { font-size: .62rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #aaa; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; }
     .about-lbl::after { content: ''; flex: 1; height: 1px; background: #ddd; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .about-h {
-      font-family: 'Bebas Neue'; font-size: clamp(2.8rem,4.5vw,5rem);
-      letter-spacing: .02em; line-height: .93; color: #0a0a0a; margin-bottom: 28px;
-    }
+    .about-h { font-family: 'Bebas Neue'; font-size: clamp(2.8rem,4.5vw,5rem); letter-spacing: .02em; line-height: .93; color: #0a0a0a; margin-bottom: 28px; }
     .about-h .bl { color: var(--blue); }
     .about-p { font-size: .9rem; color: #555; line-height: 1.88; margin-bottom: 14px; }
-    .about-quote {
-      margin-top: 32px; padding-left: 18px; border-left: 2px solid var(--red);
-      font-size: 1rem; font-style: italic; color: #333; line-height: 1.6;
-    }
     .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e0e0de; border: 1px solid #e0e0de; }
     .stat-box { background: #f3f3f1; padding: 36px 28px; }
     .stat-n { font-family: 'Bebas Neue'; font-size: 3.8rem; line-height: .88; letter-spacing: -.02em; color: #0a0a0a; }
     .stat-l { font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: #bbb; margin-top: 8px; }
 
-    /* ── SERVICES ── */
+    /* SERVICES */
     #services { background: #0a0a0a; padding: 120px 0; }
     .sec-hdr-row { display: flex; align-items: center; gap: 20px; margin-bottom: 56px; }
     .sec-hdr-row .sec-label { font-size: .9rem; }
     .sec-rule { flex: 1; height: 1px; background: var(--border); }
     .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .svc-card {
-      border: 1px solid var(--border); padding: 56px 52px;
-      position: relative; overflow: hidden;
-      transition: border-color .35s, background .35s;
-    }
-    .svc-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      transform: scaleX(0); transition: transform .45s; transform-origin: left;
-    }
+    .svc-card { border: 1px solid var(--border); padding: 56px 52px; position: relative; overflow: hidden; transition: border-color .35s, background .35s; }
+    .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transition: transform .45s; transform-origin: left; }
     .svc-design::after { background: var(--blue); }
     .svc-build::after  { background: var(--red); }
     .svc-card:hover::after { transform: scaleX(1); }
@@ -186,26 +152,12 @@
     .svc-h { font-family: 'Bebas Neue'; font-size: 3.6rem; letter-spacing: .05em; line-height: 1; color: #fff; margin-bottom: 20px; transition: color .3s; }
     .svc-design:hover .svc-h { color: var(--blue); }
     .svc-build:hover  .svc-h { color: var(--red); }
-    .svc-desc { font-size: .875rem; color: rgba(255,255,255,.42); line-height: 1.82; max-width: 380px; margin-bottom: 36px; }
-    .svc-list { list-style: none; }
-    .svc-list li {
-      padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.07);
-      font-size: .82rem; color: rgba(255,255,255,.58); font-weight: 400;
-      display: flex; justify-content: space-between; align-items: baseline;
-    }
-    .svc-list li:first-child { border-top: 1px solid rgba(255,255,255,.07); }
-    .svc-list li span { font-size: .68rem; color: rgba(255,255,255,.25); }
+    .svc-desc { font-size: .875rem; color: rgba(255,255,255,.42); line-height: 1.82; max-width: 380px; }
 
-    /* ── CONTACT ── */
+    /* CONTACT */
     #contact { background: #0a0a0a; padding: 120px 0 88px; border-top: 1px solid var(--border); }
-    .contact-h {
-      font-family: 'Bebas Neue'; font-size: clamp(3rem,9vw,10rem);
-      letter-spacing: -.01em; line-height: .88; color: #fff; margin-bottom: 72px;
-    }
-    .contact-row {
-      display: flex; border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border); margin-bottom: 56px;
-    }
+    .contact-h { font-family: 'Bebas Neue'; font-size: clamp(3rem,9vw,10rem); letter-spacing: -.01em; line-height: .88; color: #fff; margin-bottom: 72px; }
+    .contact-row { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 56px; }
     .c-item { flex: 1; padding: 32px 28px; border-right: 1px solid var(--border); }
     .c-item:first-child { padding-left: 0; }
     .c-item:last-child  { border-right: none; }
@@ -213,24 +165,12 @@
     .c-val { font-size: .92rem; font-weight: 400; color: #fff; line-height: 1.65; }
     .c-val a { color: #fff; text-decoration: none; transition: color .2s; }
     .c-val a:hover { color: var(--blue); }
-    .btn-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--red); color: #fff;
-      padding: 16px 40px;
-      font-family: 'DM Sans'; font-size: .78rem; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase;
-      text-decoration: none; transition: background .25s;
-    }
+    .btn-cta { display: inline-flex; align-items: center; gap: 12px; background: var(--red); color: #fff; padding: 16px 40px; font-family: 'DM Sans'; font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: background .25s; }
     .btn-cta:hover { background: #b91c1c; }
     .btn-cta svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #060606; padding: 20px 48px;
-      border-top: 1px solid rgba(255,255,255,.05);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
-    }
+    /* FOOTER */
+    footer { background: #060606; padding: 20px 48px; border-top: 1px solid rgba(255,255,255,.05); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .ft-logo img { height: 22px; filter: brightness(0) invert(1); }
     .ft-logo-fb { font-family: 'Bebas Neue'; font-size: .95rem; letter-spacing: .1em; color: rgba(255,255,255,.35); display: none; }
     .ft-copy { font-size: .67rem; color: rgba(255,255,255,.18); letter-spacing: .04em; }
@@ -238,26 +178,15 @@
     .ft-socials a { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.22); text-decoration: none; transition: color .2s; }
     .ft-socials a:hover { color: rgba(255,255,255,.6); }
 
-    /* ── LIGHTBOX ── */
-    #lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.97); display: none; align-items: center; justify-content: center; flex-direction: column; }
-    #lightbox.open { display: flex; }
-    .lb-x { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,.45); font-size: 1.3rem; cursor: pointer; padding: 8px; transition: color .2s; line-height: 1; }
-    .lb-x:hover { color: #fff; }
-    #lb-img { max-width: 90vw; max-height: 82vh; object-fit: contain; display: block; }
-    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.5); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
-    .lb-nav:hover { border-color: rgba(255,255,255,.4); color: #fff; }
-    #lb-prev { left: 20px; }
-    #lb-next { right: 20px; }
-    .lb-meta { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); text-align: center; }
-    .lb-name  { color: rgba(255,255,255,.65); font-size: .82rem; margin-bottom: 4px; }
-    .lb-count { color: rgba(255,255,255,.28); font-size: .7rem; }
-
-    /* ── REVEAL ── */
+    /* REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
     .reveal.in { opacity: 1; transform: none; }
-    .rd1 { transition-delay: .1s; } .rd2 { transition-delay: .2s; } .rd3 { transition-delay: .3s; }
+    .rd1 { transition-delay: .1s; } .rd2 { transition-delay: .2s; }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .proj-grid { grid-template-columns: repeat(2,1fr); }
+    }
     @media (max-width: 768px) {
       #nav { padding: 18px 24px; }
       #nav.solid { padding: 12px 24px; }
@@ -268,10 +197,9 @@
       .hero-bae { width: 82vw; }
       .hero-meta-l, .hero-scroll-r { display: none; }
       .works-header { padding: 48px 24px 28px; }
-      .project { height: 60vh; }
-      .project-ov { padding: 32px 24px; }
-      .p-name { font-size: 2.4rem; }
-      .p-cta { display: none; }
+      .cat-filter { padding: 0 24px; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .cat-hdr { padding: 36px 24px 12px; }
       .container { padding: 0 24px; }
       #about { padding: 80px 0; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -283,9 +211,10 @@
       .c-item { border-right: none; border-bottom: 1px solid var(--border); padding-left: 0 !important; }
       .c-item:last-child { border-bottom: none; }
       footer { padding: 18px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
-      .lb-nav { width: 36px; height: 36px; }
-      #lb-prev { left: 8px; }
-      #lb-next { right: 8px; }
+      #proj-modal { flex-direction: column; }
+      .pm-info { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 56px 24px 28px; max-height: 48vh; }
+      .pm-gallery { flex: 1; min-height: 0; }
+      #pm-img { padding: 16px; }
     }
     @media (max-width: 480px) {
       .hero-bae { width: 88vw; }
@@ -297,11 +226,10 @@
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">
-    <img src="BAE LOGO 2.png" alt="BAE"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <img src="BAE LOGO 2.png" alt="BAE" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span class="nav-logo-text">BAE</span>
   </a>
   <ul class="nav-menu" id="navMenu">
@@ -316,115 +244,208 @@
   </button>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section id="hero">
   <p class="hero-eyebrow reveal">Jakarta &amp; Bekasi — Est. 2025</p>
   <img class="hero-bae reveal rd1" src="BAE LOGO 2.png" alt="BAE">
   <p class="hero-tagline reveal rd2">Building Ideas into Reality</p>
-  <div class="hero-meta-l">
-    Bangun Asa Ekosistem<br>
-    Architecture &amp; Interior
-  </div>
-  <div class="hero-scroll-r">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
+  <div class="hero-meta-l">Bangun Asa Ekosistem<br>Architecture &amp; Interior</div>
+  <div class="hero-scroll-r"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- ── WORKS ── -->
+<!-- WORKS -->
 <section id="works">
   <div class="works-header">
     <span class="sec-label reveal">Selected Works</span>
-    <span class="works-count reveal rd1">05 Projects</span>
+    <span class="works-count reveal rd1">17 Projects</span>
   </div>
 
-  <div class="project" onclick="lb('strozzi',0)">
-    <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="Strozzi" loading="lazy">
-    <div class="project-ov">
-      <div>
-        <div class="p-num">01 — Residential</div>
-        <div class="p-name">Strozzi</div>
-        <div class="p-cat">Design · Jakarta</div>
-      </div>
-      <div class="p-cta">
-        <span class="view-btn">
-          View Project
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </div>
-    </div>
+  <div class="cat-filter" id="catFilter">
+    <button class="cat-btn active" data-cat="all">All <span>17</span></button>
+    <button class="cat-btn" data-cat="Residential">Residential <span>11</span></button>
+    <button class="cat-btn" data-cat="Housing">Housing <span>2</span></button>
+    <button class="cat-btn" data-cat="Commercial">Commercial <span>3</span></button>
+    <button class="cat-btn" data-cat="Institutional">Institutional <span>1</span></button>
   </div>
 
-  <div class="project" onclick="lb('sunter',0)">
-    <img src="00-Photoshoot/Sunter Meditenaria/0Z6A4251-Pano copy.jpg" alt="Sunter Mediterania" loading="lazy">
-    <div class="project-ov">
-      <div>
-        <div class="p-num">02 — Residential</div>
-        <div class="p-name">Sunter Mediterania</div>
-        <div class="p-cat">Design · Jakarta</div>
-      </div>
-      <div class="p-cta">
-        <span class="view-btn">
-          View Project
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </div>
-    </div>
-  </div>
+  <div class="proj-grid" id="projGrid">
 
-  <div class="project" onclick="lb('bh',0)">
-    <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="Bekasi House" loading="lazy">
-    <div class="project-ov">
-      <div>
-        <div class="p-num">03 — Residential</div>
-        <div class="p-name">Bekasi House</div>
-        <div class="p-cat">Design &amp; Build · Bekasi</div>
-      </div>
-      <div class="p-cta">
-        <span class="view-btn">
-          View Project
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </div>
+    <div class="cat-hdr" data-sec="Residential">
+      <span class="cat-hdr-title">Residential</span>
+      <span class="cat-hdr-count">11 Projects</span>
     </div>
-  </div>
 
-  <div class="project" onclick="lb('fayt',0)">
-    <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="FAYT" loading="lazy">
-    <div class="project-ov">
-      <div>
-        <div class="p-num">04 — Retail</div>
-        <div class="p-name">FAYT</div>
-        <div class="p-cat">Design &amp; Build · Jakarta</div>
-      </div>
-      <div class="p-cta">
-        <span class="view-btn">
-          View Project
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
+    <div class="proj-card" data-cat="Residential" onclick="openProject('strozzi')">
+      <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="Strozzi" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">warm</div>
+        <div class="proj-name">Strozzi</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed · 2025</div>
       </div>
     </div>
-  </div>
 
-  <div class="project" onclick="lb('sdh',0)">
-    <img src="00-Photoshoot/SDH Daan Mogot/SDH-DSC02085-Pano.jpg" alt="SDH Daan Mogot" loading="lazy">
-    <div class="project-ov">
-      <div>
-        <div class="p-num">05 — Institutional</div>
-        <div class="p-name">SDH Daan Mogot</div>
-        <div class="p-cat">Design · Jakarta</div>
-      </div>
-      <div class="p-cta">
-        <span class="view-btn">
-          View Project
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
+    <div class="proj-card" data-cat="Residential" onclick="openProject('sunter')">
+      <img src="00-Photoshoot/Sunter House/0Z6A4143 copy.jpg" alt="Sunter House" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">modern elegant</div>
+        <div class="proj-name">Sunter House</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed · 2025</div>
       </div>
     </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('jhouse')">
+      <img src="00-Photoshoot/J House/a.jpg" alt="J House" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">fullfill</div>
+        <div class="proj-name">J House</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed · 2025</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('bekasi')">
+      <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="Bekasi House" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">hollow</div>
+        <div class="proj-name">Bekasi House</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('honolulu')">
+      <img src="00-Photoshoot/Honolulu/foto.jpeg" alt="Honolulu" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">sharpless</div>
+        <div class="proj-name">Honolulu</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed · 2024</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('tacondo')">
+      <img src="00-Photoshoot/TA Condo/1.jpg" alt="TA Condo" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">bend</div>
+        <div class="proj-name">TA Condo</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('piktwo')">
+      <img src="00-Photoshoot/PIK two/2.jpg" alt="PIK Two" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">home sheet home</div>
+        <div class="proj-name">PIK Two</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('grawisa')">
+      <img src="00-Photoshoot/Grawisa/3.jpg" alt="Grawisa" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">uncharted</div>
+        <div class="proj-name">Grawisa</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('chouse')">
+      <img src="00-Photoshoot/C House/1.jpg" alt="C House" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">2nd2nd</div>
+        <div class="proj-name">C House</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('kg')">
+      <img src="00-Photoshoot/KG/7.jpg" alt="KG" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">little</div>
+        <div class="proj-name">KG</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Residential" onclick="openProject('rrrhouse')">
+      <img src="00-Photoshoot/rrr House/6.jpg" alt="rrr House" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">boxy</div>
+        <div class="proj-name">rrr House</div>
+        <div class="proj-sub"><span class="dot dot-idea"></span>Conceptual</div>
+      </div>
+    </div>
+
+    <div class="cat-hdr" data-sec="Housing">
+      <span class="cat-hdr-title">Housing</span>
+      <span class="cat-hdr-count">2 Projects</span>
+    </div>
+
+    <div class="proj-card" data-cat="Housing" onclick="openProject('bekasiboarding')">
+      <img src="00-Photoshoot/Bekasi Boarding/1.jpg" alt="Bekasi Boarding" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">cloudy</div>
+        <div class="proj-name">Bekasi Boarding</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Housing" onclick="openProject('housingh')">
+      <img src="00-Photoshoot/HousingHousing/1.jpg" alt="HousingHousing" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-name">HousingHousing</div>
+        <div class="proj-sub"><span class="dot dot-idea"></span>Conceptual · On Going</div>
+      </div>
+    </div>
+
+    <div class="cat-hdr" data-sec="Commercial">
+      <span class="cat-hdr-title">Commercial</span>
+      <span class="cat-hdr-count">3 Projects</span>
+    </div>
+
+    <div class="proj-card" data-cat="Commercial" onclick="openProject('fayt')">
+      <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="FAYT" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">cutesy market</div>
+        <div class="proj-name">FAYT</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed · 2024</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Commercial" onclick="openProject('bednco')">
+      <img src="00-Photoshoot/Bed n Co/1.jpg" alt="Bed n Co" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">stacking</div>
+        <div class="proj-name">Bed n Co</div>
+        <div class="proj-sub"><span class="dot dot-wip"></span>On Going</div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="Commercial" onclick="openProject('padel')">
+      <img src="00-Photoshoot/Padel Club/1.jpg" alt="Padel Club" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">upup</div>
+        <div class="proj-name">Padel Club</div>
+        <div class="proj-sub"><span class="dot dot-idea"></span>Conceptual</div>
+      </div>
+    </div>
+
+    <div class="cat-hdr" data-sec="Institutional">
+      <span class="cat-hdr-title">Institutional</span>
+      <span class="cat-hdr-count">1 Project</span>
+    </div>
+
+    <div class="proj-card" data-cat="Institutional" onclick="openProject('schoolhall')">
+      <img src="00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg" alt="School Hall" loading="lazy">
+      <div class="proj-ov">
+        <div class="proj-tagline">layering</div>
+        <div class="proj-name">School Hall</div>
+        <div class="proj-sub"><span class="dot dot-done"></span>Completed · 2025</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <p class="about-lbl reveal">About BAE</p>
@@ -436,29 +457,17 @@
       </div>
       <div class="reveal rd2">
         <div class="stats-grid">
-          <div class="stat-box">
-            <div class="stat-n">2025</div>
-            <div class="stat-l">Founded</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-n">50+</div>
-            <div class="stat-l">Projects</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-n">2</div>
-            <div class="stat-l">Cities</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-n">D&amp;B</div>
-            <div class="stat-l">Design &amp; Build</div>
-          </div>
+          <div class="stat-box"><div class="stat-n">2025</div><div class="stat-l">Founded</div></div>
+          <div class="stat-box"><div class="stat-n">50+</div><div class="stat-l">Projects</div></div>
+          <div class="stat-box"><div class="stat-n">2</div><div class="stat-l">Cities</div></div>
+          <div class="stat-box"><div class="stat-n">D&amp;B</div><div class="stat-l">Design &amp; Build</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="sec-hdr-row reveal">
@@ -480,7 +489,7 @@
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <h2 class="contact-h reveal">Let's Build<br>Something<br>Great</h2>
@@ -512,11 +521,10 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
   <div class="ft-logo">
-    <img src="BAE LOGO 2.png" alt="BAE"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <img src="BAE LOGO 2.png" alt="BAE" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span class="ft-logo-fb">BAE</span>
   </div>
   <span class="ft-copy">&copy; 2025 Bangun Asa Ekosistem. All rights reserved.</span>
@@ -526,167 +534,180 @@
   </div>
 </footer>
 
-<!-- ── LIGHTBOX ── -->
-<div id="lightbox">
-  <button class="lb-x" onclick="closeLb()">&#x2715;</button>
-  <button class="lb-nav" id="lb-prev" onclick="lbNav(-1)">&#8249;</button>
-  <img id="lb-img" src="" alt="">
-  <button class="lb-nav" id="lb-next" onclick="lbNav(1)">&#8250;</button>
-  <div class="lb-meta">
-    <div class="lb-name"  id="lb-name"></div>
-    <div class="lb-count" id="lb-count"></div>
+<!-- PROJECT MODAL -->
+<div id="proj-modal">
+  <button class="pm-close" onclick="closeProject()">&#x2715;</button>
+  <div class="pm-info" id="pm-info">
+    <div class="pm-cat-badge" id="pm-cat"></div>
+    <div class="pm-title" id="pm-name"></div>
+    <div class="pm-tagline-txt" id="pm-tagline"></div>
+    <div class="pm-rule"></div>
+    <div class="pm-meta" id="pm-meta"></div>
+    <div class="pm-rule"></div>
+    <p class="pm-desc" id="pm-desc"></p>
+    <div class="pm-img-ctr" id="pm-count"></div>
+  </div>
+  <div class="pm-gallery">
+    <img id="pm-img" src="" alt="">
+    <button class="pm-nav" id="pm-prev" onclick="pmNav(-1)">&#8249;</button>
+    <button class="pm-nav" id="pm-next" onclick="pmNav(1)">&#8250;</button>
   </div>
 </div>
 
 <script>
-/* ── Gallery data ── */
-const G = {
-  bh: {
-    name: 'Bekasi House',
-    imgs: [
-      '00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00187.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00430-Pano.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00019.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00067.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00164.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00237.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00247.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00523.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00586.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00598.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00652.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00778.jpg',
-      '00-Photoshoot/Bekasi House/BH-DSC00835-Pano.jpg',
-    ]
-  },
-  fayt: {
-    name: 'FAYT',
-    imgs: [
-      '00-Photoshoot/FAYT/IMG_9237-1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9270- 1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9284-1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9204- 1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9230- 1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9233- 2 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9255-2 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9264-1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9279-1 HDR.jpg',
-      '00-Photoshoot/FAYT/IMG_9284-2 HDR.jpg',
-    ]
-  },
-  sdh: {
-    name: 'SDH Daan Mogot',
-    imgs: [
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02085-Pano.jpg',
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02223.jpg',
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02368.jpg',
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02202-Pano.jpg',
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02211.jpg',
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02275.jpg',
-      '00-Photoshoot/SDH Daan Mogot/SDH-DSC02395.jpg',
-    ]
-  },
+const P = {
   strozzi: {
-    name: 'Strozzi',
-    imgs: [
-      '00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg',
-      '00-Photoshoot/Strozzi/1P5A4326-HDR-Pano.jpg',
-      '00-Photoshoot/Strozzi/1P5A4359-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4417-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4202-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4219-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4248-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4293-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4306-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4353-HDR-Pano.jpg',
-      '00-Photoshoot/Strozzi/1P5A4402-HDR-Pano.jpg',
-      '00-Photoshoot/Strozzi/1P5A4439.jpg',
-      '00-Photoshoot/Strozzi/1P5A4440.jpg',
-      '00-Photoshoot/Strozzi/1P5A4444.jpg',
-      '00-Photoshoot/Strozzi/1P5A4497-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4501-HDR.jpg',
-      '00-Photoshoot/Strozzi/1P5A4519-HDR-Pano.jpg',
-    ]
+    name:'Strozzi', tagline:'warm', cat:'Residential', status:'Completed · 2025', role:'Design',
+    desc:'A home with a warm and inviting atmosphere — one that allows its residents to enjoy life, discover comfort, and even create their own. The spaces are wrapped with functional cabinetry, while a thoughtful palette reinforces a deep sense of warmth. Subtle shifts in volume shape intimate corners and generous moments, crafting a distinct spatial experience in every part of the house.',
+    imgs:['00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg','00-Photoshoot/Strozzi/1P5A4202-HDR.jpg','00-Photoshoot/Strozzi/1P5A4248-HDR.jpg','00-Photoshoot/Strozzi/1P5A4293-HDR.jpg','00-Photoshoot/Strozzi/1P5A4306-HDR.jpg','00-Photoshoot/Strozzi/1P5A4417-HDR.jpg','00-Photoshoot/Strozzi/1P5A4444.jpg','00-Photoshoot/Strozzi/1P5A4497-HDR.jpg','00-Photoshoot/Strozzi/1P5A4501-HDR.jpg','00-Photoshoot/Strozzi/1P5A4519-HDR-Pano.jpg']
   },
   sunter: {
-    name: 'Sunter Mediterania',
-    imgs: [
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4036-2 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4251-Pano copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4137-Pano copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4293 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4039 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4044 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4050 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4059 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4068 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4071 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4080 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4101 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4110 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4116 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4143 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4170 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4179 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4197 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4203 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4212 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4272-Pano copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4281 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4290-Pano copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4302 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4323 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4329-Pano copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4333 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4336 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4401 copy.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4405-Edit.jpg',
-      '00-Photoshoot/Sunter Meditenaria/0Z6A4408 copy.jpg',
-    ]
+    name:'Sunter House', tagline:'modern elegant', cat:'Residential', status:'Completed · 2025', role:'Design',
+    desc:'Modern house with simple minimalist and elegant impression.',
+    imgs:['00-Photoshoot/Sunter House/0Z6A4143 copy.jpg','00-Photoshoot/Sunter House/0Z6A4212 copy.jpg','00-Photoshoot/Sunter House/0Z6A4281 copy.jpg']
+  },
+  jhouse: {
+    name:'J House', tagline:'fullfill', cat:'Residential', status:'Completed · 2025', role:'Design',
+    desc:'One strong box becomes the focal point. Open and spacious become the concern. Natural materials bring a more comfortable impression.',
+    imgs:['00-Photoshoot/J House/a.jpg','00-Photoshoot/J House/d.jpg']
+  },
+  bekasi: {
+    name:'Bekasi House', tagline:'hollow', cat:'Residential', status:'Completed', role:'Design & Build',
+    desc:'A white and green palette creates a refreshing and calming atmosphere. Geometric openings across multiple axes shape a dynamic spatial composition through contrast and layering. Carefully placed apertures enhance natural ventilation and daylight, creating a comfortable and immersive spatial experience.',
+    imgs:['00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg','00-Photoshoot/Bekasi House/BH-DSC00164.jpg','00-Photoshoot/Bekasi House/BH-DSC00187.jpg','00-Photoshoot/Bekasi House/BH-DSC00247.jpg','00-Photoshoot/Bekasi House/BH-DSC00523.jpg','00-Photoshoot/Bekasi House/BH-DSC00586.jpg','00-Photoshoot/Bekasi House/BH-DSC00598.jpg','00-Photoshoot/Bekasi House/BH-DSC00652.jpg']
+  },
+  honolulu: {
+    name:'Honolulu', tagline:'sharpless', cat:'Residential', status:'Completed · 2024', role:'Design',
+    desc:'Small spaces apartment with curved edges with simple and beauty touch.',
+    imgs:['00-Photoshoot/Honolulu/foto.jpeg']
+  },
+  tacondo: {
+    name:'TA Condo', tagline:'bend', cat:'Residential', status:'On Going', role:'Design & Build',
+    desc:'A condominium apartment conceived with a deliberate avoidance of sharp corners, favoring the dominance of curved elements to shape its spatial and formal language. The design emphasizes a minimalist and modern expression, where fluid geometries are articulated with restraint to create a calm, refined architectural identity.',
+    imgs:['00-Photoshoot/TA Condo/1.jpg','00-Photoshoot/TA Condo/2.jpg','00-Photoshoot/TA Condo/8.jpg','00-Photoshoot/TA Condo/9.jpg','00-Photoshoot/TA Condo/10.jpg']
+  },
+  piktwo: {
+    name:'PIK Two', tagline:'home sheet home', cat:'Residential', status:'On Going', role:'Design & Build',
+    desc:'The house is articulated through layers of panels that sheath the interior spaces, bringing vitality to the architecture, while the color palette is curated to convey a subtle masculine character.',
+    imgs:['00-Photoshoot/PIK two/2.jpg','00-Photoshoot/PIK two/3.jpg','00-Photoshoot/PIK two/5.jpg']
+  },
+  grawisa: {
+    name:'Grawisa', tagline:'uncharted', cat:'Residential', status:'On Going', role:'',
+    desc:'3 groups of family living in 1 house creating various kinds of characteristic into one building.',
+    imgs:['00-Photoshoot/Grawisa/3.jpg','00-Photoshoot/Grawisa/7.jpg']
+  },
+  chouse: {
+    name:'C House', tagline:'2nd2nd', cat:'Residential', status:'On Going', role:'Design',
+    desc:'Driven by the owner\'s dissatisfaction with the existing condition, the house was transformed through renovation, expanding its spatial capacity and embracing a more contemporary material expression.',
+    imgs:['00-Photoshoot/C House/1.jpg']
+  },
+  kg: {
+    name:'KG', tagline:'little', cat:'Residential', status:'On Going', role:'Design & Build',
+    desc:'An apartment transformed into a place of retreat, where every spatial component is optimized into a functional and purposeful space.',
+    imgs:['00-Photoshoot/KG/7.jpg','00-Photoshoot/KG/8.jpg']
+  },
+  rrrhouse: {
+    name:'rrr House', tagline:'boxy', cat:'Residential', status:'Conceptual', role:'Design',
+    desc:'A renovated house redefined with a modern architectural language, emphasizing a robust and solid presence.',
+    imgs:['00-Photoshoot/rrr House/6.jpg','00-Photoshoot/rrr House/A.jpg','00-Photoshoot/rrr House/3.jpg']
+  },
+  bekasiboarding: {
+    name:'Bekasi Boarding', tagline:'cloudy', cat:'Housing', status:'On Going', role:'Design & Build',
+    desc:'A boarding house set within a green and tranquil setting, conceived as a gentle place to rest. Soft white tones shape the architecture, creating a light, clean, and bright atmosphere that feels calm and welcoming, allowing the building to sit quietly within its natural surroundings.',
+    imgs:['00-Photoshoot/Bekasi Boarding/1.jpg']
+  },
+  housingh: {
+    name:'HousingHousing', tagline:'', cat:'Housing', status:'Conceptual · On Going', role:'',
+    desc:'',
+    imgs:['00-Photoshoot/HousingHousing/1.jpg']
+  },
+  fayt: {
+    name:'FAYT', tagline:'cutesy market', cat:'Commercial', status:'Completed · 2024', role:'Design & Build',
+    desc:'Fun and thematic store for the customers.',
+    imgs:['00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg','00-Photoshoot/FAYT/IMG_9264-1 HDR.jpg','00-Photoshoot/FAYT/IMG_9279-1 HDR.jpg','00-Photoshoot/FAYT/IMG_9284-2 HDR.jpg']
+  },
+  bednco: {
+    name:'Bed n Co', tagline:'stacking', cat:'Commercial', status:'On Going', role:'',
+    desc:'A composition of stacked building masses developed through an architectural massing study, in which each floor accommodates distinct functional programs. The building operates as a spatial framework for a multi-brand furniture company, while articulating an architectural expression that balances warmth and monumentality in its experience.',
+    imgs:['00-Photoshoot/Bed n Co/1.jpg','00-Photoshoot/Bed n Co/2.jpg']
+  },
+  padel: {
+    name:'Padel Club', tagline:'upup', cat:'Commercial', status:'Conceptual', role:'Design',
+    desc:'By lifting the main program upward, the building allows the lower level to operate more efficiently for operational needs while reducing its impact on the surrounding context. The façade is conceived as a critical interface, designed to capture public attention and define the identity of this commercial architecture.',
+    imgs:['00-Photoshoot/Padel Club/1.jpg','00-Photoshoot/Padel Club/2.jpg','00-Photoshoot/Padel Club/3.jpg','00-Photoshoot/Padel Club/8.jpg','00-Photoshoot/Padel Club/13.jpg']
+  },
+  schoolhall: {
+    name:'School Hall', tagline:'layering', cat:'Institutional', status:'Completed · 2025', role:'Design',
+    desc:'Creating a multifunctional space that provides a calm and layered atmosphere to introduce a new spatial typology within a school — evoking a futuristic and modern impression, while also subtly serving as a form-based response to acoustic comfort within the space.',
+    imgs:['00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg','00-Photoshoot/School Hall/SDH-DSC02211.jpg','00-Photoshoot/School Hall/SDH-DSC02275.jpg','00-Photoshoot/School Hall/SDH-DSC02395.jpg']
   }
 };
 
-/* ── Lightbox ── */
-let lbKey = null, lbIdx = 0;
-function lb(key, idx) {
-  lbKey = key; lbIdx = idx;
-  renderLb();
-  document.getElementById('lightbox').classList.add('open');
+let pmKey = null, pmIdx = 0;
+
+function openProject(key) {
+  pmKey = key; pmIdx = 0;
+  const p = P[key];
+  document.getElementById('pm-cat').textContent     = p.cat;
+  document.getElementById('pm-name').textContent    = p.name;
+  document.getElementById('pm-tagline').textContent = p.tagline ? '— ' + p.tagline : '';
+  const meta = document.getElementById('pm-meta');
+  meta.innerHTML = '';
+  if (p.status) meta.innerHTML += '<div class="pm-meta-item"><div class="pm-meta-lbl">Status</div><div class="pm-meta-val">' + p.status + '</div></div>';
+  if (p.role)   meta.innerHTML += '<div class="pm-meta-item"><div class="pm-meta-lbl">Role</div><div class="pm-meta-val">'   + p.role   + '</div></div>';
+  const descEl = document.getElementById('pm-desc');
+  descEl.textContent  = p.desc;
+  descEl.style.display = p.desc ? '' : 'none';
+  renderPm();
+  document.getElementById('proj-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeLb() {
-  document.getElementById('lightbox').classList.remove('open');
+
+function closeProject() {
+  document.getElementById('proj-modal').classList.remove('open');
   document.body.style.overflow = '';
 }
-function renderLb() {
-  const g = G[lbKey];
-  document.getElementById('lb-img').src   = g.imgs[lbIdx];
-  document.getElementById('lb-name').textContent  = g.name;
-  document.getElementById('lb-count').textContent = (lbIdx + 1) + ' / ' + g.imgs.length;
+
+function renderPm() {
+  const p = P[pmKey];
+  document.getElementById('pm-img').src = p.imgs[pmIdx];
+  document.getElementById('pm-img').alt = p.name;
+  document.getElementById('pm-count').textContent = p.imgs.length > 1 ? (pmIdx + 1) + ' / ' + p.imgs.length : '';
+  document.getElementById('pm-prev').style.display = p.imgs.length > 1 ? '' : 'none';
+  document.getElementById('pm-next').style.display = p.imgs.length > 1 ? '' : 'none';
 }
-function lbNav(d) {
-  lbIdx = (lbIdx + d + G[lbKey].imgs.length) % G[lbKey].imgs.length;
-  renderLb();
+
+function pmNav(d) {
+  const imgs = P[pmKey].imgs;
+  pmIdx = (pmIdx + d + imgs.length) % imgs.length;
+  renderPm();
 }
-document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLb(); });
+
+document.getElementById('proj-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeProject(); });
 document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key === 'Escape')      closeLb();
-  if (e.key === 'ArrowLeft')   lbNav(-1);
-  if (e.key === 'ArrowRight')  lbNav(1);
+  if (!document.getElementById('proj-modal').classList.contains('open')) return;
+  if (e.key === 'Escape')     closeProject();
+  if (e.key === 'ArrowLeft')  pmNav(-1);
+  if (e.key === 'ArrowRight') pmNav(1);
 });
 let tsX = 0;
-document.getElementById('lightbox').addEventListener('touchstart', e => tsX = e.changedTouches[0].clientX);
-document.getElementById('lightbox').addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - tsX; if (Math.abs(d) > 50) lbNav(d < 0 ? 1 : -1); });
+document.querySelector('.pm-gallery').addEventListener('touchstart', e => tsX = e.changedTouches[0].clientX);
+document.querySelector('.pm-gallery').addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - tsX; if (Math.abs(d) > 50) pmNav(d < 0 ? 1 : -1); });
 
-/* ── Navbar scroll ── */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('solid', scrollY > 60);
-}, { passive: true });
+/* Category filter */
+document.getElementById('catFilter').addEventListener('click', e => {
+  const btn = e.target.closest('.cat-btn');
+  if (!btn) return;
+  const cat = btn.dataset.cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(c => c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat));
+  document.querySelectorAll('.cat-hdr').forEach(h => h.style.display = (cat === 'all' || h.dataset.sec === cat) ? '' : 'none');
+});
 
-/* ── Mobile nav ── */
+/* Navbar */
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('solid', scrollY > 60); }, { passive: true });
+
 function toggleNav() {
   document.getElementById('navMenu').classList.toggle('open');
   document.getElementById('hamburger').classList.toggle('open');
@@ -696,16 +717,10 @@ document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click'
   document.getElementById('hamburger').classList.remove('open');
 }));
 
-/* ── Reveal on scroll ── */
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.12 });
+/* Reveal */
+const ro = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-/* ── Hero elements trigger immediately ── */
-requestAnimationFrame(() => {
-  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('in'));
-});
+requestAnimationFrame(() => { document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('in')); });
 </script>
 
 <script type="application/ld+json">
@@ -720,22 +735,11 @@ requestAnimationFrame(() => {
   "image": "https://bangunasaecos.com/BAE%20LOGO%202.png",
   "telephone": "+6287880345945",
   "email": "bangunasa@bangunasaecos.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Jakarta",
-    "addressRegion": "DKI Jakarta",
-    "addressCountry": "ID"
-  },
-  "sameAs": [
-    "https://www.instagram.com/baeconstruction___",
-    "https://www.instagram.com/andretecture"
-  ],
+  "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressRegion": "DKI Jakarta", "addressCountry": "ID" },
+  "sameAs": ["https://www.instagram.com/baeconstruction___","https://www.instagram.com/andretecture"],
   "foundingDate": "2025",
-  "areaServed": [
-    { "@type": "City", "name": "Jakarta" },
-    { "@type": "City", "name": "Bekasi" }
-  ],
-  "knowsAbout": ["Architecture", "Interior Design", "Construction", "Design and Build"]
+  "areaServed": [{"@type":"City","name":"Jakarta"},{"@type":"City","name":"Bekasi"}],
+  "knowsAbout": ["Architecture","Interior Design","Construction","Design and Build"]
 }
 </script>
 </body>
