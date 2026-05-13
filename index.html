@@ -180,6 +180,23 @@
     .ft-socials a { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(17,17,17,.32); text-decoration: none; transition: color .2s; }
     .ft-socials a:hover { color: rgba(17,17,17,.7); }
 
+    /* CUSTOM CURSOR */
+    * { cursor: none !important; }
+    #cursor {
+      position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
+      width: 12px; height: 12px;
+      background: var(--blue);
+      border-radius: 0;
+      transform: translate(-50%, -50%);
+      transition: border-radius .12s ease, background .12s ease, width .12s ease, height .12s ease;
+      will-change: transform;
+    }
+    #cursor.clicking {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
     .reveal.in { opacity: 1; transform: none; }
@@ -228,6 +245,8 @@
   </style>
 </head>
 <body>
+
+<div id="cursor"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -726,6 +745,14 @@ document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click'
   document.getElementById('navMenu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
 }));
+
+/* Custom cursor */
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`; }, { passive: true });
+document.addEventListener('mousedown', () => cur.classList.add('clicking'));
+document.addEventListener('mouseup',   () => cur.classList.remove('clicking'));
+document.addEventListener('mouseleave', () => cur.style.opacity = '0');
+document.addEventListener('mouseenter', () => cur.style.opacity = '1');
 
 /* Reveal */
 const ro = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.12 });
