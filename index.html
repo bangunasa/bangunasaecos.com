@@ -24,9 +24,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { }
     body { font-family: 'DM Sans', sans-serif; background: #f2f1ec; color: #111; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-thumb { background: #c8c7c0; }
@@ -82,9 +83,9 @@
     .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: #d8d7d0; }
     .proj-card { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; background: #e0dfd9; isolation: isolate; }
     .proj-card.hidden { display: none; }
-    .proj-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.25,.46,.45,.94); display: block; }
-    .proj-card:hover img { transform: scale(1.07); }
-    .proj-card::before { content: ''; position: absolute; inset: 0; background: url('BAE%20LOGO%20BLACK.png') center/16% no-repeat; mix-blend-mode: multiply; opacity: .2; pointer-events: none; z-index: 3; }
+    .proj-card img { width: 100%; height: 115%; object-fit: cover; display: block; will-change: transform; }
+    .proj-card:hover img { transform: scale(1.05); transition: transform 1.2s cubic-bezier(.25,.46,.45,.94); }
+    .proj-card::before { content: ''; position: absolute; inset: 0; background: url('BAE%20LOGO%20BLACK.png') center/20% no-repeat; opacity: .22; pointer-events: none; z-index: 3; }
     .proj-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.12) 55%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 30px; transition: background .35s; z-index: 2; }
     .proj-card:hover .proj-ov { background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.32) 60%, rgba(0,0,0,.04) 100%); }
     .proj-tagline { font-size: .55rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: 5px; }
@@ -101,7 +102,7 @@
     .cat-hdr-count { font-size: .58rem; font-weight: 500; letter-spacing: .1em; color: rgba(17,17,17,.18); }
 
     /* PROJECT MODAL */
-    #proj-modal { position: fixed; inset: 0; z-index: 9999; background: rgba(242,241,236,.98); display: none; }
+    #proj-modal { position: fixed; inset: 0; z-index: 9999; background: rgba(242,241,236,.98); display: none; opacity: 0; }
     #proj-modal.open { display: flex; }
     .pm-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(17,17,17,.4); font-size: 1.3rem; cursor: pointer; padding: 8px; z-index: 10; transition: color .2s; line-height: 1; }
     .pm-close:hover { color: #111; }
@@ -117,9 +118,17 @@
     .pm-desc { font-size: .875rem; color: rgba(17,17,17,.55); line-height: 1.88; }
     .pm-img-ctr { font-size: .6rem; letter-spacing: .1em; color: rgba(17,17,17,.25); margin-top: auto; padding-top: 12px; }
     .pm-gallery { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; background: #e4e3dd; overflow: hidden; isolation: isolate; }
-    .pm-gallery::before { content: ''; position: absolute; inset: 0; background: url('BAE%20LOGO%20BLACK.png') center/14% no-repeat; mix-blend-mode: multiply; opacity: .2; pointer-events: none; z-index: 1; }
-    #pm-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; padding: 32px; position: relative; z-index: 0; }
-    .pm-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(242,241,236,.8); border: 1px solid rgba(17,17,17,.15); color: rgba(17,17,17,.5); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all .2s; z-index: 2; }
+    .pm-gallery::before { content: ''; position: absolute; inset: 0; background: url('BAE%20LOGO%20BLACK.png') center/14% no-repeat; mix-blend-mode: multiply; opacity: .2; pointer-events: none; z-index: 5; }
+
+    /* Swiper inside modal */
+    .pm-swiper { width: 100%; height: 100%; }
+    .pm-swiper .swiper-slide { display: flex; align-items: center; justify-content: center; height: 100%; }
+    .pm-swiper .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; padding: 32px; display: block; }
+    .pm-pagination.swiper-pagination { bottom: 16px; z-index: 8; }
+    .pm-pagination .swiper-pagination-bullet { width: 5px; height: 5px; background: rgba(17,17,17,.25); opacity: 1; border-radius: 0; transition: width .25s, background .25s; margin: 0 3px; }
+    .pm-pagination .swiper-pagination-bullet-active { width: 20px; background: #111; border-radius: 0; }
+
+    .pm-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(242,241,236,.85); border: 1px solid rgba(17,17,17,.15); color: rgba(17,17,17,.5); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all .2s; z-index: 6; backdrop-filter: blur(6px); }
     .pm-nav:hover { background: #f8f7f2; border-color: rgba(17,17,17,.35); color: #111; }
     #pm-prev { left: 16px; }
     #pm-next { right: 16px; }
@@ -150,12 +159,12 @@
     .svc-num { font-size: .6rem; font-weight: 500; letter-spacing: .2em; color: rgba(17,17,17,.22); padding-top: 8px; }
     .svc-body { }
     .svc-caption { font-size: .58rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(17,17,17,.28); margin-bottom: 14px; }
-    .svc-h { font-family: 'Bebas Neue'; font-size: clamp(3rem,5.5vw,6.5rem); letter-spacing: .02em; line-height: .9; color: #111; margin-bottom: 20px; }
+    .svc-h { font-family: 'Bebas Neue'; font-size: clamp(3rem,5.5vw,6.5rem); letter-spacing: .02em; line-height: .9; color: #111; margin-bottom: 20px; overflow: hidden; display: block; }
     .svc-desc { font-size: .875rem; color: rgba(17,17,17,.5); line-height: 1.82; max-width: 500px; }
 
     /* CONTACT */
     #contact { background: #e8e7e0; padding: 120px 0 88px; border-top: 1px solid var(--border); }
-    .contact-h { margin-bottom: 72px; }
+    .contact-h { margin-bottom: 72px; overflow: hidden; }
     .ch-sub { font-family: 'DM Sans'; font-size: clamp(1.1rem,2.2vw,2.2rem); font-weight: 300; font-style: italic; color: rgba(17,17,17,.35); letter-spacing: .01em; display: block; margin-bottom: 6px; }
     .ch-main { font-family: 'Bebas Neue'; font-size: clamp(4rem,9.5vw,11rem); letter-spacing: -.01em; line-height: .86; color: #111; display: block; }
     .ch-dot { color: var(--red); }
@@ -180,36 +189,18 @@
     .ft-socials a { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(17,17,17,.32); text-decoration: none; transition: color .2s; }
     .ft-socials a:hover { color: rgba(17,17,17,.7); }
 
-    /* CUSTOM CURSOR — mouse only */
+    /* CUSTOM CURSOR */
     #cursor {
-      display: none;
-      position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
-      width: 12px; height: 12px;
-      background: var(--blue);
-      border-radius: 0;
-      transform: translate(-50%, -50%);
+      display: none; position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
+      width: 12px; height: 12px; background: var(--blue); border-radius: 0;
       transition: border-radius .12s ease, background .12s ease, width .12s ease, height .12s ease;
       will-change: transform;
     }
-    #cursor.clicking {
-      width: 16px; height: 16px;
-      border-radius: 50%;
-      background: var(--red);
-    }
-    @media (pointer: fine) {
-      * { cursor: none !important; }
-      #cursor { display: block; }
-    }
-
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    .rd1 { transition-delay: .1s; } .rd2 { transition-delay: .2s; }
+    #cursor.clicking { width: 16px; height: 16px; border-radius: 50%; background: var(--red); }
+    @media (pointer: fine) { * { cursor: none !important; } #cursor { display: block; } }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .proj-grid { grid-template-columns: repeat(2,1fr); }
-    }
+    @media (max-width: 1024px) { .proj-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 768px) {
       #nav { padding: 18px 24px; }
       #nav.solid { padding: 12px 24px; }
@@ -236,8 +227,73 @@
       #proj-modal { flex-direction: column; }
       .pm-info { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 56px 24px 28px; max-height: 48vh; }
       .pm-gallery { flex: 1; min-height: 0; }
-      #pm-img { padding: 16px; }
+      .pm-swiper .swiper-slide img { padding: 16px; }
     }
+    /* ── STATEMENT BREAK ────────────────────────────── */
+    .stmt-break { background: #111; padding: 100px 48px 92px; overflow: hidden; }
+    .sb-kicker {
+      font-size: .58rem; letter-spacing: .28em; text-transform: uppercase;
+      color: rgba(242,241,236,.18); margin-bottom: 32px;
+    }
+    .sb-row {
+      font-family: 'Bebas Neue';
+      font-size: clamp(7rem, 19vw, 24rem);
+      letter-spacing: -.03em; line-height: .82; color: #f2f1ec;
+      display: block;
+    }
+    .sb-count { display: inline-block; }
+    .sb-red   { color: var(--red); }
+    .sb-sub {
+      font-family: 'Bebas Neue';
+      font-size: clamp(1.4rem, 3vw, 3.6rem);
+      letter-spacing: .02em; line-height: 1.18;
+      color: rgba(242,241,236,.14); margin-top: 12px;
+    }
+    .sb-rule { height: 1px; background: rgba(242,241,236,.07); margin: 52px 0 28px; }
+    .sb-tagline {
+      font-size: .6rem; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(242,241,236,.2);
+    }
+    @media (max-width: 768px) {
+      .stmt-break { padding: 72px 24px 64px; }
+    }
+
+    /* ── WORKS VERTICAL LABEL ────────────────────────── */
+    #works { position: relative; }
+    .works-vert-label {
+      position: absolute; left: 14px; top: 55%;
+      transform: rotate(-90deg) translateX(-50%);
+      transform-origin: left center;
+      font-size: .5rem; letter-spacing: .28em; text-transform: uppercase;
+      color: rgba(17,17,17,.1); white-space: nowrap;
+      pointer-events: none; user-select: none;
+    }
+    @media (max-width: 1024px) { .works-vert-label { display: none; } }
+
+
+    /* ── WORKS COUNT ACCENT ──────────────────────────── */
+    .wc-num { font-family: 'Bebas Neue'; color: var(--red); font-size: 1.15rem; }
+
+    /* ── FILM GRAIN ─────────────────────────────────── */
+    #grain {
+      position: fixed; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      pointer-events: none; z-index: 99997;
+      opacity: .055; mix-blend-mode: overlay;
+      background-repeat: repeat;
+      animation: grain-shift .55s steps(1) infinite;
+    }
+    @keyframes grain-shift {
+      0%   { transform: translate(0,0) }
+      16%  { transform: translate(-4%,-9%) }
+      33%  { transform: translate(-14%,6%) }
+      50%  { transform: translate(6%,-22%) }
+      66%  { transform: translate(-4%,23%) }
+      83%  { transform: translate(14%,-4%) }
+      100% { transform: translate(0,0) }
+    }
+
+
     @media (max-width: 480px) {
       .hero-bae { width: 88vw; }
       .sr-item + .sr-item { padding-left: 16px; }
@@ -251,6 +307,7 @@
 <body>
 
 <div id="cursor"></div>
+<div id="grain"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -272,18 +329,29 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow reveal">Jakarta &amp; Bekasi — Est. 2025</p>
-  <img class="hero-bae reveal rd1" src="BAE%20LOGO%202.png" alt="BAE">
-  <p class="hero-tagline reveal rd2">Building Ideas into Reality</p>
+  <p class="hero-eyebrow">Jakarta &amp; Bekasi — Est. 2025</p>
+  <img class="hero-bae" src="BAE%20LOGO%202.png" alt="BAE">
+  <p class="hero-tagline">Building Ideas into Reality</p>
   <div class="hero-meta-l">Bangun Asa Ekosistem<br>Architecture &amp; Interior</div>
   <div class="hero-scroll-r"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- WORKS -->
+
+<!-- STATEMENT BREAK -->
+<section class="stmt-break" aria-hidden="true">
+  <div class="sb-kicker">Portfolio — 2025</div>
+  <div class="sb-row"><span class="sb-count">0</span><span class="sb-red">.</span></div>
+  <div class="sb-sub">Projects delivered<br>across the world.</div>
+  <div class="sb-rule"></div>
+  <div class="sb-tagline">Architecture &nbsp;·&nbsp; Interior Design &nbsp;·&nbsp; Build</div>
+</section>
+
+<!-- ALL WORKS -->
 <section id="works">
+  <div class="works-vert-label" aria-hidden="true">Selected Works — 2025</div>
   <div class="works-header">
-    <span class="sec-label reveal">Selected Works</span>
-    <span class="works-count reveal rd1">17 Projects</span>
+    <span class="sec-label">Selected Works</span>
+    <span class="works-count"><span class="wc-num">17</span> Projects</span>
   </div>
 
   <div class="cat-filter" id="catFilter">
@@ -474,18 +542,18 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <p class="about-lbl reveal">About BAE</p>
+    <p class="about-lbl">About BAE</p>
     <div class="about-grid">
       <div>
-        <h2 class="about-h reveal">We Create<br>Spaces That<br><span class="bl">Endure</span></h2>
-        <p class="about-p reveal rd1">PT. Bangun Asa Eksplorasi, established in 2025, is a Design and Build company that builds ideas into reality through two core divisions—Design and Construction—working in close collaboration to deliver seamless and fully integrated project outcomes.</p>
-        <p class="about-p reveal rd1">True to our name, <em>Bangun</em> reflects our commitment to actively shaping and building every project with purpose and care. <em>Asa</em> represents our dedication to turning each client's vision into reality through thoughtful design and precise execution. Meanwhile, <em>Eksplorasi</em> embodies our drive to continuously learn, innovate, and improve—always seeking better ways to create meaningful, functional, and lasting spaces.</p>
+        <h2 class="about-h">We Create<br>Spaces That<br><span class="bl">Endure</span></h2>
+        <p class="about-p">PT. Bangun Asa Eksplorasi, established in 2025, is a Design and Build company that builds ideas into reality through two core divisions—Design and Construction—working in close collaboration to deliver seamless and fully integrated project outcomes.</p>
+        <p class="about-p">True to our name, <em>Bangun</em> reflects our commitment to actively shaping and building every project with purpose and care. <em>Asa</em> represents our dedication to turning each client's vision into reality through thoughtful design and precise execution. Meanwhile, <em>Eksplorasi</em> embodies our drive to continuously learn, innovate, and improve—always seeking better ways to create meaningful, functional, and lasting spaces.</p>
       </div>
-      <div class="reveal rd2">
+      <div>
         <div class="stats-row">
-          <div class="sr-item"><div class="sr-n">2025</div><div class="sr-l">Founded</div></div>
-          <div class="sr-item"><div class="sr-n">50+</div><div class="sr-l">Projects</div></div>
-          <div class="sr-item"><div class="sr-n">2</div><div class="sr-l">Cities</div></div>
+          <div class="sr-item"><div class="sr-n" id="stat-year">2025</div><div class="sr-l">Founded</div></div>
+          <div class="sr-item"><div class="sr-n" id="stat-proj">50+</div><div class="sr-l">Projects</div></div>
+          <div class="sr-item"><div class="sr-n" id="stat-city">2</div><div class="sr-l">Cities</div></div>
           <div class="sr-item"><div class="sr-n">D&amp;B</div><div class="sr-l">Design &amp; Build</div></div>
         </div>
       </div>
@@ -496,19 +564,19 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <div class="sec-hdr-row reveal">
+    <div class="sec-hdr-row">
       <span class="sec-label">What We Do</span>
       <div class="sec-rule"></div>
     </div>
     <div class="svc-list">
-      <div class="svc-row reveal">
+      <div class="svc-row">
         <div class="svc-body">
           <div class="svc-caption">Architecture &amp; Interior</div>
           <h3 class="svc-h">Design</h3>
           <p class="svc-desc">Architecture, interior design, and master planning rooted in real thought. Every layout, every detail — carefully considered before a single line is drawn. We design spaces that are purposeful, livable, and built to endure.</p>
         </div>
       </div>
-      <div class="svc-row reveal rd2">
+      <div class="svc-row">
         <div class="svc-body">
           <div class="svc-caption">Construction</div>
           <h3 class="svc-h">Build</h3>
@@ -522,11 +590,11 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="contact-h reveal">
+    <div class="contact-h">
       <span class="ch-sub">Let's build</span>
       <span class="ch-main">Something<br>Great<span class="ch-dot">.</span></span>
     </div>
-    <div class="contact-row reveal rd1">
+    <div class="contact-row">
       <div class="c-item">
         <div class="c-lbl">WhatsApp</div>
         <div class="c-val"><a href="https://wa.me/6287880345945" target="_blank">+62 87880 345 945</a></div>
@@ -547,7 +615,7 @@
         <div class="c-val">Jakarta &amp; Bekasi<br>Indonesia</div>
       </div>
     </div>
-    <a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" class="btn-cta reveal rd2">
+    <a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" class="btn-cta">
       Start a Project
       <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -581,13 +649,35 @@
     <div class="pm-img-ctr" id="pm-count"></div>
   </div>
   <div class="pm-gallery">
-    <img id="pm-img" src="" alt="">
-    <button class="pm-nav" id="pm-prev" onclick="pmNav(-1)">&#8249;</button>
-    <button class="pm-nav" id="pm-next" onclick="pmNav(1)">&#8250;</button>
+    <div class="swiper pm-swiper">
+      <div class="swiper-wrapper" id="pm-slides"></div>
+      <div class="swiper-pagination pm-pagination"></div>
+    </div>
+    <button class="pm-nav" id="pm-prev">&#8249;</button>
+    <button class="pm-nav" id="pm-next">&#8250;</button>
   </div>
 </div>
 
+<!-- CDN Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
+/* ─── GSAP + Lenis Setup ─────────────────────────────────────────── */
+gsap.registerPlugin(ScrollTrigger)
+
+const lenis = new Lenis()
+lenis.on('scroll', ScrollTrigger.update)
+lenis.on('scroll', ({ scroll }) => {
+  document.getElementById('nav').classList.toggle('solid', scroll > 60)
+})
+gsap.ticker.add(time => lenis.raf(time * 1000))
+gsap.ticker.lagSmoothing(0)
+
+/* ─── Project Data ───────────────────────────────────────────────── */
 const P = {
   strozzi: {
     name:'Strozzi', tagline:'warm', cat:'Residential', status:'Completed · 2025', role:'Design',
@@ -674,96 +764,398 @@ const P = {
     desc:'Creating a multifunctional space that provides a calm and layered atmosphere to introduce a new spatial typology within a school — evoking a futuristic and modern impression, while also subtly serving as a form-based response to acoustic comfort within the space.',
     imgs:['00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg','00-Photoshoot/School Hall/SDH-DSC02211.jpg','00-Photoshoot/School Hall/SDH-DSC02275.jpg','00-Photoshoot/School Hall/SDH-DSC02395.jpg']
   }
-};
+}
 
-let pmKey = null, pmIdx = 0;
+/* ─── Swiper Modal ───────────────────────────────────────────────── */
+let swiperInstance = null
 
 function openProject(key) {
-  pmKey = key; pmIdx = 0;
-  const p = P[key];
-  document.getElementById('pm-cat').textContent     = p.cat;
-  document.getElementById('pm-name').textContent    = p.name;
-  document.getElementById('pm-tagline').textContent = p.tagline ? '— ' + p.tagline : '';
-  const meta = document.getElementById('pm-meta');
-  meta.innerHTML = '';
-  if (p.status) meta.innerHTML += '<div class="pm-meta-item"><div class="pm-meta-lbl">Status</div><div class="pm-meta-val">' + p.status + '</div></div>';
-  if (p.role)   meta.innerHTML += '<div class="pm-meta-item"><div class="pm-meta-lbl">Role</div><div class="pm-meta-val">'   + p.role   + '</div></div>';
-  const descEl = document.getElementById('pm-desc');
-  descEl.textContent  = p.desc;
-  descEl.style.display = p.desc ? '' : 'none';
-  renderPm();
-  document.getElementById('proj-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  const p = P[key]
+
+  document.getElementById('pm-cat').textContent     = p.cat
+  document.getElementById('pm-name').textContent    = p.name
+  document.getElementById('pm-tagline').textContent = p.tagline ? '— ' + p.tagline : ''
+
+  const meta = document.getElementById('pm-meta')
+  meta.innerHTML = ''
+  if (p.status) meta.innerHTML += `<div class="pm-meta-item"><div class="pm-meta-lbl">Status</div><div class="pm-meta-val">${p.status}</div></div>`
+  if (p.role)   meta.innerHTML += `<div class="pm-meta-item"><div class="pm-meta-lbl">Role</div><div class="pm-meta-val">${p.role}</div></div>`
+
+  const descEl = document.getElementById('pm-desc')
+  descEl.textContent   = p.desc
+  descEl.style.display = p.desc ? '' : 'none'
+
+  document.getElementById('pm-slides').innerHTML = p.imgs
+    .map(src => `<div class="swiper-slide"><img src="${src}" alt="${p.name}"></div>`)
+    .join('')
+
+  const modal   = document.getElementById('proj-modal')
+  modal.style.opacity = '0'
+  modal.classList.add('open')
+  document.body.style.overflow = 'hidden'
+  lenis.stop()
+
+  requestAnimationFrame(() => {
+    if (swiperInstance) { try { swiperInstance.destroy(true, true) } catch(e){} swiperInstance = null }
+    const many = p.imgs.length > 1
+    swiperInstance = new Swiper('.pm-swiper', {
+      loop:        many,
+      grabCursor:  true,
+      speed:       600,
+      keyboard:    { enabled: true },
+      pagination:  many ? { el: '.pm-pagination', clickable: true } : false,
+      navigation:  many ? { prevEl: '#pm-prev',   nextEl: '#pm-next' } : false,
+      on: {
+        init(sw)        { updatePmCount(sw.realIndex, p.imgs.length) },
+        slideChange(sw) { updatePmCount(sw.realIndex, p.imgs.length) }
+      }
+    })
+    document.getElementById('pm-prev').style.display = many ? '' : 'none'
+    document.getElementById('pm-next').style.display = many ? '' : 'none'
+
+    gsap.to(modal, { opacity: 1, duration: 0.35, ease: 'power2.out' })
+    gsap.fromTo('.pm-info',
+      { x: -24, opacity: 0 },
+      { x: 0,   opacity: 1, duration: 0.55, ease: 'power3.out', delay: 0.1 }
+    )
+    gsap.fromTo('.pm-gallery',
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5, ease: 'power2.out', delay: 0.15 }
+    )
+  })
+}
+
+function updatePmCount(idx, total) {
+  document.getElementById('pm-count').textContent = total > 1 ? (idx + 1) + ' / ' + total : ''
 }
 
 function closeProject() {
-  document.getElementById('proj-modal').classList.remove('open');
-  document.body.style.overflow = '';
+  const modal = document.getElementById('proj-modal')
+  gsap.to(modal, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: () => {
+    modal.classList.remove('open')
+    modal.style.opacity = ''
+    document.body.style.overflow = ''
+    lenis.start()
+  }})
 }
 
-function renderPm() {
-  const p = P[pmKey];
-  document.getElementById('pm-img').src = p.imgs[pmIdx];
-  document.getElementById('pm-img').alt = p.name;
-  document.getElementById('pm-count').textContent = p.imgs.length > 1 ? (pmIdx + 1) + ' / ' + p.imgs.length : '';
-  document.getElementById('pm-prev').style.display = p.imgs.length > 1 ? '' : 'none';
-  document.getElementById('pm-next').style.display = p.imgs.length > 1 ? '' : 'none';
-}
-
-function pmNav(d) {
-  const imgs = P[pmKey].imgs;
-  pmIdx = (pmIdx + d + imgs.length) % imgs.length;
-  renderPm();
-}
-
-document.getElementById('proj-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeProject(); });
+document.getElementById('proj-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeProject() })
 document.addEventListener('keydown', e => {
-  if (!document.getElementById('proj-modal').classList.contains('open')) return;
-  if (e.key === 'Escape')     closeProject();
-  if (e.key === 'ArrowLeft')  pmNav(-1);
-  if (e.key === 'ArrowRight') pmNav(1);
-});
-let tsX = 0;
-document.querySelector('.pm-gallery').addEventListener('touchstart', e => tsX = e.changedTouches[0].clientX);
-document.querySelector('.pm-gallery').addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - tsX; if (Math.abs(d) > 50) pmNav(d < 0 ? 1 : -1); });
+  if (!document.getElementById('proj-modal').classList.contains('open')) return
+  if (e.key === 'Escape') closeProject()
+})
 
-/* Category filter */
+/* ─── Category Filter ────────────────────────────────────────────── */
 document.getElementById('catFilter').addEventListener('click', e => {
-  const btn = e.target.closest('.cat-btn');
-  if (!btn) return;
-  const cat = btn.dataset.cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.proj-card').forEach(c => c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat));
-  document.querySelectorAll('.cat-hdr').forEach(h => h.style.display = (cat === 'all' || h.dataset.sec === cat) ? '' : 'none');
-});
+  const btn = e.target.closest('.cat-btn')
+  if (!btn) return
+  const cat = btn.dataset.cat
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'))
+  btn.classList.add('active')
+  document.querySelectorAll('.proj-card').forEach(c =>
+    c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat)
+  )
+  document.querySelectorAll('.cat-hdr').forEach(h =>
+    h.style.display = (cat === 'all' || h.dataset.sec === cat) ? '' : 'none'
+  )
+})
 
-/* Navbar */
-window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('solid', scrollY > 60); }, { passive: true });
-
+/* ─── Nav Toggle ─────────────────────────────────────────────────── */
 function toggleNav() {
-  document.getElementById('navMenu').classList.toggle('open');
-  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('navMenu').classList.toggle('open')
+  document.getElementById('hamburger').classList.toggle('open')
 }
 document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => {
-  document.getElementById('navMenu').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-}));
+  document.getElementById('navMenu').classList.remove('open')
+  document.getElementById('hamburger').classList.remove('open')
+}))
 
-/* Custom cursor — mouse only */
+/* ─── Custom Cursor ──────────────────────────────────────────────── */
+
+/* ─── Hero Animations (on load) ──────────────────────────────────── */
+window.addEventListener('load', () => {
+  let heroChars = []
+  try {
+    const split = new SplitType('.hero-tagline', { types: 'chars' })
+    heroChars = split.chars || []
+  } catch(e) {}
+
+  const tl = gsap.timeline({ delay: 0.4 })
+  tl.fromTo('.hero-eyebrow',
+      { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+
+  if (heroChars.length > 0) {
+    tl.fromTo(heroChars,
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, stagger: 0.025, duration: 0.55, ease: 'power2.out' }, '-=0.3')
+  } else {
+    tl.fromTo('.hero-tagline',
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, '-=0.3')
+  }
+
+  tl.fromTo(['.hero-meta-l', '.hero-scroll-r'],
+      { opacity: 0, y: 10 }, { opacity: 1, y: 0, stagger: 0.12, duration: 0.65, ease: 'power2.out' }, '-=0.2')
+})
+
+/* ─── ScrollTrigger Animations ───────────────────────────────────── */
+
+// Works header
+gsap.from('.works-header .sec-label', {
+  x: -24, opacity: 0, duration: 0.8, ease: 'power3.out',
+  scrollTrigger: { trigger: '.works-header', start: 'top 85%', once: true }
+})
+gsap.from('.works-header .works-count', {
+  x: 24, opacity: 0, duration: 0.8, ease: 'power3.out',
+  scrollTrigger: { trigger: '.works-header', start: 'top 85%', once: true }
+})
+
+// Category filter
+gsap.from('.cat-btn', {
+  opacity: 0, y: 14, stagger: 0.07, duration: 0.5, ease: 'power2.out',
+  scrollTrigger: { trigger: '.cat-filter', start: 'top 90%', once: true }
+})
+
+// Statement break — replays counter every time section enters viewport
+;(function initStmtBreak() {
+  const el = document.querySelector('.sb-count')
+  if (!el) return
+
+  const rowTl = gsap.timeline({ paused: true })
+  rowTl
+    .fromTo('.sb-row',  { y: 55, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' })
+    .fromTo('.sb-sub',  { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, '-=0.65')
+    .fromTo(['.sb-rule', '.sb-tagline'], { opacity: 0, y: 14 }, { opacity: 1, y: 0, stagger: 0.1, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+
+  const proxy = { val: 0 }
+  let counterTween = null
+
+  function startCounter() {
+    rowTl.restart()
+    if (counterTween) counterTween.kill()
+    proxy.val = 0
+    el.textContent = '0'
+    counterTween = gsap.to(proxy, {
+      val: 17, duration: 1.6, ease: 'power3.out',
+      onUpdate() { el.textContent = Math.round(proxy.val) }
+    })
+  }
+
+  ScrollTrigger.create({
+    trigger: '.stmt-break',
+    start: 'top 78%',
+    onEnter:     startCounter,
+    onEnterBack: startCounter,
+    onLeaveBack() {
+      rowTl.pause(0)
+      if (counterTween) counterTween.kill()
+      el.textContent = '0'
+      proxy.val = 0
+    }
+  })
+})()
+
+
+// Works cards stagger
+gsap.from('.proj-card', {
+  opacity: 0, y: 44, stagger: { amount: 1.4, from: 'start' }, duration: 0.75, ease: 'power3.out',
+  scrollTrigger: { trigger: '#works', start: 'top 82%', once: true }
+})
+
+// Project card image parallax
+document.querySelectorAll('.proj-card img').forEach(img => {
+  gsap.to(img, {
+    yPercent: -14,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: img.closest('.proj-card'),
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: true
+    }
+  })
+})
+
+// About label
+gsap.from('.about-lbl', {
+  opacity: 0, x: -28, duration: 0.8, ease: 'power3.out',
+  scrollTrigger: { trigger: '.about-lbl', start: 'top 85%', once: true }
+})
+
+// About heading — word by word
+const aboutSplit = new SplitType('.about-h', { types: 'words' })
+gsap.from(aboutSplit.words, {
+  opacity: 0, y: 38, stagger: 0.09, duration: 0.85, ease: 'power3.out',
+  scrollTrigger: { trigger: '.about-h', start: 'top 80%', once: true }
+})
+
+// About paragraphs
+gsap.from('.about-p', {
+  opacity: 0, y: 22, stagger: 0.15, duration: 0.8, ease: 'power3.out',
+  scrollTrigger: { trigger: '.about-grid', start: 'top 78%', once: true }
+})
+
+// Stats count-up
+;[
+  { id: 'stat-year', from: 2020, to: 2025, suffix: '' },
+  { id: 'stat-proj', from: 0,    to: 50,   suffix: '+' },
+  { id: 'stat-city', from: 0,    to: 2,    suffix: '' },
+].forEach(({ id, from: fromVal, to: toVal, suffix }) => {
+  const el = document.getElementById(id)
+  if (!el) return
+  el.textContent = fromVal + suffix
+  const proxy = { val: fromVal }
+  gsap.to(proxy, {
+    val: toVal, duration: 1.8, ease: 'power2.out',
+    onUpdate: () => { el.textContent = Math.round(proxy.val) + suffix },
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+  })
+})
+gsap.from('.sr-item:nth-child(4) .sr-n', {
+  opacity: 0, duration: 1, ease: 'power2.out',
+  scrollTrigger: { trigger: '.stats-row', start: 'top 90%', once: true }
+})
+gsap.from('.sr-l', {
+  opacity: 0, y: 8, stagger: 0.08, duration: 0.6, ease: 'power2.out',
+  scrollTrigger: { trigger: '.stats-row', start: 'top 88%', once: true }
+})
+
+// Services header
+gsap.from('.sec-hdr-row', {
+  opacity: 0, x: -24, duration: 0.8, ease: 'power3.out',
+  scrollTrigger: { trigger: '.sec-hdr-row', start: 'top 85%', once: true }
+})
+
+// Service rows — caption + desc
+document.querySelectorAll('.svc-row').forEach(row => {
+  gsap.from(row.querySelector('.svc-caption'), {
+    opacity: 0, y: 12, duration: 0.6, ease: 'power2.out',
+    scrollTrigger: { trigger: row, start: 'top 88%', once: true }
+  })
+  gsap.from(row.querySelector('.svc-desc'), {
+    opacity: 0, y: 18, duration: 0.7, delay: 0.25, ease: 'power2.out',
+    scrollTrigger: { trigger: row, start: 'top 88%', once: true }
+  })
+})
+
+// Service big headings — character mask reveal
+document.querySelectorAll('.svc-h').forEach(el => {
+  const split = new SplitType(el, { types: 'chars' })
+  gsap.from(split.chars, {
+    y: '105%', stagger: 0.04, duration: 0.9, ease: 'power4.out',
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+  })
+})
+
+// Contact heading
+gsap.from('.ch-sub', {
+  opacity: 0, y: 18, duration: 0.75, ease: 'power3.out',
+  scrollTrigger: { trigger: '#contact', start: 'top 80%', once: true }
+})
+gsap.from('.ch-main', {
+  opacity: 0, y: 70, duration: 1.1, delay: 0.12, ease: 'power4.out',
+  scrollTrigger: { trigger: '#contact', start: 'top 80%', once: true }
+})
+
+// Contact row + CTA
+gsap.from('.c-item', {
+  opacity: 0, y: 24, stagger: 0.1, duration: 0.7, ease: 'power3.out',
+  scrollTrigger: { trigger: '.contact-row', start: 'top 85%', once: true }
+})
+gsap.from('.btn-cta', {
+  opacity: 0, y: 18, duration: 0.7, ease: 'power3.out',
+  scrollTrigger: { trigger: '.btn-cta', start: 'top 92%', once: true }
+})
+
+/* ─── Film Grain ─────────────────────────────────────────────────── */
+;(function () {
+  const c = document.createElement('canvas')
+  c.width = c.height = 220
+  const x = c.getContext('2d')
+  const d = x.createImageData(220, 220)
+  for (let i = 0; i < d.data.length; i += 4) {
+    const v = (Math.random() * 255) | 0
+    d.data[i] = d.data[i+1] = d.data[i+2] = v
+    d.data[i+3] = 255
+  }
+  x.putImageData(d, 0, 0)
+  document.getElementById('grain').style.backgroundImage = `url(${c.toDataURL()})`
+})()
+
+/* ─── Magnetic Hover ─────────────────────────────────────────────── */
 if (window.matchMedia('(pointer: fine)').matches) {
-  const cur = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => { cur.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`; }, { passive: true });
-  document.addEventListener('mousedown', () => cur.classList.add('clicking'));
-  document.addEventListener('mouseup',   () => cur.classList.remove('clicking'));
-  document.addEventListener('mouseleave', () => cur.style.opacity = '0');
-  document.addEventListener('mouseenter', () => cur.style.opacity = '1');
+  const magnetEls = document.querySelectorAll('.nav-menu a, .btn-cta')
+  magnetEls.forEach(el => {
+    el.addEventListener('mousemove', function (e) {
+      const r = this.getBoundingClientRect()
+      const dx = e.clientX - (r.left + r.width  / 2)
+      const dy = e.clientY - (r.top  + r.height / 2)
+      gsap.to(this, { x: dx * 0.28, y: dy * 0.28, duration: 0.3, ease: 'power2.out' })
+    })
+    el.addEventListener('mouseleave', function () {
+      gsap.to(this, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.45)' })
+    })
+  })
 }
 
-/* Reveal */
-const ro = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-requestAnimationFrame(() => { document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('in')); });
+/* ─── Text Scramble ──────────────────────────────────────────────── */
+class Scramble {
+  constructor (el) {
+    this.el  = el
+    this.src = el.textContent.trim()
+    this.abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    this.go  = false
+  }
+  run () {
+    if (this.go) return
+    this.go = true; let i = 0
+    const id = setInterval(() => {
+      this.el.textContent = this.src.split('').map((c, j) =>
+        c === ' ' || j < i ? c : this.abc[Math.floor(Math.random() * 26)]
+      ).join('')
+      i += 0.45
+      if (i >= this.src.length) {
+        clearInterval(id)
+        this.el.textContent = this.src
+        this.go = false
+      }
+    }, 32)
+  }
+}
+
+document.querySelectorAll('.nav-menu a').forEach(a => {
+  const s = new Scramble(a)
+  a.addEventListener('mouseenter', () => s.run())
+})
+
+/* ─── Custom Cursor Interactions ────────────────────────────────── */
+if (window.matchMedia('(pointer: fine)').matches) {
+  const cur = document.getElementById('cursor')
+
+  // GSAP owns ALL cursor transforms — position + scale never conflict
+  gsap.set(cur, { xPercent: -50, yPercent: -50 })
+
+  document.addEventListener('mousemove', e => {
+    gsap.set(cur, { x: e.clientX, y: e.clientY })
+  }, { passive: true })
+
+  document.addEventListener('mousedown',  () => cur.classList.add('clicking'))
+  document.addEventListener('mouseup',    () => cur.classList.remove('clicking'))
+  document.addEventListener('mouseleave', () => gsap.set(cur, { opacity: 0 }))
+  document.addEventListener('mouseenter', () => gsap.set(cur, { opacity: 1 }))
+
+  document.querySelectorAll('.proj-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      gsap.to(cur, { width: 72, height: 72, borderRadius: '50%', background: '#e02424', duration: 0.32, ease: 'power3.out' })
+    })
+    card.addEventListener('mouseleave', () => {
+      gsap.to(cur, { width: 12, height: 12, borderRadius: 0, background: 'var(--blue)', duration: 0.32, ease: 'power3.out' })
+    })
+  })
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => gsap.to(cur, { scale: 1.8, duration: 0.25, ease: 'power2.out' }))
+    el.addEventListener('mouseleave', () => gsap.to(cur, { scale: 1,   duration: 0.25, ease: 'power2.out' }))
+  })
+}
 </script>
 
 <script type="application/ld+json">
