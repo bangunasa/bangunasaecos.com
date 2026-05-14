@@ -232,11 +232,16 @@
     /* ── STATEMENT BREAK ────────────────────────────── */
     .stmt-break { background: #000; padding: 100px 48px 92px; overflow: hidden; position: relative; }
     .sb-bg {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(4, 1fr);
+      position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 200%;
+      display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(16, 1fr);
       z-index: 0;
+      animation: sb-scroll 30s linear infinite;
     }
-    .sb-bg img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) brightness(.28); image-rendering: auto; }
+    @keyframes sb-scroll {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-50%); }
+    }
+    .sb-bg img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) brightness(.28); }
     .sb-row {
       font-family: 'Bebas Neue';
       font-size: clamp(7rem, 19vw, 24rem);
@@ -254,7 +259,7 @@
     }
     @media (max-width: 768px) {
       .stmt-break { padding: 72px 24px 64px; }
-      .sb-bg { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(5, 1fr); }
+      .sb-bg { grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(9, 1fr); }
     }
 
     /* ── WORKS VERTICAL LABEL ────────────────────────── */
@@ -359,6 +364,82 @@
     <img src="00-Photoshoot/Strozzi/1P5A4293-HDR.jpg" alt="" loading="lazy" decoding="async">
     <img src="00-Photoshoot/Bekasi House/BH-DSC00247.jpg" alt="" loading="lazy" decoding="async">
     <img src="00-Photoshoot/School Hall/SDH-DSC02395.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Padel Club/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/TA Condo/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/C House/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/KG/7.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/PIK two/2.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Grawisa/3.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Honolulu/foto.jpeg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bed n Co/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/rrr House/A.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/HousingHousing/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi Boarding/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4293-HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00247.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02395.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Sunter House/0Z6A4143 copy.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/J House/a.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Honolulu/foto.jpeg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bed n Co/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/rrr House/A.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/HousingHousing/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi Boarding/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4293-HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00247.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02395.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Sunter House/0Z6A4143 copy.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/J House/a.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Padel Club/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/TA Condo/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/C House/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/KG/7.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/PIK two/2.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Grawisa/3.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Sunter House/0Z6A4143 copy.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/J House/a.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Padel Club/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/TA Condo/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/C House/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/KG/7.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/PIK two/2.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Grawisa/3.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Honolulu/foto.jpeg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bed n Co/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/rrr House/A.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/HousingHousing/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi Boarding/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4293-HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00247.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02395.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/C House/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/KG/7.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/PIK two/2.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Grawisa/3.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Honolulu/foto.jpeg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bed n Co/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/rrr House/A.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/HousingHousing/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi Boarding/1.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4293-HDR.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00247.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02395.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg" alt="" loading="lazy" decoding="async">
+    <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="" loading="lazy" decoding="async">
   </div>
   <div class="sb-row"><span class="sb-count">0</span><span class="sb-red">.</span></div>
   <div class="sb-sub">Projects delivered<br>across the world.</div>
@@ -931,6 +1012,14 @@ gsap.from('.cat-btn', {
   opacity: 0, y: 14, stagger: 0.07, duration: 0.5, ease: 'power2.out',
   scrollTrigger: { trigger: '.cat-filter', start: 'top 90%', once: true }
 })
+
+// Statement break — clone images for seamless scroll loop
+;(function() {
+  const bg = document.querySelector('.sb-bg')
+  if (!bg) return
+  const imgs = [...bg.querySelectorAll('img')]
+  imgs.forEach(img => bg.appendChild(img.cloneNode(true)))
+})()
 
 // Statement break — replays counter every time section enters viewport
 ;(function initStmtBreak() {
