@@ -147,6 +147,13 @@
     .sr-item + .sr-item { padding-left: 24px; border-left: 1px solid rgba(17,17,17,.1); }
     .sr-n { font-family: 'Bebas Neue'; font-size: 3.4rem; line-height: .88; letter-spacing: -.01em; color: #111; }
     .sr-l { font-size: .56rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(17,17,17,.33); margin-top: 9px; }
+    .team-grid { display: flex; flex-direction: column; gap: 36px; margin-top: 8px; }
+    .team-member { padding-bottom: 32px; border-bottom: 1px solid rgba(17,17,17,.1); }
+    .team-member:last-child { border-bottom: none; padding-bottom: 0; }
+    .tm-name { font-family: 'Bebas Neue'; font-size: 1.6rem; letter-spacing: .04em; color: #111; margin-bottom: 4px; }
+    .tm-role { font-size: .57rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(17,17,17,.35); margin-bottom: 16px; }
+    .tm-bio { font-size: .85rem; color: rgba(17,17,17,.55); line-height: 1.88; margin-bottom: 12px; }
+    .tm-vision { font-size: .82rem; font-style: italic; color: rgba(17,17,17,.38); line-height: 1.8; padding-left: 14px; border-left: 2px solid var(--red); margin: 0; }
 
     /* SERVICES */
     #services { background: #f2f1ec; padding: 120px 0; }
@@ -257,9 +264,23 @@
       color: rgba(242,241,236,.22); margin-top: 12px;
       position: relative; z-index: 1;
     }
+    /* sb-map */
+    .sb-map { position: relative; z-index: 1; width: 100%; max-width: 1100px; margin: 0 auto 28px; }
+    .map-img-wrap { position: relative; width: 100%; }
+    .map-img-wrap img { width: 100%; display: block; filter: invert(1); mix-blend-mode: screen; opacity: 0.6; }
+    .map-dot-wrap { position: absolute; transform: translate(-50%, -50%); z-index: 2; }
+    .map-dot { width: 6px; height: 6px; border-radius: 50%; background: #e63329; position: relative; z-index: 2; }
+    .map-ring { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #e63329; transform: translate(-50%,-50%) scale(1); opacity: 0; animation: map-pulse 2.6s ease-out infinite; }
+    @keyframes map-pulse {
+      0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.9; }
+      70%  { transform: translate(-50%,-50%) scale(4); opacity: 0; }
+      100% { transform: translate(-50%,-50%) scale(1); opacity: 0; }
+    }
+
     @media (max-width: 768px) {
       .stmt-break { padding: 72px 24px 64px; }
       .sb-bg { grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(9, 1fr); }
+      .sb-map { max-width: 100%; }
     }
 
     /* ── WORKS VERTICAL LABEL ────────────────────────── */
@@ -333,7 +354,7 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">Jakarta &amp; Bekasi — Est. 2025</p>
+  <p class="hero-eyebrow">Indonesia — Est. 2025</p>
   <img class="hero-bae" src="BAE%20LOGO%202.png" alt="BAE">
   <p class="hero-tagline">Building Ideas into Reality</p>
   <div class="hero-meta-l">Bangun Asa Ekosistem<br>Architecture &amp; Interior</div>
@@ -441,8 +462,21 @@
     <img src="00-Photoshoot/School Hall/SDH-DSC02202-Pano.jpg" alt="" loading="lazy" decoding="async">
     <img src="00-Photoshoot/FAYT/IMG_9261-1 HDR.jpg" alt="" loading="lazy" decoding="async">
   </div>
-  <div class="sb-row"><span class="sb-count">0</span><span class="sb-red">.</span></div>
-  <div class="sb-sub">Projects delivered<br>across the world.</div>
+  <div class="sb-map" aria-hidden="true">
+    <div class="map-img-wrap">
+      <img src="Map%20Vector.png" alt="">
+      <!-- Jabodetabek cluster (Jakarta, Bekasi, PIK, BSD, etc.) — west Java -->
+      <div class="map-dot-wrap" style="left:74%;top:63%"><div class="map-dot"></div><div class="map-ring" style="animation-delay:0s"></div></div>
+      <div class="map-dot-wrap" style="left:74.4%;top:62.7%"><div class="map-dot"></div><div class="map-ring" style="animation-delay:0.5s"></div></div>
+      <div class="map-dot-wrap" style="left:73.7%;top:63.3%"><div class="map-dot"></div><div class="map-ring" style="animation-delay:0.9s"></div></div>
+      <div class="map-dot-wrap" style="left:74.2%;top:63.6%"><div class="map-dot"></div><div class="map-ring" style="animation-delay:1.3s"></div></div>
+      <!-- Palembang — south Sumatra -->
+      <div class="map-dot-wrap" style="left:74%;top:61%"><div class="map-dot"></div><div class="map-ring" style="animation-delay:0.7s"></div></div>
+      <!-- Singkawang — west Kalimantan -->
+      <div class="map-dot-wrap" style="left:75.5%;top:58.5%"><div class="map-dot"></div><div class="map-ring" style="animation-delay:1.1s"></div></div>
+    </div>
+  </div>
+  <div class="sb-sub">For people,<br>everywhere.</div>
 </section>
 
 <!-- ALL WORKS -->
@@ -450,22 +484,20 @@
   <div class="works-vert-label" aria-hidden="true">Selected Works — 2025</div>
   <div class="works-header">
     <span class="sec-label">Selected Works</span>
-    <span class="works-count"><span class="wc-num">17</span> Projects</span>
   </div>
 
   <div class="cat-filter" id="catFilter">
-    <button class="cat-btn active" data-cat="all">All <span>17</span></button>
-    <button class="cat-btn" data-cat="Residential">Residential <span>11</span></button>
-    <button class="cat-btn" data-cat="Housing">Housing <span>2</span></button>
-    <button class="cat-btn" data-cat="Commercial">Commercial <span>3</span></button>
-    <button class="cat-btn" data-cat="Institutional">Institutional <span>1</span></button>
+    <button class="cat-btn active" data-cat="all">All</button>
+    <button class="cat-btn" data-cat="Residential">Residential</button>
+    <button class="cat-btn" data-cat="Housing">Housing</button>
+    <button class="cat-btn" data-cat="Commercial">Commercial</button>
+    <button class="cat-btn" data-cat="Institutional">Institutional</button>
   </div>
 
   <div class="proj-grid" id="projGrid">
 
     <div class="cat-hdr" data-sec="Residential">
       <span class="cat-hdr-title">Residential</span>
-      <span class="cat-hdr-count">11 Projects</span>
     </div>
 
     <div class="proj-card" data-cat="Residential" onclick="openProject('strozzi')">
@@ -569,7 +601,6 @@
 
     <div class="cat-hdr" data-sec="Housing">
       <span class="cat-hdr-title">Housing</span>
-      <span class="cat-hdr-count">2 Projects</span>
     </div>
 
     <div class="proj-card" data-cat="Housing" onclick="openProject('bekasiboarding')">
@@ -591,7 +622,6 @@
 
     <div class="cat-hdr" data-sec="Commercial">
       <span class="cat-hdr-title">Commercial</span>
-      <span class="cat-hdr-count">3 Projects</span>
     </div>
 
     <div class="proj-card" data-cat="Commercial" onclick="openProject('fayt')">
@@ -623,7 +653,6 @@
 
     <div class="cat-hdr" data-sec="Institutional">
       <span class="cat-hdr-title">Institutional</span>
-      <span class="cat-hdr-count">1 Project</span>
     </div>
 
     <div class="proj-card" data-cat="Institutional" onclick="openProject('schoolhall')">
@@ -649,11 +678,19 @@
         <p class="about-p">True to our name, <em>Bangun</em> reflects our commitment to actively shaping and building every project with purpose and care. <em>Asa</em> represents our dedication to turning each client's vision into reality through thoughtful design and precise execution. Meanwhile, <em>Eksplorasi</em> embodies our drive to continuously learn, innovate, and improve—always seeking better ways to create meaningful, functional, and lasting spaces.</p>
       </div>
       <div>
-        <div class="stats-row">
-          <div class="sr-item"><div class="sr-n" id="stat-year">2025</div><div class="sr-l">Founded</div></div>
-          <div class="sr-item"><div class="sr-n" id="stat-proj">50+</div><div class="sr-l">Projects</div></div>
-          <div class="sr-item"><div class="sr-n" id="stat-city">2</div><div class="sr-l">Cities</div></div>
-          <div class="sr-item"><div class="sr-n">D&amp;B</div><div class="sr-l">Design &amp; Build</div></div>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="tm-name">Andreas Christian</div>
+            <div class="tm-role">Licensed Architect</div>
+            <p class="tm-bio">A graduate of architecture who went on to complete his professional licensure, Andreas spent three years at a design consultancy before co-founding BAE. His practice is built on the conviction that architecture should not be imposed — it should belong to those who inhabit it.</p>
+            <p class="tm-vision">"A building should never feel like a beautiful alien. It should know its people — fulfilling their dreams through every detail, and leaving a quiet, lasting impact on every living being around it."</p>
+          </div>
+          <div class="team-member">
+            <div class="tm-name">Elang Herlambang</div>
+            <div class="tm-role">Civil Engineer · MSc. Sustainability Construction</div>
+            <p class="tm-bio">Holding a degree in civil engineering and a master's from the University of Bristol in Sustainability Construction, Elang brings four years of industry experience to BAE. He co-founded the company with a clear mission: to make the construction industry a place of true human dignity.</p>
+            <p class="tm-vision">"From the ground worker to the senior professional — everyone in this field deserves to prosper. My work is to advance every tier of this industry until that becomes the standard, not the exception."</p>
+          </div>
         </div>
       </div>
     </div>
@@ -711,7 +748,7 @@
       </div>
       <div class="c-item">
         <div class="c-lbl">Location</div>
-        <div class="c-val">Jakarta &amp; Bekasi<br>Indonesia</div>
+        <div class="c-val">Indonesia</div>
       </div>
     </div>
     <a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" class="btn-cta">
@@ -1002,10 +1039,6 @@ gsap.from('.works-header .sec-label', {
   x: -24, opacity: 0, duration: 0.8, ease: 'power3.out',
   scrollTrigger: { trigger: '.works-header', start: 'top 85%', once: true }
 })
-gsap.from('.works-header .works-count', {
-  x: 24, opacity: 0, duration: 0.8, ease: 'power3.out',
-  scrollTrigger: { trigger: '.works-header', start: 'top 85%', once: true }
-})
 
 // Category filter
 gsap.from('.cat-btn', {
@@ -1021,43 +1054,6 @@ gsap.from('.cat-btn', {
   imgs.forEach(img => bg.appendChild(img.cloneNode(true)))
 })()
 
-// Statement break — replays counter every time section enters viewport
-;(function initStmtBreak() {
-  const el = document.querySelector('.sb-count')
-  if (!el) return
-
-  const rowTl = gsap.timeline({ paused: true })
-  rowTl
-    .fromTo('.sb-row',  { y: 55, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' })
-    .fromTo('.sb-sub',  { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, '-=0.65')
-
-  const proxy = { val: 0 }
-  let counterTween = null
-
-  function startCounter() {
-    rowTl.restart()
-    if (counterTween) counterTween.kill()
-    proxy.val = 0
-    el.textContent = '0'
-    counterTween = gsap.to(proxy, {
-      val: 17, duration: 1.6, ease: 'power3.out',
-      onUpdate() { el.textContent = Math.round(proxy.val) }
-    })
-  }
-
-  ScrollTrigger.create({
-    trigger: '.stmt-break',
-    start: 'top 78%',
-    onEnter:     startCounter,
-    onEnterBack: startCounter,
-    onLeaveBack() {
-      rowTl.pause(0)
-      if (counterTween) counterTween.kill()
-      el.textContent = '0'
-      proxy.val = 0
-    }
-  })
-})()
 
 
 // Works cards stagger
@@ -1098,31 +1094,11 @@ gsap.from('.about-p', {
   opacity: 0, y: 22, stagger: 0.15, duration: 0.8, ease: 'power3.out',
   scrollTrigger: { trigger: '.about-grid', start: 'top 78%', once: true }
 })
+gsap.from('.team-member', {
+  opacity: 0, y: 24, stagger: 0.2, duration: 0.85, ease: 'power3.out',
+  scrollTrigger: { trigger: '.team-grid', start: 'top 80%', once: true }
+})
 
-// Stats count-up
-;[
-  { id: 'stat-year', from: 2020, to: 2025, suffix: '' },
-  { id: 'stat-proj', from: 0,    to: 50,   suffix: '+' },
-  { id: 'stat-city', from: 0,    to: 2,    suffix: '' },
-].forEach(({ id, from: fromVal, to: toVal, suffix }) => {
-  const el = document.getElementById(id)
-  if (!el) return
-  el.textContent = fromVal + suffix
-  const proxy = { val: fromVal }
-  gsap.to(proxy, {
-    val: toVal, duration: 1.8, ease: 'power2.out',
-    onUpdate: () => { el.textContent = Math.round(proxy.val) + suffix },
-    scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-  })
-})
-gsap.from('.sr-item:nth-child(4) .sr-n', {
-  opacity: 0, duration: 1, ease: 'power2.out',
-  scrollTrigger: { trigger: '.stats-row', start: 'top 90%', once: true }
-})
-gsap.from('.sr-l', {
-  opacity: 0, y: 8, stagger: 0.08, duration: 0.6, ease: 'power2.out',
-  scrollTrigger: { trigger: '.stats-row', start: 'top 88%', once: true }
-})
 
 // Services header
 gsap.from('.sec-hdr-row', {
