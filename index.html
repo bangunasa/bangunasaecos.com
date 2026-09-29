@@ -121,14 +121,12 @@
     /* the tilted bands bleed past the screen edge; clip them here, or phones widen the whole page and the fixed nav slides off the top */
     .mq-wrap { overflow: hidden; padding-block: 8px; }
     .marquee { background: var(--blue); color: #fff; border-block: var(--line) solid var(--ink); overflow: hidden; padding: 18px 0; transform: rotate(-1.2deg); margin: 24px -20px; position: relative; z-index: 2; }
-    .marquee-track { display: flex; gap: 0; width: max-content; animation: mq 38s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    .marquee span { font-weight: 900; font-stretch: 125%; font-size: clamp(1.6rem, 3.4vw, 3.2rem); text-transform: uppercase; letter-spacing: -.03em; display: inline-flex; align-items: center; gap: 28px; padding-right: 28px; white-space: nowrap; }
+    .marquee-track { position: relative; height: 1.2em; }   /* real height set by JS from the items */
+    .marquee span { position: absolute; left: 0; top: 0; will-change: transform; font-weight: 900; font-stretch: 125%; font-size: clamp(1.6rem, 3.4vw, 3.2rem); text-transform: uppercase; letter-spacing: -.03em; display: inline-flex; align-items: center; gap: 28px; padding-right: 28px; white-space: nowrap; }
     .marquee span em { font-style: normal; font-family: var(--mono); font-weight: 500; font-size: .32em; letter-spacing: .06em; opacity: .75; }
     .marquee .star { width: .9em; height: .9em; flex-shrink: 0; }
     @keyframes mq { to { transform: translateX(-50%); } }
     .marquee.red { background: var(--red); transform: rotate(1deg); margin-top: -8px; }
-    .marquee.red .marquee-track { animation-direction: reverse; animation-duration: 44s; }
 
     /* ── SECTION HEAD ────────────────────────────────── */
     section { position: relative; }
@@ -378,7 +376,6 @@
       .btn:active { transform: translate(2px,2px); box-shadow: none; }
       .chip { animation: wob 2.6s ease-in-out infinite alternate; will-change: transform; }
       .chip:nth-of-type(2n) { animation-delay: -1.3s; }
-      .marquee-track { will-change: transform; }
       /* only transform animates (GPU); the shadow snaps instead of repainting every frame */
       .card, .sv { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
     }
@@ -748,10 +745,39 @@ document.querySelectorAll('.chip').forEach(el => {
 
 /* ─── Marquees ───────────────────────────────────────────────────── */
 const star = '<svg class="star"><use href="#star"/></svg>'
-const mq1 = P.map(p => `<span>${p.name}${p.tagline ? ` <em>/ ${p.tagline}</em>` : ''} ${star}</span>`).join('')
-$('#mq1').innerHTML = mq1 + mq1
-const mq2 = ['Architecture','Interior','Planning','Construction','Design & Build'].map(t => `<span>${t} ${star}</span>`).join('')
-$('#mq2').innerHTML = mq2 + mq2 + mq2 + mq2
+// Every item is its own small moving layer (Web Animations run on the GPU compositor). One wide strip
+// was up to ~11,500px, far past what a phone GPU keeps rastered, so the blue band stuttered on phones.
+const MQ = [
+  { el: $('#mq1'), secs: 38, dir: -1, html: P.map(p => `<span>${p.name}${p.tagline ? ` <em>/ ${p.tagline}</em>` : ''} ${star}</span>`).join('') },
+  { el: $('#mq2'), secs: 22, dir: 1, html: ['Architecture','Interior','Planning','Construction','Design & Build'].map(t => `<span>${t} ${star}</span>`).join('') }
+]
+function layoutMarquee(m) {
+  (m.anims || []).forEach(a => a.cancel())
+  m.el.innerHTML = m.html
+  const one = [...m.el.children]
+  const copyW = one.reduce((s, e) => s + e.offsetWidth, 0), maxW = Math.max(...one.map(e => e.offsetWidth))
+  let copies = 1
+  while (copyW * copies < innerWidth + 60 + maxW) copies++   // an item must wrap while fully off screen
+  m.el.innerHTML = m.html.repeat(copies)
+  const spans = [...m.el.children], T = copyW * copies, D = m.secs * 1000 * copies
+  m.el.style.height = spans[0].offsetHeight + 'px'
+  let start = 0
+  m.anims = spans.map(s => {
+    const w = s.offsetWidth, from = m.dir < 0 ? T - w : -w, to = m.dir < 0 ? -w : T - w
+    const phase = (m.dir < 0 ? from - start : start - from) / T   // negative delay puts the item at its slot
+    start += w
+    return s.animate([{ transform: `translateX(${from}px)` }, { transform: `translateX(${to}px)` }], { duration: D, iterations: Infinity, delay: -phase * D })
+  })
+  if (m.paused) m.anims.forEach(a => a.pause())
+}
+const playMarquee = (m, run) => { m.paused = !run; (m.anims || []).forEach(a => run ? a.play() : a.pause()) }
+MQ.forEach(layoutMarquee)
+document.fonts && document.fonts.ready.then(() => MQ.forEach(layoutMarquee))   // widths change once Archivo loads
+let mqW = innerWidth
+addEventListener('resize', () => { if (innerWidth !== mqW) { mqW = innerWidth; clearTimeout(layoutMarquee.t); layoutMarquee.t = setTimeout(() => MQ.forEach(layoutMarquee), 200) } })
+MQ.forEach(m => { const band = m.el.parentElement
+  band.addEventListener('mouseenter', () => playMarquee(m, false))
+  band.addEventListener('mouseleave', () => playMarquee(m, !band.classList.contains('offscreen'))) })
 
 /* ─── Works grid ─────────────────────────────────────────────────── */
 const CATS = ['Residential','Housing','Commercial','Institutional']
@@ -966,7 +992,7 @@ if (!reduce) {
 
   // marquees react to scroll speed (desktop only, it tweens on every scroll tick)
   let skew = 0
-  if (!touch) ScrollTrigger.create({ onUpdate: s => { const v = gsap.utils.clamp(-8, 8, s.getVelocity() / 300); if (Math.abs(v) > Math.abs(skew)) { skew = v; gsap.to('.marquee span', { skewX: -skew, duration: .3, onComplete: () => { skew = 0; gsap.to('.marquee span', { skewX: 0, duration: .6 }) } }) } } })
+  if (!touch) ScrollTrigger.create({ onUpdate: s => { const v = gsap.utils.clamp(-8, 8, s.getVelocity() / 300); if (Math.abs(v) > Math.abs(skew)) { skew = v; gsap.to('.marquee-track', { skewX: -skew, duration: .3, onComplete: () => { skew = 0; gsap.to('.marquee-track', { skewX: 0, duration: .6 }) } }) } } })
 
   // CTA heading slides in line by line
   gsap.from('.cta-h', { y: 80, opacity: 0, duration: 1.1, ease: 'power4.out', scrollTrigger: { trigger: '#contact', start: 'top 75%', once: true } })
@@ -974,7 +1000,10 @@ if (!reduce) {
 
 // pause looping CSS animations in blocks that are off screen
 if ('IntersectionObserver' in window) {
-  const off = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('offscreen', !e.isIntersecting)), { rootMargin: '100px 0px' })
+  const off = new IntersectionObserver(es => es.forEach(e => {
+    e.target.classList.toggle('offscreen', !e.isIntersecting)
+    const m = MQ.find(m => m.el.parentElement === e.target); if (m) playMarquee(m, e.isIntersecting)   // JS-driven, not CSS
+  }), { rootMargin: '100px 0px' })
   document.querySelectorAll('#hero, .marquee, .card, #contact .cta-sub').forEach(el => off.observe(el))
 }
 
