@@ -381,11 +381,6 @@
       .card, .sv { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-      .rv { opacity: 1; transform: none; }
-      .quote .qw { opacity: 1; }
-    }
   </style>
 </head>
 <body>
@@ -731,7 +726,9 @@ const IMG_V = 'wm5'   // bump after re-running _watermark.py so browsers drop ca
 const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
 // _watermark.py writes 700px and 1200px copies of every photo; phones pick the light ones
 const srcset = p => src(p, 700) + ' 700w, ' + src(p, 1200) + ' 1200w, ' + src(p) + ' 1920w'
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+// Andreas' call (2026-09-29): same motion on every phone, even with "Reduce Motion" / "Remove animations" on.
+// To honour that setting again: matchMedia('(prefers-reduced-motion: reduce)').matches, plus a CSS block that stops animations.
+const reduce = false
 const fine = matchMedia('(pointer: fine)').matches
 const touch = matchMedia('(hover: none)').matches   // phones/tablets: no hover, weaker GPU
 const $ = s => document.querySelector(s)
