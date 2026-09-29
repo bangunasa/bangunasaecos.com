@@ -88,6 +88,8 @@
     .tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: .72rem; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; padding: 6px 12px; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); }
     .tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); display: inline-block; animation: blink 1.6s infinite; }
     @keyframes blink { 50% { opacity: .2; } }
+    /* looping animations freeze while their block is off screen (set by JS), so they cost nothing there */
+    .offscreen, .offscreen * { animation-play-state: paused !important; }
     .hero-h { font-weight: 900; font-stretch: 125%; font-size: clamp(2.7rem, 8.6vw, 10.5rem); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; }
     .hero-h .ln { display: flex; align-items: center; gap: .14em; flex-wrap: wrap; }
     .hero-h .ln + .ln { margin-top: .04em; }
@@ -107,13 +109,17 @@
     .sticker-note { position: absolute; font-family: var(--mono); font-size: .66rem; text-transform: uppercase; white-space: nowrap; transform: rotate(-6deg); color: var(--muted); pointer-events: none; }
     .badge { width: clamp(110px, 11vw, 160px); aspect-ratio: 1; }
     .badge-in { width: 100%; height: 100%; border-radius: 50%; background: var(--blue); border: var(--line) solid var(--ink); display: grid; place-items: center; position: relative; }
-    .badge-in svg { position: absolute; inset: 6%; width: 88%; height: 88%; animation: spin 18s linear infinite; }
+    /* spin the HTML wrapper, not the <svg>: a rotating wrapper stays on the GPU, a rotating svg repaints every frame */
+    .badge-ring { position: absolute; inset: 6%; animation: spin 18s linear infinite; will-change: transform; }
+    .badge-ring svg { width: 100%; height: 100%; display: block; }
     .badge-in text { font-family: var(--mono); font-weight: 700; font-size: 9.5px; letter-spacing: 0; fill: #fff; text-transform: uppercase; }
     .badge-core { font-weight: 900; font-stretch: 125%; color: #fff; font-size: clamp(1.4rem, 2vw, 2rem); letter-spacing: -.04em; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .st-red { width: clamp(90px, 9vw, 130px); aspect-ratio: 188/100; }
 
     /* ── MARQUEE ─────────────────────────────────────── */
+    /* the tilted bands bleed past the screen edge; clip them here, or phones widen the whole page and the fixed nav slides off the top */
+    .mq-wrap { overflow: hidden; padding-block: 8px; }
     .marquee { background: var(--blue); color: #fff; border-block: var(--line) solid var(--ink); overflow: hidden; padding: 18px 0; transform: rotate(-1.2deg); margin: 24px -20px; position: relative; z-index: 2; }
     .marquee-track { display: flex; gap: 0; width: max-content; animation: mq 38s linear infinite; }
     .marquee:hover .marquee-track { animation-play-state: paused; }
@@ -316,7 +322,7 @@
       .nav-menu li + li a { border-left: 0; border-top: var(--line) solid var(--ink); }
       .nav-menu a { padding: 16px 20px; font-size: .9rem; }
       .hamburger { display: flex; }
-      #nav .btn-red { display: none; }
+      #nav .btn-red { padding: 10px 14px; font-size: .72rem; }
       .hero-bottom { grid-template-columns: 1fr; }
       .hero-ctas { justify-content: flex-start; }
       .card { grid-column: span 6 !important; }
@@ -348,6 +354,33 @@
       .marquee { padding: 12px 0; }
       #pm-prev { right: 76px; } .pm-nav { width: 46px; height: 46px; bottom: 14px; }
     }
+    /* very small phones: drop the BAE wordmark so Start a project still fits (the logo mark carries the brand) */
+    @media (max-width: 370px) { .nav-logo span { display: none; } }
+
+    /* ── TOUCH: hover effects play when the element reaches mid-screen ── */
+    .card-open { position: absolute; top: 12px; right: 12px; z-index: 2; padding: 7px 12px; background: var(--red); color: #fff; border: 2px solid var(--ink); border-radius: 999px; font-weight: 900; font-stretch: 125%; font-size: .7rem; text-transform: uppercase; opacity: 0; transform: scale(.5) rotate(-10deg); transition: opacity .25s, transform .35s cubic-bezier(.3,1.6,.5,1); pointer-events: none; }
+    @keyframes wob { from { transform: rotate(var(--rot, -4deg)) translateY(0); } to { transform: rotate(calc(var(--rot, -4deg) * -1)) translateY(-4%); } }
+    @media (hover: none) {
+      html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+      #nav.solid { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); }
+      .card.is-live { transform: translate(-4px,-4px) rotate(-.4deg); box-shadow: 6px 6px 0 var(--ink); }
+      .card:nth-child(3n+2).is-live { box-shadow: 6px 6px 0 var(--blue); }
+      .card:nth-child(3n).is-live { box-shadow: 6px 6px 0 var(--red); }
+      .card.is-live .card-img img { transform: scale(1.06); }
+      .card.is-live .card-open { opacity: 1; transform: scale(1) rotate(-6deg); }
+      .card:active { transform: scale(.97); }
+      .sv.is-live { transform: translate(-4px,-4px); box-shadow: 6px 6px 0 var(--ink); }
+      .ps.is-live .ps-n { background: var(--blue); color: #fff; }
+      .nc.is-live { transform: rotate(0) translateY(-6px); }
+      .fd.is-live .fd-q { background: #fff; }
+      .btn:active { transform: translate(2px,2px); box-shadow: none; }
+      .chip { animation: wob 2.6s ease-in-out infinite alternate; will-change: transform; }
+      .chip:nth-of-type(2n) { animation-delay: -1.3s; }
+      .marquee-track { will-change: transform; }
+      /* only transform animates (GPU); the shadow snaps instead of repainting every frame */
+      .card, .sv { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
       .rv { opacity: 1; transform: none; }
@@ -412,7 +445,7 @@
   <!-- stickers: drag them around -->
   <div class="sticker badge" style="top:35%;right:5%" data-drag>
     <div class="badge-in">
-      <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ" textLength="238.7" lengthAdjust="spacing">Design * Build * Design &amp; Build *&#160;</textPath></text></svg>
+      <div class="badge-ring"><svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ" textLength="238.7" lengthAdjust="spacing">Design * Build * Design &amp; Build *&#160;</textPath></text></svg></div>
       <span class="badge-core">BAE</span>
     </div>
     <span class="sticker-note" style="bottom:-26px;left:10%">&#8592; drag me</span>
@@ -423,8 +456,10 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq1"></div></div>
-<div class="marquee red" aria-hidden="true"><div class="marquee-track" id="mq2"></div></div>
+<div class="mq-wrap">
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq1"></div></div>
+  <div class="marquee red" aria-hidden="true"><div class="marquee-track" id="mq2"></div></div>
+</div>
 
 <!-- WORKS -->
 <section id="works" class="sec">
@@ -692,10 +727,13 @@ const P = [
     desc:'',
     imgs:['HousingHousing/1.jpg'] }
 ]
-const IMG_V = 'wm4'   // bump after re-running _watermark.py so browsers drop cached photos
-const src = p => encodeURI(DIR + p) + '?v=' + IMG_V
+const IMG_V = 'wm5'   // bump after re-running _watermark.py so browsers drop cached photos
+const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
+// _watermark.py writes 700px and 1200px copies of every photo; phones pick the light ones
+const srcset = p => src(p, 700) + ' 700w, ' + src(p, 1200) + ' 1200w, ' + src(p) + ' 1920w'
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
 const fine = matchMedia('(pointer: fine)').matches
+const touch = matchMedia('(hover: none)').matches   // phones/tablets: no hover, weaker GPU
 const $ = s => document.querySelector(s)
 let lenis = null
 
@@ -704,7 +742,7 @@ let tkN = 0
 document.querySelectorAll('.chip').forEach(el => {
   const id = 'tkc' + (tkN++)
   const inner = el.dataset.img
-    ? `<image href="${src(el.dataset.img.replace(DIR,''))}" x="0" y="0" width="188" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/>`
+    ? `<image href="${src(el.dataset.img.replace(DIR,''), 700)}" x="0" y="0" width="188" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/>`
     : `<use href="#tk" fill="${el.dataset.fill === 'blue' ? '#0443F0' : '#FF1A0A'}"/>`
   el.innerHTML = `<svg viewBox="-3 -3 194 106" aria-hidden="true"><clipPath id="${id}"><use href="#tk"/></clipPath>${inner}<use href="#tk" fill="none" stroke="#0A0A0A" stroke-width="5"/></svg>`
 })
@@ -723,7 +761,8 @@ const grid = $('#grid')
 grid.innerHTML = P.map(p => `
   <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
     <span class="card-cat"><span class="pill">${p.cat}</span></span>
-    <span class="card-img"><img src="${src(p.imgs[0])}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
+    <span class="card-open" aria-hidden="true">Tap to open &#8599;</span>
+    <span class="card-img"><img src="${src(p.imgs[0], 1200)}" srcset="${srcset(p.imgs[0])}" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 55vw" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
     <span class="card-meta">
       <span><span class="card-name" style="display:block">${p.name}</span>${p.tagline ? `<span class="card-tag" style="display:block">/ ${p.tagline}</span>` : ''}</span>
       <span class="pill ${p.state}"><i></i>${STATE_LABEL[p.state]}</span>
@@ -783,7 +822,7 @@ function openProject(id, push = true) {
   $('#pm-meta').innerHTML = `<div><small>Status</small><b>${p.status}</b></div>` + (p.role ? `<div><small>Role</small><b>${p.role}</b></div>` : '')
   $('#pm-desc').textContent = p.desc
   $('#pm-desc').hidden = !p.desc
-  $('#pm-slides').innerHTML = p.imgs.map((s, i) => `<div class="swiper-slide"><img src="${src(s)}" alt="${p.name}, photo ${i + 1}" ${i ? 'loading="lazy"' : ''}></div>`).join('')
+  $('#pm-slides').innerHTML = p.imgs.map((s, i) => `<div class="swiper-slide"><img src="${src(s, 1200)}" srcset="${srcset(s)}" sizes="(max-width: 900px) 100vw, 70vw" alt="${p.name}, photo ${i + 1}" ${i ? 'loading="lazy"' : ''}></div>`).join('')
   const many = p.imgs.length > 1
   $('#pm-prev').hidden = $('#pm-next').hidden = !many
 
@@ -835,13 +874,51 @@ $('#yr').textContent = new Date().getFullYear()
 document.addEventListener('contextmenu', e => { if (e.target.closest('.card-img, .pm-gal, .chip')) e.preventDefault() })
 document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG' || e.target.closest('.chip')) e.preventDefault() })
 
-/* little wink when the visitor switches tabs */
+/* little wink when the visitor switches tabs: tab text can't be styled, so "bold" comes from
+   Unicode sans-serif-bold capitals, plus a blinking red dot on the favicon */
 const baseTitle = document.title
-document.addEventListener('visibilitychange', () => { document.title = document.hidden ? 'Come back, we are still building...' : baseTitle })
+const bold = s => [...s].map(c => /[A-Z]/.test(c) ? String.fromCodePoint(0x1D5D4 + c.charCodeAt(0) - 65)
+  : /[a-z]/.test(c) ? String.fromCodePoint(0x1D5EE + c.charCodeAt(0) - 97) : c).join('')
+const awayTitle = bold('COME BACK, WE ARE STILL BUILDING...')
+const icon = document.querySelector('link[rel="icon"]'), baseIcon = icon.href
+let dotIcon = null, blink = null
+const mark = new Image()
+mark.onload = () => {
+  const c = document.createElement('canvas'); c.width = c.height = 64
+  // full-width mark: while away the icon grows big (Andreas likes the pop), normal size again on return
+  const x = c.getContext('2d'), h = 64 * mark.height / mark.width
+  x.drawImage(mark, 0, (64 - h) / 2, 64, h)
+  x.beginPath(); x.arc(50, 14, 13, 0, Math.PI * 2); x.fillStyle = '#FF1A0A'; x.fill()
+  x.lineWidth = 4; x.strokeStyle = '#fff'; x.stroke()
+  dotIcon = c.toDataURL('image/png')
+}
+mark.src = 'bae-mark.png'
+// Browsers slow timers in background tabs to 1/s (1/min after 5 min); a Web Worker's timer isn't throttled,
+// so the worker ticks and the page just swaps the icon on each message
+const BLINK_MS = 700   // dot on 0.7s + off 0.7s, a relaxed clock-like tempo (Andreas tuned between 500 and 1000)
+let ticker = null
+try {
+  ticker = new Worker(URL.createObjectURL(new Blob(['let t;onmessage=e=>{clearInterval(t);if(e.data)t=setInterval(()=>postMessage(0),e.data)}'], { type: 'text/javascript' })))
+} catch (e) {}
+let on = true
+const flip = () => { on = !on; icon.href = on ? dotIcon : mark.src }
+if (ticker) ticker.onmessage = flip
+document.addEventListener('visibilitychange', () => {
+  clearInterval(blink); if (ticker) ticker.postMessage(0)
+  if (document.hidden) {
+    document.title = awayTitle
+    on = true
+    if (dotIcon) { icon.href = dotIcon; if (ticker) ticker.postMessage(BLINK_MS); else blink = setInterval(flip, BLINK_MS) }
+  } else {
+    document.title = baseTitle
+    icon.href = baseIcon
+  }
+})
 
 /* ─── Smooth scroll + animations ─────────────────────────────────── */
 gsap.registerPlugin(ScrollTrigger, Draggable)
-if (!reduce) {
+ScrollTrigger.config({ ignoreMobileResize: true })   // address bar show/hide must not re-layout triggers
+if (!reduce && !touch) {   // phones already scroll smoothly natively; Lenis there only costs frames
   lenis = new Lenis()
   lenis.on('scroll', ScrollTrigger.update)
   gsap.ticker.add(t => lenis.raf(t * 1000))
@@ -888,12 +965,24 @@ if (!reduce) {
     gsap.to(o, { v: n, duration: 1.4, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: () => el.textContent = Math.round(o.v) })
   })
 
-  // marquees react to scroll speed
+  // marquees react to scroll speed (desktop only, it tweens on every scroll tick)
   let skew = 0
-  ScrollTrigger.create({ onUpdate: s => { const v = gsap.utils.clamp(-8, 8, s.getVelocity() / 300); if (Math.abs(v) > Math.abs(skew)) { skew = v; gsap.to('.marquee span', { skewX: -skew, duration: .3, onComplete: () => { skew = 0; gsap.to('.marquee span', { skewX: 0, duration: .6 }) } }) } } })
+  if (!touch) ScrollTrigger.create({ onUpdate: s => { const v = gsap.utils.clamp(-8, 8, s.getVelocity() / 300); if (Math.abs(v) > Math.abs(skew)) { skew = v; gsap.to('.marquee span', { skewX: -skew, duration: .3, onComplete: () => { skew = 0; gsap.to('.marquee span', { skewX: 0, duration: .6 }) } }) } } })
 
   // CTA heading slides in line by line
   gsap.from('.cta-h', { y: 80, opacity: 0, duration: 1.1, ease: 'power4.out', scrollTrigger: { trigger: '#contact', start: 'top 75%', once: true } })
+}
+
+// pause looping CSS animations in blocks that are off screen
+if ('IntersectionObserver' in window) {
+  const off = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('offscreen', !e.isIntersecting)), { rootMargin: '100px 0px' })
+  document.querySelectorAll('#hero, .marquee, .card, #contact .cta-sub').forEach(el => off.observe(el))
+}
+
+// touch screens have no hover: light up whatever sits in the middle band of the screen
+if (touch && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-live', e.isIntersecting)), { rootMargin: '-38% 0px -38% 0px' })
+  document.querySelectorAll('.card, .sv, .ps, .nc, .fd').forEach(el => io.observe(el))
 }
 
 // "Open" pill follows the pointer over project cards
