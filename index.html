@@ -358,6 +358,8 @@
     @media (max-width: 370px) { .nav-logo span { display: none; } }
 
     /* ── TOUCH: hover effects play when the element reaches mid-screen ── */
+    /* drawn arrow, not the ↗ character: iPhones turn that character into an emoji */
+    .ar { width: .95em; height: .95em; margin-left: .3em; vertical-align: -.12em; fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: square; }
     .card-open { position: absolute; top: 12px; right: 12px; z-index: 2; padding: 7px 12px; background: var(--red); color: #fff; border: 2px solid var(--ink); border-radius: 999px; font-weight: 900; font-stretch: 125%; font-size: .7rem; text-transform: uppercase; opacity: 0; transform: scale(.5) rotate(-10deg); transition: opacity .25s, transform .35s cubic-bezier(.3,1.6,.5,1); pointer-events: none; }
     @keyframes wob { from { transform: rotate(var(--rot, -4deg)) translateY(0); } to { transform: rotate(calc(var(--rot, -4deg) * -1)) translateY(-4%); } }
     @media (hover: none) {
@@ -393,7 +395,7 @@
   </defs>
 </svg>
 
-<div id="follow" aria-hidden="true">Open &#8599;</div>
+<div id="follow" aria-hidden="true">Open<svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -609,7 +611,7 @@
       <div class="ci"><div class="ci-l">WhatsApp</div><div class="ci-v"><a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener">+62 878 8034 5945</a></div></div>
       <div class="ci"><div class="ci-l">Email</div><div class="ci-v"><a href="mailto:bangunasa@bangunasaecos.com?subject=Project%20Inquiry&body=Hi%20BAE%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you.%0A%0AName%3A%0AProject%20type%3A%0ALocation%3A%0A%0AThank%20you." data-email>bangunasa@<wbr>bangunasaecos.com</a></div></div>
       <div class="ci"><div class="ci-l">Instagram</div><div class="ci-v"><a href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener">@baeconstruction___</a><br><a href="https://instagram.com/andretecture" target="_blank" rel="noopener">@andretecture</a></div></div>
-      <div class="ci"><div class="ci-l">Office</div><div class="ci-v"><a href="https://share.google/ACEKeEdCkEgM0AtcK" target="_blank" rel="noopener">Bekasi, Indonesia</a><br><a href="https://share.google/ACEKeEdCkEgM0AtcK" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--blue)">Open in Google Maps &#8599;</a></div></div>
+      <div class="ci"><div class="ci-l">Office</div><div class="ci-v"><a href="https://share.google/ACEKeEdCkEgM0AtcK" target="_blank" rel="noopener">Bekasi, Indonesia</a><br><a href="https://share.google/ACEKeEdCkEgM0AtcK" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--blue)">Open in Google Maps<svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div></div>
     </div>
 
     <div class="cta-row">
@@ -758,7 +760,7 @@ const grid = $('#grid')
 grid.innerHTML = P.map(p => `
   <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
     <span class="card-cat"><span class="pill">${p.cat}</span></span>
-    <span class="card-open" aria-hidden="true">Tap to open &#8599;</span>
+    <span class="card-open" aria-hidden="true">Tap to open<svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
     <span class="card-img"><img src="${src(p.imgs[0], 1200)}" srcset="${srcset(p.imgs[0])}" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 55vw" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
     <span class="card-meta">
       <span><span class="card-name" style="display:block">${p.name}</span>${p.tagline ? `<span class="card-tag" style="display:block">/ ${p.tagline}</span>` : ''}</span>
