@@ -1,0 +1,5 @@
+*.zip
+.claude/
+
+_originals/
+_watermark.py

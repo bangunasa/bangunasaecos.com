@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAE - Bangun Asa Ekosistem | Design &amp; Build Indonesia</title>
+  <meta name="description" content="PT. Bangun Asa Eksplorasi (BAE) is a Design and Build studio in Indonesia. Architecture, interior design, and construction, from the first sketch to the final handover.">
+  <meta name="keywords" content="Bangun Asa Eksplorasi, BAE, design and build Indonesia, interior design Indonesia, architecture Indonesia, contractor Indonesia, interior designer Indonesia, home design Indonesia">
+  <meta name="google-site-verification" content="l4rJYZDp6qGvXsSruQbI7HZdKLBhHI5CVXaibPvPhWI" />
+  <meta name="google-site-verification" content="v4c0lyOAUcc7A55FU-699Grp-ENRcBL7IS9k5-LznTM" />
+  <meta name="theme-color" content="#F6F5F0">
+  <meta name="author" content="PT. Bangun Asa Eksplorasi">
+  <meta name="copyright" content="&copy; PT. Bangun Asa Eksplorasi. All rights reserved.">
+  <link rel="canonical" href="https://bangunasaecos.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bangunasaecos.com/">
+  <meta property="og:title" content="BAE - Bangun Asa Ekosistem | Design &amp; Build Indonesia">
+  <meta property="og:description" content="Design and Build studio in Indonesia. Architecture, interior design, and construction.">
+  <meta property="og:image" content="https://bangunasaecos.com/00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="BAE - Bangun Asa Ekosistem">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BAE - Bangun Asa Ekosistem | Design &amp; Build Indonesia">
+  <meta name="twitter:description" content="Design and Build studio in Indonesia. Architecture, interior design, and construction.">
+  <meta name="twitter:image" content="https://bangunasaecos.com/00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg">
+  <link rel="icon" type="image/png" sizes="any" href="BAE%20LOGO%202.png">
+  <link rel="apple-touch-icon" href="BAE%20LOGO%202.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+  <style>
+    :root {
+      --paper: #F6F5F0;
+      --paper-2: #ECEAE2;
+      --ink: #0A0A0A;
+      --blue: #0443F0;
+      --red: #FF1A0A;
+      --muted: #6B6A64;
+      --line: 2.5px;
+      --r: 18px;
+      --gut: clamp(16px, 4vw, 56px);
+      --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+      --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.5; }
+    img { max-width: 100%; display: block; }
+    [hidden] { display: none !important; }
+    .card-img img, .pm-swiper img, .chip { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    ::selection { background: var(--blue); color: #fff; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+    .x { font-stretch: 125%; }            /* expanded display type */
+    .mono { font-family: var(--mono); }
+    .wrap { padding-inline: var(--gut); max-width: 1680px; margin-inline: auto; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; padding: calc(14px + env(safe-area-inset-top, 0px)) var(--gut) 14px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: background .3s, border-color .3s; border-bottom: var(--line) solid transparent; }
+    #nav.solid { background: rgba(246,245,240,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom-color: var(--ink); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 34px; width: auto; transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+    .nav-logo:hover img { transform: rotate(-8deg) scale(1.08); }
+    .nav-logo span { font-weight: 900; font-stretch: 125%; font-size: 1.15rem; letter-spacing: -.02em; }
+    .nav-menu { display: flex; list-style: none; border: var(--line) solid var(--ink); border-radius: 999px; background: var(--paper); overflow: hidden; }
+    .nav-menu a { display: block; padding: 9px 18px; font-size: .8rem; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .02em; transition: background .2s, color .2s; }
+    .nav-menu li + li a { border-left: var(--line) solid var(--ink); }
+    .nav-menu a:hover { background: var(--ink); color: var(--paper); }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border: var(--line) solid var(--ink); border-radius: 999px; font-weight: 800; font-size: .85rem; text-transform: uppercase; letter-spacing: .02em; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; white-space: nowrap; }
+    .btn:hover { transform: translate(-3px,-3px); box-shadow: 4px 4px 0 var(--ink); }
+    .btn:active { transform: translate(0,0); box-shadow: 0 0 0 var(--ink); }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-ghost { background: var(--paper); }
+    .btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; }
+    .hamburger { display: none; width: 46px; height: 46px; border: var(--line) solid var(--ink); border-radius: 50%; background: var(--paper); align-items: center; justify-content: center; flex-direction: column; gap: 4px; }
+    .hamburger span { width: 18px; height: 2.5px; background: var(--ink); transition: .25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    #hero { position: relative; min-height: 100svh; padding-top: calc(120px + env(safe-area-inset-top, 0px)); padding-bottom: 48px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+    .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(24px, 4vw, 48px); }
+    .tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: .72rem; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; padding: 6px 12px; border: 2px solid var(--ink); border-radius: 999px; background: var(--paper); }
+    .tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); display: inline-block; animation: blink 1.6s infinite; }
+    @keyframes blink { 50% { opacity: .2; } }
+    .hero-h { font-weight: 900; font-stretch: 125%; font-size: clamp(2.7rem, 8.6vw, 10.5rem); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; }
+    .hero-h .ln { display: flex; align-items: center; gap: .14em; flex-wrap: wrap; }
+    .hero-h .ln + .ln { margin-top: .04em; }
+    .hero-h .w { display: inline-block; }
+    .hero-h .dot { color: var(--red); }
+    .chip { display: inline-block; height: .78em; aspect-ratio: 188/100; flex-shrink: 0; transform: rotate(var(--rot, -4deg)); transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+    .chip:hover { transform: rotate(0deg) scale(1.08); }
+    .chip svg { width: 100%; height: 100%; overflow: visible; }
+    .hero-bottom { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: end; margin-top: clamp(28px, 4vw, 56px); padding-top: 24px; border-top: var(--line) solid var(--ink); }
+    .hero-lead { font-size: clamp(1.05rem, 1.5vw, 1.35rem); font-weight: 500; line-height: 1.4; max-width: 34ch; }
+    .hero-lead b { font-weight: 800; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+
+    /* draggable stickers */
+    .sticker { position: absolute; z-index: 5; touch-action: none; cursor: grab; user-select: none; }
+    .sticker:active { cursor: grabbing; }
+    .sticker-note { position: absolute; font-family: var(--mono); font-size: .66rem; text-transform: uppercase; white-space: nowrap; transform: rotate(-6deg); color: var(--muted); pointer-events: none; }
+    .badge { width: clamp(110px, 11vw, 160px); aspect-ratio: 1; }
+    .badge-in { width: 100%; height: 100%; border-radius: 50%; background: var(--blue); border: var(--line) solid var(--ink); display: grid; place-items: center; position: relative; }
+    .badge-in svg { position: absolute; inset: 6%; width: 88%; height: 88%; animation: spin 18s linear infinite; }
+    .badge-in text { font-family: var(--mono); font-weight: 700; font-size: 9.5px; letter-spacing: 0; fill: #fff; text-transform: uppercase; }
+    .badge-core { font-weight: 900; font-stretch: 125%; color: #fff; font-size: clamp(1.4rem, 2vw, 2rem); letter-spacing: -.04em; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .st-red { width: clamp(90px, 9vw, 130px); aspect-ratio: 188/100; }
+
+    /* ── MARQUEE ─────────────────────────────────────── */
+    .marquee { background: var(--blue); color: #fff; border-block: var(--line) solid var(--ink); overflow: hidden; padding: 18px 0; transform: rotate(-1.2deg); margin: 24px -20px; position: relative; z-index: 2; }
+    .marquee-track { display: flex; gap: 0; width: max-content; animation: mq 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee span { font-weight: 900; font-stretch: 125%; font-size: clamp(1.6rem, 3.4vw, 3.2rem); text-transform: uppercase; letter-spacing: -.03em; display: inline-flex; align-items: center; gap: 28px; padding-right: 28px; white-space: nowrap; }
+    .marquee span em { font-style: normal; font-family: var(--mono); font-weight: 500; font-size: .32em; letter-spacing: .06em; opacity: .75; }
+    .marquee .star { width: .9em; height: .9em; flex-shrink: 0; }
+    @keyframes mq { to { transform: translateX(-50%); } }
+    .marquee.red { background: var(--red); transform: rotate(1deg); margin-top: -8px; }
+    .marquee.red .marquee-track { animation-direction: reverse; animation-duration: 44s; }
+
+    /* ── SECTION HEAD ────────────────────────────────── */
+    section { position: relative; }
+    .sec { padding-block: clamp(72px, 10vw, 150px); }
+    .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(28px, 4vw, 52px); }
+    .kicker { font-family: var(--mono); font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .kicker b { background: var(--ink); color: var(--paper); padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .h2 { font-weight: 900; font-stretch: 125%; font-size: clamp(2.6rem, 7vw, 7.5rem); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; }
+    .h2 sup { font-family: var(--mono); font-size: .22em; font-weight: 700; vertical-align: top; letter-spacing: 0; position: relative; top: .3em; margin-left: .2em; color: var(--red); }
+
+    /* ── WORKS ───────────────────────────────────────── */
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .fbtn { padding: 10px 16px; border: 2px solid var(--ink); border-radius: 999px; font-weight: 800; font-size: .8rem; text-transform: uppercase; background: var(--paper); transition: background .2s, color .2s, transform .2s; }
+    .fbtn sup { font-family: var(--mono); font-size: .65rem; margin-left: 4px; opacity: .6; }
+    .fbtn:hover { transform: translateY(-2px); }
+    .fbtn.active { background: var(--ink); color: var(--paper); }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 20px); }
+    .card { min-width: 0; grid-column: span var(--span, 4); text-align: left; border: var(--line) solid var(--ink); border-radius: var(--r); background: #fff; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s cubic-bezier(.2,.8,.2,1); position: relative; }
+    .card:hover, .card:focus-visible { transform: translate(-5px,-5px) rotate(-.4deg); box-shadow: 8px 8px 0 var(--ink); outline: none; }
+    .card:nth-child(3n+2):hover { box-shadow: 8px 8px 0 var(--blue); }
+    .card:nth-child(3n):hover { box-shadow: 8px 8px 0 var(--red); }
+    .card[hidden] { display: none; }
+    .card-img { height: var(--h, clamp(260px, 30vw, 460px)); overflow: hidden; border-bottom: var(--line) solid var(--ink); background: var(--paper-2); }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+    .card:hover .card-img img { transform: scale(1.06); }
+    .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px 16px; }
+    .card-name { overflow-wrap: anywhere; font-weight: 900; font-stretch: 125%; font-size: clamp(1.15rem, 1.7vw, 1.6rem); text-transform: uppercase; letter-spacing: -.03em; line-height: 1; }
+    .card-tag { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-top: 6px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: .66rem; font-weight: 700; text-transform: uppercase; padding: 5px 10px; border: 2px solid var(--ink); border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+    .pill i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .pill.done { background: var(--blue); color: #fff; }
+    .pill.done i { background: #fff; }
+    .pill.wip { background: var(--paper); }
+    .pill.wip i { background: var(--red); animation: blink 1.4s infinite; }
+    .pill.idea { background: var(--paper); border-style: dashed; }
+    .pill.idea i { border: 2px solid var(--ink); }
+    .card-cat { position: absolute; top: 12px; left: 12px; z-index: 2; }
+    .card-cat .pill { background: var(--paper); }
+
+    /* cursor follower (fine pointers only, system cursor stays) */
+    #follow { position: fixed; top: 0; left: 0; z-index: 9990; pointer-events: none; padding: 10px 16px; background: var(--red); color: #fff; border: var(--line) solid var(--ink); border-radius: 999px; font-weight: 900; font-stretch: 125%; font-size: .8rem; text-transform: uppercase; opacity: 0; transform: translate(-50%,-50%) scale(.4); transition: opacity .2s, transform .25s cubic-bezier(.3,1.6,.5,1); white-space: nowrap; }
+    #follow.on { opacity: 1; transform: translate(-50%,-50%) scale(1) rotate(-6deg); }
+
+    /* ── MANIFESTO ───────────────────────────────────── */
+    #manifesto { background: var(--ink); color: var(--paper); border-block: var(--line) solid var(--ink); overflow: hidden; }
+    .quote { font-weight: 800; font-stretch: 112%; font-size: clamp(2rem, 5.2vw, 5.4rem); line-height: 1.02; letter-spacing: -.035em; max-width: 20ch; }
+    .quote .qw { opacity: .16; transition: opacity .2s; }
+    .quote .hl { color: var(--paper); background: var(--blue); padding: 0 .12em; border-radius: .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    .quote .hl2 { background: var(--red); padding: 0 .12em; border-radius: .12em; }
+    .quote-by { margin-top: 36px; display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: rgba(246,245,240,.6); }
+    .quote-by::before { content: ''; width: 48px; height: 2.5px; background: var(--red); }
+    /* Elang's manifesto: red block, the "build" colour, set to the right */
+    #manifesto-build { background: var(--red); color: var(--paper); border-bottom: var(--line) solid var(--ink); overflow: hidden; }
+    #manifesto-build .wrap { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+    #manifesto-build .quote .qw { opacity: .25; }
+    #manifesto-build .quote .hl { background: var(--ink); }
+    #manifesto-build .quote .hl2 { background: var(--paper); color: var(--ink); }
+    #manifesto-build .quote-by { color: rgba(246,245,240,.85); flex-direction: row-reverse; }
+    #manifesto-build .quote-by::before { background: var(--ink); }
+    @media (max-width: 600px) { #manifesto-build .wrap { align-items: flex-start; text-align: left; } #manifesto-build .quote-by { flex-direction: row; } }
+
+    /* ── ABOUT ───────────────────────────────────────── */
+    .name-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.4vw, 20px); margin-bottom: clamp(48px, 7vw, 96px); }
+    .nc { border: var(--line) solid var(--ink); border-radius: var(--r); padding: clamp(20px, 2.4vw, 32px); min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; transition: transform .3s; }
+    .nc:nth-child(1) { background: var(--blue); color: #fff; transform: rotate(-1.2deg); }
+    .nc:nth-child(2) { background: var(--red); color: #fff; transform: rotate(.8deg) translateY(18px); }
+    .nc:nth-child(3) { background: #fff; transform: rotate(-.5deg); }
+    .nc:hover { transform: rotate(0) translateY(-6px); }
+    .nc-num { font-family: var(--mono); font-size: .75rem; font-weight: 700; }
+    .nc-word { font-weight: 900; font-stretch: 125%; font-size: clamp(2.2rem, 4.4vw, 4.6rem); text-transform: uppercase; letter-spacing: -.045em; line-height: .9; word-break: break-word; }
+    .nc-mean { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; opacity: .8; margin-top: 8px; }
+    .nc p { font-size: 1rem; line-height: 1.45; font-weight: 500; }
+    .about-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); align-items: start; }
+    .about-p { font-size: clamp(1.1rem, 1.6vw, 1.45rem); font-weight: 500; line-height: 1.4; }
+    .about-p b { font-weight: 800; }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); border: var(--line) solid var(--ink); border-radius: var(--r); overflow: hidden; background: #fff; }
+    .stat { padding: 22px 22px 18px; }
+    .stat:nth-child(odd) { border-right: var(--line) solid var(--ink); }
+    .stat:nth-child(-n+2) { border-bottom: var(--line) solid var(--ink); }
+    .stat-n { font-weight: 900; font-stretch: 125%; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: .9; letter-spacing: -.05em; }
+    .stat:nth-child(2) .stat-n { color: var(--blue); }
+    .stat:nth-child(3) .stat-n { color: var(--red); }
+    .stat-l { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-top: 10px; }
+
+    .founders { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.4vw, 20px); margin-top: clamp(48px, 7vw, 96px); }
+    .fd { border: var(--line) solid var(--ink); border-radius: var(--r); background: #fff; padding: clamp(22px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 16px; }
+    .fd-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+    .fd-name { font-weight: 900; font-stretch: 125%; font-size: clamp(1.6rem, 2.6vw, 2.4rem); text-transform: uppercase; letter-spacing: -.04em; line-height: .95; }
+    .fd-role { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+    .fd-bio { font-size: 1rem; line-height: 1.55; color: #2a2a28; }
+    .fd-q { font-weight: 700; font-size: 1.05rem; line-height: 1.4; padding: 16px 18px; border-radius: 12px; background: var(--paper); border: 2px solid var(--ink); position: relative; margin-top: auto; }
+    .fd:nth-child(1) .fd-q { border-left: 8px solid var(--blue); }
+    .fd:nth-child(2) .fd-q { border-left: 8px solid var(--red); }
+
+    /* ── SERVICES ────────────────────────────────────── */
+    #services { background: var(--paper-2); border-block: var(--line) solid var(--ink); }
+    .svc { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.4vw, 20px); }
+    .sv { border: var(--line) solid var(--ink); border-radius: var(--r); background: var(--paper); padding: clamp(22px, 2.6vw, 34px); display: flex; flex-direction: column; gap: 18px; min-height: 380px; transition: transform .3s, box-shadow .3s, background .3s, color .3s; }
+    .sv:hover { transform: translate(-5px,-5px); box-shadow: 8px 8px 0 var(--ink); }
+    .sv.feat { background: var(--ink); color: var(--paper); }
+    .sv-top { display: flex; justify-content: space-between; align-items: center; }
+    .sv-n { font-family: var(--mono); font-size: .75rem; font-weight: 700; }
+    .sv-h { font-weight: 900; font-stretch: 125%; font-size: clamp(2rem, 3.6vw, 3.6rem); text-transform: uppercase; letter-spacing: -.045em; line-height: .88; margin-top: auto; }
+    .sv-h .amp { color: var(--red); }
+    .sv p { font-size: 1rem; line-height: 1.5; opacity: .85; }
+    .sv .pill { background: transparent; }
+    .sv.feat .pill { border-color: var(--paper); color: var(--paper); }
+
+    /* process */
+    .proc { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: clamp(48px, 7vw, 96px); border: var(--line) solid var(--ink); border-radius: var(--r); overflow: hidden; background: #fff; }
+    .ps { padding: 22px 20px 26px; position: relative; }
+    .ps + .ps { border-left: var(--line) solid var(--ink); }
+    .ps-n { width: 44px; height: 44px; border-radius: 50%; border: var(--line) solid var(--ink); display: grid; place-items: center; font-weight: 900; font-stretch: 125%; margin-bottom: 22px; background: var(--paper); transition: background .25s, color .25s; }
+    .ps:hover .ps-n { background: var(--blue); color: #fff; }
+    .ps:last-child .ps-n { background: var(--red); color: #fff; }
+    .ps-h { font-weight: 900; font-stretch: 125%; font-size: clamp(1.15rem, 1.6vw, 1.5rem); text-transform: uppercase; letter-spacing: -.03em; line-height: 1; margin-bottom: 8px; }
+    .ps p { font-size: .92rem; line-height: 1.45; color: #3a3a37; }
+
+    /* ── CONTACT ─────────────────────────────────────── */
+    .cta-h { font-weight: 900; font-stretch: 125%; font-size: clamp(3rem, 11.5vw, 13.5rem); line-height: .82; letter-spacing: -.055em; text-transform: uppercase; }
+    .cta-h .dot { color: var(--red); }
+    .cta-h .o { display: inline-block; width: .72em; height: .72em; vertical-align: baseline; }
+    .cta-sub { font-family: var(--mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 18px; display: flex; gap: 10px; align-items: center; }
+    .contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: var(--line) solid var(--ink); border-radius: var(--r); overflow: hidden; background: #fff; margin-top: clamp(36px, 5vw, 64px); }
+    .ci { padding: 22px 22px 24px; min-width: 0; }
+    .ci + .ci { border-left: var(--line) solid var(--ink); }
+    .ci-l { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 12px; }
+    .ci-v { font-weight: 800; font-size: clamp(1rem, 1.3vw, 1.2rem); line-height: 1.35; overflow-wrap: anywhere; }
+    .ci-v a { text-decoration: none; background-image: linear-gradient(var(--blue), var(--blue)); background-size: 0 3px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .3s, color .2s; }
+    .ci-v a:hover { background-size: 100% 3px; color: var(--blue); }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn-xl { padding: 20px 34px; font-size: 1rem; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer { border-top: var(--line) solid var(--ink); overflow: hidden; padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .ft-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 22px; font-family: var(--mono); font-size: .72rem; text-transform: uppercase; }
+    .ft-row a { text-decoration: none; }
+    .ft-row a:hover { color: var(--blue); }
+    .ft-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .ft-legal { font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--muted); padding-bottom: 22px; max-width: 80ch; text-transform: none; }
+    .pm-legal { font-family: var(--mono); font-size: .66rem; color: var(--muted); line-height: 1.5; }
+    .ft-giant { font-weight: 900; font-stretch: 125%; font-size: 21vw; line-height: .76; letter-spacing: -.07em; text-transform: uppercase; white-space: nowrap; text-align: center; margin-bottom: -.1em; user-select: none; }
+    .ft-giant span { display: inline-block; transition: transform .4s cubic-bezier(.3,1.6,.5,1), color .2s; }
+    .ft-giant span:hover { transform: translateY(-12%) rotate(-6deg); color: var(--blue); }
+    .ft-giant span:nth-child(2):hover { color: var(--red); }
+
+    /* ── MODAL ───────────────────────────────────────── */
+    #pm { position: fixed; inset: 0; z-index: 9999; background: var(--paper); display: none; }
+    #pm.open { display: grid; grid-template-columns: minmax(320px, 420px) 1fr; }
+    .pm-info { border-right: var(--line) solid var(--ink); padding: calc(28px + env(safe-area-inset-top, 0px)) 32px 28px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+    .pm-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .pm-x { width: 48px; height: 48px; border-radius: 50%; border: var(--line) solid var(--ink); background: var(--paper); font-size: 1.1rem; font-weight: 900; display: grid; place-items: center; transition: background .2s, color .2s, transform .3s; }
+    .pm-x:hover { background: var(--ink); color: var(--paper); transform: rotate(90deg); }
+    .pm-name { font-weight: 900; font-stretch: 125%; font-size: clamp(2.4rem, 4vw, 3.8rem); text-transform: uppercase; letter-spacing: -.05em; line-height: .88; margin-top: 12px; }
+    .pm-tag { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+    .pm-meta { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; }
+    .pm-meta div { padding: 12px 14px; }
+    .pm-meta div + div { border-left: 2px solid var(--ink); }
+    .pm-meta small { display: block; font-family: var(--mono); font-size: .64rem; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .pm-meta b { font-weight: 800; font-size: .95rem; }
+    .pm-desc { font-size: 1.02rem; line-height: 1.6; }
+    .pm-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; border-top: 2px solid var(--ink); }
+    .pm-count { font-family: var(--mono); font-size: .8rem; font-weight: 700; }
+    .pm-next { font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: .85rem; display: inline-flex; align-items: center; gap: 8px; }
+    .pm-next:hover { color: var(--blue); }
+    .pm-gal { position: relative; background: var(--paper-2); overflow: hidden; min-height: 0; }
+    .pm-swiper { width: 100%; height: 100%; }
+    .pm-swiper .swiper-slide { display: flex; align-items: center; justify-content: center; padding: clamp(16px, 3vw, 40px); }
+    .pm-swiper .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; border: var(--line) solid var(--ink); border-radius: 12px; }
+    .pm-nav { position: absolute; bottom: 20px; z-index: 5; width: 52px; height: 52px; border-radius: 50%; border: var(--line) solid var(--ink); background: var(--paper); font-weight: 900; font-size: 1.2rem; display: grid; place-items: center; transition: background .2s, color .2s, transform .2s; }
+    .pm-nav:hover { background: var(--blue); color: #fff; transform: scale(1.06); }
+    #pm-prev { right: 84px; }
+    #pm-next { right: 20px; }
+
+    /* ── REVEAL ──────────────────────────────────────── */
+    .rv { opacity: 0; transform: translateY(40px); }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .nav-menu a { padding: 9px 12px; font-size: .72rem; }
+      .proc { grid-template-columns: repeat(3, 1fr); }
+      .ps:nth-child(4) { border-left: 0; }
+      .ps:nth-child(n+4) { border-top: var(--line) solid var(--ink); }
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+      .ci:nth-child(3) { border-left: 0; }
+      .ci:nth-child(n+3) { border-top: var(--line) solid var(--ink); }
+    }
+    @media (max-width: 900px) {
+      .nav-menu { display: none; position: absolute; top: calc(100% + 8px); left: var(--gut); right: var(--gut); flex-direction: column; border-radius: var(--r); box-shadow: 6px 6px 0 var(--ink); }
+      .nav-menu.open { display: flex; }
+      .nav-menu li + li a { border-left: 0; border-top: var(--line) solid var(--ink); }
+      .nav-menu a { padding: 16px 20px; font-size: .9rem; }
+      .hamburger { display: flex; }
+      #nav .btn-red { display: none; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-ctas { justify-content: flex-start; }
+      .card { grid-column: span 6 !important; }
+      .card:nth-child(3n+1) { grid-column: span 12 !important; }
+      .card-img { height: clamp(240px, 50vw, 420px) !important; }
+      .name-cards, .svc, .founders { grid-template-columns: 1fr; }
+      .nc:nth-child(2) { transform: rotate(.8deg); }
+      .nc { min-height: 0; }
+      .about-row { grid-template-columns: 1fr; }
+      .sv { min-height: 0; }
+      .sv-h { margin-top: 24px; }
+      #pm.open { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+      .pm-info { border-right: 0; border-bottom: var(--line) solid var(--ink); max-height: 46svh; padding: calc(16px + env(safe-area-inset-top, 0px)) 20px 18px; gap: 14px; }
+      .pm-name { font-size: 2.2rem; margin-top: 4px; }
+      .pm-foot { display: none; }
+    }
+    @media (max-width: 600px) {
+      .card { grid-column: span 12 !important; }
+      .proc { grid-template-columns: 1fr; }
+      .ps + .ps { border-left: 0; border-top: var(--line) solid var(--ink); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .ci + .ci { border-left: 0; border-top: var(--line) solid var(--ink); }
+      .sticker.hide-sm { display: none; }
+      .badge { top: 13% !important; right: 4% !important; width: 92px; }
+      .badge-core { font-size: 1.1rem; }
+      .cta-h { font-size: 10vw; }
+      .name-cards, .svc, .founders, .about-row { min-width: 0; }
+      .hero-h { font-size: clamp(2.3rem, 11.4vw, 4rem); }
+      .marquee { padding: 12px 0; }
+      #pm-prev { right: 76px; } .pm-nav { width: 46px; height: 46px; bottom: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .rv { opacity: 1; transform: none; }
+      .quote .qw { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Reusable BAE ticket silhouette, traced from the logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="tk" d="M6,0 H182 Q188,0 188,6 V12 L172,21.5 Q166,25 166,31.5 Q166,38 172,41.5 L184,48.5 Q187,50.5 184,52.5 L172,59.5 Q166,63 166,69.5 Q166,76 172,79.5 L188,88.5 V94 Q188,100 182,100 H113 L104,84 Q100.5,78 94,78 Q87.5,78 84,84 L75,100 H6 Q0,100 0,94 V6 Q0,0 6,0 Z"/>
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<div id="follow" aria-hidden="true">Open &#8599;</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo" aria-label="BAE home">
+    <img src="bae-mark.png" alt="BAE logo" width="62" height="34">
+    <span>BAE</span>
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a class="btn btn-red" href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener">Start a project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap" style="width:100%">
+    <div class="hero-top">
+      <span class="tag"><i></i> Design &amp; Build Studio, Indonesia</span>
+      <span class="tag">Est. 2025</span>
+    </div>
+
+    <h1 class="hero-h" aria-label="Building ideas into reality">
+      <span class="ln"><span class="w">Building</span><span class="chip" style="--rot:-5deg" data-img="00-Photoshoot/Bekasi House/BH-DSC00064-Pano.jpg"></span></span>
+      <span class="ln"><span class="chip" style="--rot:4deg" data-fill="blue"></span><span class="w">Ideas</span><span class="w">Into</span></span>
+      <span class="ln"><span class="w">Reality</span><span class="chip" style="--rot:-3deg" data-img="00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg"></span><span class="w dot">.</span></span>
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-lead"><b>BAE</b> is a design &amp; build studio. We draw it, then we build it, with the same care from the <b>first sketch</b> to the <b>final handover</b>.</p>
+      <div class="hero-ctas">
+        <a href="#works" class="btn btn-ghost">See our works <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener" class="btn btn-blue">Talk to us <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- stickers: drag them around -->
+  <div class="sticker badge" style="top:35%;right:5%" data-drag>
+    <div class="badge-in">
+      <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ" textLength="238.7" lengthAdjust="spacing">Design * Build * Design &amp; Build *&#160;</textPath></text></svg>
+      <span class="badge-core">BAE</span>
+    </div>
+    <span class="sticker-note" style="bottom:-26px;left:10%">&#8592; drag me</span>
+  </div>
+  <div class="sticker st-red hide-sm" style="top:64%;right:12%" data-drag>
+    <svg viewBox="-3 -3 194 106" style="width:100%;height:100%;overflow:visible"><use href="#tk" fill="#FF1A0A" stroke="#0A0A0A" stroke-width="4"/></svg>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq1"></div></div>
+<div class="marquee red" aria-hidden="true"><div class="marquee-track" id="mq2"></div></div>
+
+<!-- WORKS -->
+<section id="works" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker"><b>01</b> Selected works</div>
+        <h2 class="h2 rv">Works<sup id="workCount"></sup></h2>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- MANIFESTO (replaces the old map) -->
+<section id="manifesto" class="sec">
+  <div class="wrap">
+    <div class="kicker" style="color:rgba(246,245,240,.6)"><b style="background:var(--red);color:#fff">02</b> What we believe</div>
+    <p class="quote" id="quote">A building should never feel like a <span class="hl">beautiful alien.</span> It should know its people, fulfilling their dreams through every detail, and leaving a quiet, <span class="hl2">lasting impact</span> on every living being around it.</p>
+    <div class="quote-by">Andreas Christian, IAI &middot; Licensed Architect &amp; Co-founder</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker"><b>03</b> About BAE</div>
+        <h2 class="h2 rv">What's in<br>a name?</h2>
+      </div>
+    </div>
+
+    <div class="name-cards">
+      <article class="nc rv">
+        <div><div class="nc-num">B / 01</div></div>
+        <div>
+          <div class="nc-word x">Bangun</div>
+          <div class="nc-mean">"to build"</div>
+        </div>
+        <p>Our commitment to actively shaping and building every project with purpose and care.</p>
+      </article>
+      <article class="nc rv">
+        <div><div class="nc-num">A / 02</div></div>
+        <div>
+          <div class="nc-word x">Asa</div>
+          <div class="nc-mean">"hope"</div>
+        </div>
+        <p>Our dedication to turning each client's vision into reality through thoughtful design and precise execution.</p>
+      </article>
+      <article class="nc rv">
+        <div><div class="nc-num">E / 03</div></div>
+        <div>
+          <div class="nc-word x">Eksplo&shy;rasi</div>
+          <div class="nc-mean">"exploration"</div>
+        </div>
+        <p>Our drive to keep learning, innovating, and improving, always looking for better ways to create meaningful, lasting spaces.</p>
+      </article>
+    </div>
+
+    <div class="about-row">
+      <p class="about-p rv">PT. Bangun Asa Eksplorasi, established in 2025, is a <b>Design and Build</b> company that builds ideas into reality through two core divisions, <b>Design</b> and <b>Construction</b>, working in close collaboration to deliver seamless and fully integrated projects.</p>
+      <div class="stats rv" id="stats">
+        <div class="stat"><div class="stat-n" data-count="projects">0</div><div class="stat-l">Projects in portfolio</div></div>
+        <div class="stat"><div class="stat-n" data-count="done">0</div><div class="stat-l">Completed</div></div>
+        <div class="stat"><div class="stat-n" data-count="wip">0</div><div class="stat-l">On going right now</div></div>
+        <div class="stat"><div class="stat-n" data-count="types">0</div><div class="stat-l">Building typologies</div></div>
+      </div>
+    </div>
+
+    <div class="founders">
+      <article class="fd rv">
+        <div class="fd-top">
+          <div>
+            <div class="fd-name">Andreas<br>Christian</div>
+            <div class="fd-role">Licensed Architect &middot; Member of IAI (Ikatan Arsitek Indonesia) &middot; Co-founder</div>
+          </div>
+          <span class="pill done"><i></i>Design</span>
+        </div>
+        <p class="fd-bio">A graduate of architecture who went on to complete his professional licensure, Andreas spent years at a design consultancy before co-founding BAE. His practice is built on the conviction that architecture should not be imposed. It should belong to those who inhabit it.</p>
+        <p class="fd-q">"A building should never feel like a beautiful alien."</p>
+      </article>
+      <article class="fd rv">
+        <div class="fd-top">
+          <div>
+            <div class="fd-name">Elang<br>Herlambang</div>
+            <div class="fd-role">Civil Engineer &middot; MSc. Sustainability Construction &middot; Co-founder</div>
+          </div>
+          <span class="pill" style="background:var(--red);color:#fff"><i style="background:#fff"></i>Build</span>
+        </div>
+        <p class="fd-bio">Holding a degree in civil engineering and a master's from the University of Bristol in Sustainability Construction, Elang brings years of industry experience to BAE. He co-founded the company with a clear mission: to make the construction industry a place of true human dignity.</p>
+        <p class="fd-q">"Everyone in this field deserves to prosper."</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO 2: Elang -->
+<section id="manifesto-build" class="sec">
+  <div class="wrap">
+    <div class="kicker" style="color:rgba(246,245,240,.75)"><b style="background:var(--ink);color:#fff">04</b> How we build</div>
+    <p class="quote">From the ground worker to the senior professional, everyone in this field <span class="hl">deserves to prosper.</span> My work is to advance every tier of this industry until that becomes <span class="hl2">the standard, not the exception.</span></p>
+    <div class="quote-by">Elang Herlambang, MSc. &middot; Civil Engineer &amp; Co-founder</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker"><b>05</b> What we do</div>
+        <h2 class="h2 rv">Pick your<br>path.</h2>
+      </div>
+    </div>
+    <div class="svc">
+      <article class="sv rv">
+        <div class="sv-top"><span class="sv-n">/01</span><span class="pill">Architecture &amp; Interior</span></div>
+        <h3 class="sv-h">Design<br>only</h3>
+        <p>Architecture, interior design, and master planning rooted in real thought. Every layout and every detail is carefully considered before a single line is drawn.</p>
+      </article>
+      <article class="sv rv">
+        <div class="sv-top"><span class="sv-n">/02</span><span class="pill">Construction</span></div>
+        <h3 class="sv-h">Build<br>only</h3>
+        <p>Construction carried out deliberately, with skilled hands and a genuine commitment to getting it right, with the same care and precision that went into every drawing.</p>
+      </article>
+      <article class="sv feat rv">
+        <div class="sv-top"><span class="sv-n">/03</span><span class="pill">One team</span></div>
+        <h3 class="sv-h">Design <span class="amp">&amp;</span><br>Build</h3>
+        <p>We build what we design. Designers and builders at the same table, from the first sketch to the final handover.</p>
+      </article>
+    </div>
+
+    <div class="proc rv" aria-label="How we work">
+      <div class="ps"><div class="ps-n">1</div><div class="ps-h">Survey</div><p>We visit the site and listen to what you need.</p></div>
+      <div class="ps"><div class="ps-n">2</div><div class="ps-h">Proposal</div><p>A clear scope and offer, before anything starts.</p></div>
+      <div class="ps"><div class="ps-n">3</div><div class="ps-h">Design</div><p>Concept, design, and detailed working drawings.</p></div>
+      <div class="ps"><div class="ps-n">4</div><div class="ps-h">Build</div><p>Construction on site, following the drawings.</p></div>
+      <div class="ps"><div class="ps-n">5</div><div class="ps-h">Handover</div><p>Keys in your hands. Welcome home.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="cta-sub"><span class="tag"><i></i> Currently taking new projects</span></div>
+    <h2 class="cta-h">Let's build<br>something<br>great<span class="dot">.</span></h2>
+
+    <div class="contact-grid">
+      <div class="ci"><div class="ci-l">WhatsApp</div><div class="ci-v"><a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener">+62 878 8034 5945</a></div></div>
+      <div class="ci"><div class="ci-l">Email</div><div class="ci-v"><a href="mailto:bangunasa@bangunasaecos.com?subject=Project%20Inquiry&body=Hi%20BAE%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you.%0A%0AName%3A%0AProject%20type%3A%0ALocation%3A%0A%0AThank%20you." data-email>bangunasa@<wbr>bangunasaecos.com</a></div></div>
+      <div class="ci"><div class="ci-l">Instagram</div><div class="ci-v"><a href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener">@baeconstruction___</a><br><a href="https://instagram.com/andretecture" target="_blank" rel="noopener">@andretecture</a></div></div>
+      <div class="ci"><div class="ci-l">Office</div><div class="ci-v"><a href="https://share.google/ACEKeEdCkEgM0AtcK" target="_blank" rel="noopener">Bekasi, Indonesia</a><br><a href="https://share.google/ACEKeEdCkEgM0AtcK" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--blue)">Open in Google Maps &#8599;</a></div></div>
+    </div>
+
+    <div class="cta-row">
+      <a href="https://wa.me/6287880345945?text=Hi%20BAE%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener" class="btn btn-red btn-xl">Start a project <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="mailto:bangunasa@bangunasaecos.com?subject=Project%20Inquiry&body=Hi%20BAE%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you.%0A%0AName%3A%0AProject%20type%3A%0ALocation%3A%0A%0AThank%20you." data-email class="btn btn-ghost btn-xl">Send an email</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap ft-row">
+    <span>&copy; 2025-<span id="yr">2026</span> PT. Bangun Asa Eksplorasi. All rights reserved.</span>
+    <div class="ft-links">
+      <a href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener">@baeconstruction___</a>
+      <a href="https://instagram.com/andretecture" target="_blank" rel="noopener">@andretecture</a>
+      <a href="#hero">Back to top &#8593;</a>
+    </div>
+  </div>
+  <p class="wrap ft-legal">All photographs, drawings, and designs on this website are the intellectual property of PT. Bangun Asa Eksplorasi and are protected by copyright. Reproduction, redistribution, or use for any purpose without written permission is prohibited.</p>
+  <div class="ft-giant" aria-hidden="true"><span>B</span><span>A</span><span>E</span></div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div id="pm" role="dialog" aria-modal="true" aria-labelledby="pm-name">
+  <div class="pm-info">
+    <div class="pm-bar">
+      <span class="pill" id="pm-cat"></span>
+      <button class="pm-x" id="pm-x" aria-label="Close project">&#x2715;</button>
+    </div>
+    <div>
+      <div class="pm-name" id="pm-name"></div>
+      <div class="pm-tag" id="pm-tag"></div>
+    </div>
+    <div class="pm-meta" id="pm-meta"></div>
+    <p class="pm-desc" id="pm-desc"></p>
+    <p class="pm-legal">&copy; PT. Bangun Asa Eksplorasi. Photos and design may not be used without permission.</p>
+    <div class="pm-foot">
+      <span class="pm-count" id="pm-count"></span>
+      <button class="pm-next" id="pm-nextp">Next project &#8594;</button>
+    </div>
+  </div>
+  <div class="pm-gal">
+    <div class="swiper pm-swiper"><div class="swiper-wrapper" id="pm-slides"></div></div>
+    <button class="pm-nav" id="pm-prev" aria-label="Previous photo">&#8592;</button>
+    <button class="pm-nav" id="pm-next" aria-label="Next photo">&#8594;</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+
+<script>
+/* ─── Project data ───────────────────────────────────────────────── */
+const DIR = '00-Photoshoot/'
+const P = [
+  { id:'strozzi', name:'Strozzi', tagline:'warm', cat:'Residential', state:'done', status:'Completed 2025', role:'Design',
+    desc:'A home with a warm and inviting atmosphere, one that allows its residents to enjoy life, discover comfort, and even create their own. The spaces are wrapped with functional cabinetry, while a thoughtful palette reinforces a deep sense of warmth. Subtle shifts in volume shape intimate corners and generous moments, crafting a distinct spatial experience in every part of the house.',
+    imgs:['Strozzi/1P5A4175-HDR-Pano.jpg','Strozzi/1P5A4202-HDR.jpg','Strozzi/1P5A4248-HDR.jpg','Strozzi/1P5A4293-HDR.jpg','Strozzi/1P5A4306-HDR.jpg','Strozzi/1P5A4417-HDR.jpg','Strozzi/1P5A4444.jpg','Strozzi/1P5A4497-HDR.jpg','Strozzi/1P5A4501-HDR.jpg','Strozzi/1P5A4519-HDR-Pano.jpg'] },
+  { id:'bekasi', name:'Bekasi House', tagline:'hollow', cat:'Residential', state:'done', status:'Completed', role:'Design & Build',
+    desc:'A white and green palette creates a refreshing and calming atmosphere. Geometric openings across multiple axes shape a dynamic spatial composition through contrast and layering. Carefully placed apertures enhance natural ventilation and daylight, creating a comfortable and immersive spatial experience.',
+    imgs:['Bekasi House/BH-DSC00064-Pano.jpg','Bekasi House/BH-DSC00164.jpg','Bekasi House/BH-DSC00187.jpg','Bekasi House/BH-DSC00247.jpg','Bekasi House/BH-DSC00523.jpg','Bekasi House/BH-DSC00586.jpg','Bekasi House/BH-DSC00598.jpg','Bekasi House/BH-DSC00652.jpg'] },
+  { id:'schoolhall', name:'School Hall', tagline:'layering', cat:'Institutional', state:'done', status:'Completed 2025', role:'Design',
+    desc:'A multifunctional space with a calm, layered atmosphere that introduces a new spatial typology within a school. It evokes a futuristic and modern impression, while its form subtly responds to acoustic comfort within the space.',
+    imgs:['School Hall/SDH-DSC02202-Pano.jpg','School Hall/SDH-DSC02211.jpg','School Hall/SDH-DSC02275.jpg','School Hall/SDH-DSC02395.jpg'] },
+  { id:'sunter', name:'Sunter House', tagline:'modern elegant', cat:'Residential', state:'done', status:'Completed 2025', role:'Design',
+    desc:'A modern house with a simple, minimalist, and elegant impression.',
+    imgs:['Sunter House/0Z6A4143 copy.jpg','Sunter House/0Z6A4212 copy.jpg','Sunter House/0Z6A4281 copy.jpg'] },
+  { id:'fayt', name:'FAYT', tagline:'cutesy market', cat:'Commercial', state:'done', status:'Completed 2024', role:'Design & Build',
+    desc:'A fun and thematic store, designed around the experience of its customers.',
+    imgs:['FAYT/IMG_9261-1 HDR.jpg','FAYT/IMG_9264-1 HDR.jpg','FAYT/IMG_9279-1 HDR.jpg','FAYT/IMG_9284-2 HDR.jpg'] },
+  { id:'tacondo', name:'TA Condo', tagline:'bend', cat:'Residential', state:'wip', status:'On going', role:'Design & Build',
+    desc:'A condominium apartment conceived with a deliberate avoidance of sharp corners, favoring curved elements to shape its spatial and formal language. The design emphasizes a minimalist and modern expression, where fluid geometries are articulated with restraint to create a calm, refined identity.',
+    imgs:['TA Condo/1.jpg','TA Condo/2.jpg','TA Condo/8.jpg','TA Condo/9.jpg','TA Condo/10.jpg'] },
+  { id:'padel', name:'Padel Club', tagline:'upup', cat:'Commercial', state:'idea', status:'Conceptual', role:'Design',
+    desc:'By lifting the main program upward, the building allows the lower level to operate more efficiently for operational needs while reducing its impact on the surrounding context. The facade is conceived as a critical interface, designed to capture public attention and define the identity of this commercial architecture.',
+    imgs:['Padel Club/1.jpg','Padel Club/2.jpg','Padel Club/3.jpg','Padel Club/8.jpg','Padel Club/13.jpg'] },
+  { id:'jhouse', name:'J House', tagline:'fullfill', cat:'Residential', state:'done', status:'Completed 2025', role:'Design',
+    desc:'One strong box becomes the focal point. Openness and spaciousness lead the design, while natural materials bring a more comfortable impression.',
+    imgs:['J House/a.jpg','J House/d.jpg'] },
+  { id:'bednco', name:'Bed n Co', tagline:'stacking', cat:'Commercial', state:'wip', status:'On going', role:'',
+    desc:'A composition of stacked building masses developed through an architectural massing study, in which each floor accommodates distinct functional programs. The building operates as a spatial framework for a multi-brand furniture company, while articulating an expression that balances warmth and monumentality.',
+    imgs:['Bed n Co/1.jpg','Bed n Co/2.jpg'] },
+  { id:'piktwo', name:'PIK Two', tagline:'home sheet home', cat:'Residential', state:'wip', status:'On going', role:'Design & Build',
+    desc:'The house is articulated through layers of panels that sheath the interior spaces, bringing vitality to the architecture, while the color palette is curated to convey a subtle masculine character.',
+    imgs:['PIK two/2.jpg','PIK two/3.jpg','PIK two/5.jpg'] },
+  { id:'honolulu', name:'Honolulu', tagline:'sharpless', cat:'Residential', state:'done', status:'Completed 2024', role:'Design',
+    desc:'A compact apartment shaped by curved edges, with a simple and graceful touch.',
+    imgs:['Honolulu/foto.jpeg'] },
+  { id:'bekasiboarding', name:'Bekasi Boarding', tagline:'cloudy', cat:'Housing', state:'wip', status:'On going', role:'Design & Build',
+    desc:'A boarding house set within a green and tranquil setting, conceived as a gentle place to rest. Soft white tones shape the architecture, creating a light, clean, and bright atmosphere that feels calm and welcoming, allowing the building to sit quietly within its natural surroundings.',
+    imgs:['Bekasi Boarding/1.jpg'] },
+  { id:'grawisa', name:'Grawisa', tagline:'uncharted', cat:'Residential', state:'wip', status:'On going', role:'',
+    desc:'Three families living under one roof, each bringing its own character into a single building.',
+    imgs:['Grawisa/3.jpg','Grawisa/7.jpg'] },
+  { id:'kg', name:'KG', tagline:'little', cat:'Residential', state:'wip', status:'On going', role:'Design & Build',
+    desc:'An apartment transformed into a place of retreat, where every spatial component is optimized into a functional and purposeful space.',
+    imgs:['KG/7.jpg','KG/8.jpg'] },
+  { id:'chouse', name:'C House', tagline:'2nd2nd', cat:'Residential', state:'wip', status:'On going', role:'Design',
+    desc:'Driven by the owner\'s dissatisfaction with the existing condition, the house was transformed through renovation, expanding its spatial capacity and embracing a more contemporary material expression.',
+    imgs:['C House/1.jpg'] },
+  { id:'rrrhouse', name:'rrr House', tagline:'boxy', cat:'Residential', state:'idea', status:'Conceptual', role:'Design',
+    desc:'A renovated house redefined with a modern architectural language, emphasizing a robust and solid presence.',
+    imgs:['rrr House/6.jpg','rrr House/A.jpg','rrr House/3.jpg'] },
+  { id:'housingh', name:'HousingHousing', tagline:'', cat:'Housing', state:'idea', status:'Conceptual, on going', role:'',
+    desc:'',
+    imgs:['HousingHousing/1.jpg'] }
+]
+const IMG_V = 'wm4'   // bump after re-running _watermark.py so browsers drop cached photos
+const src = p => encodeURI(DIR + p) + '?v=' + IMG_V
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+const fine = matchMedia('(pointer: fine)').matches
+const $ = s => document.querySelector(s)
+let lenis = null
+
+/* ─── Ticket chips (photos cut in the BAE logo silhouette) ───────── */
+let tkN = 0
+document.querySelectorAll('.chip').forEach(el => {
+  const id = 'tkc' + (tkN++)
+  const inner = el.dataset.img
+    ? `<image href="${src(el.dataset.img.replace(DIR,''))}" x="0" y="0" width="188" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})"/>`
+    : `<use href="#tk" fill="${el.dataset.fill === 'blue' ? '#0443F0' : '#FF1A0A'}"/>`
+  el.innerHTML = `<svg viewBox="-3 -3 194 106" aria-hidden="true"><clipPath id="${id}"><use href="#tk"/></clipPath>${inner}<use href="#tk" fill="none" stroke="#0A0A0A" stroke-width="5"/></svg>`
+})
+
+/* ─── Marquees ───────────────────────────────────────────────────── */
+const star = '<svg class="star"><use href="#star"/></svg>'
+const mq1 = P.map(p => `<span>${p.name}${p.tagline ? ` <em>/ ${p.tagline}</em>` : ''} ${star}</span>`).join('')
+$('#mq1').innerHTML = mq1 + mq1
+const mq2 = ['Architecture','Interior','Planning','Construction','Design & Build'].map(t => `<span>${t} ${star}</span>`).join('')
+$('#mq2').innerHTML = mq2 + mq2 + mq2 + mq2
+
+/* ─── Works grid ─────────────────────────────────────────────────── */
+const CATS = ['Residential','Housing','Commercial','Institutional']
+const STATE_LABEL = { done:'Completed', wip:'On going', idea:'Concept' }
+const grid = $('#grid')
+grid.innerHTML = P.map(p => `
+  <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
+    <span class="card-cat"><span class="pill">${p.cat}</span></span>
+    <span class="card-img"><img src="${src(p.imgs[0])}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
+    <span class="card-meta">
+      <span><span class="card-name" style="display:block">${p.name}</span>${p.tagline ? `<span class="card-tag" style="display:block">/ ${p.tagline}</span>` : ''}</span>
+      <span class="pill ${p.state}"><i></i>${STATE_LABEL[p.state]}</span>
+    </span>
+  </button>`).join('')
+
+const filters = $('#filters')
+filters.innerHTML = [['all','All',P.length], ...CATS.map(c => [c, c, P.filter(p => p.cat === c).length])]
+  .map(([k,l,n], i) => `<button class="fbtn${i ? '' : ' active'}" data-cat="${k}" aria-pressed="${!i}">${l}<sup>${n}</sup></button>`).join('')
+$('#workCount').textContent = '(' + P.length + ')'
+
+// bento rhythm: rows of 2 or 3 with alternating widths
+const ROWS = [[7,5],[4,4,4],[5,7],[4,4,4],[6,6]]
+function layout() {
+  const cards = [...grid.querySelectorAll('.card:not([hidden])')]
+  let i = 0, r = 0
+  while (i < cards.length) {
+    let row = ROWS[r++ % ROWS.length]
+    const left = cards.length - i
+    if (left < row.length) row = left === 1 ? [12] : left === 2 ? [6,6] : [4,4,4]
+    const h = row.length === 2 ? 'clamp(280px, 34vw, 560px)' : row.length === 1 ? 'clamp(300px, 42vw, 640px)' : 'clamp(240px, 26vw, 420px)'
+    row.forEach(span => { const c = cards[i++]; c.style.setProperty('--span', span); c.querySelector('.card-img').style.setProperty('--h', h) })
+  }
+}
+layout()
+
+filters.addEventListener('click', e => {
+  const b = e.target.closest('.fbtn'); if (!b) return
+  filters.querySelectorAll('.fbtn').forEach(x => { x.classList.toggle('active', x === b); x.setAttribute('aria-pressed', x === b) })
+  const cat = b.dataset.cat
+  grid.querySelectorAll('.card').forEach(c => c.hidden = cat !== 'all' && c.dataset.cat !== cat)
+  layout()
+  if (!reduce) gsap.fromTo(grid.querySelectorAll('.card:not([hidden])'), { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: .05, duration: .5, ease: 'power3.out', clearProps: 'transform,opacity' })
+  ScrollTrigger.refresh()
+})
+
+/* ─── Stats (counted from the portfolio data, not typed by hand) ─── */
+const COUNTS = {
+  projects: P.length,
+  done: P.filter(p => p.state === 'done').length,
+  wip: P.filter(p => p.state === 'wip').length,
+  types: new Set(P.map(p => p.cat)).size
+}
+document.querySelectorAll('[data-count]').forEach(el => el.textContent = COUNTS[el.dataset.count])
+
+/* ─── Modal ──────────────────────────────────────────────────────── */
+const pm = $('#pm')
+let sw = null, cur = -1, lastFocus = null
+
+function openProject(id, push = true) {
+  const idx = P.findIndex(p => p.id === id); if (idx < 0) return
+  const p = P[idx]; cur = idx
+  lastFocus = lastFocus || document.activeElement
+  $('#pm-cat').textContent = p.cat
+  $('#pm-name').textContent = p.name
+  $('#pm-tag').textContent = p.tagline ? '/ ' + p.tagline : ''
+  $('#pm-meta').innerHTML = `<div><small>Status</small><b>${p.status}</b></div>` + (p.role ? `<div><small>Role</small><b>${p.role}</b></div>` : '')
+  $('#pm-desc').textContent = p.desc
+  $('#pm-desc').hidden = !p.desc
+  $('#pm-slides').innerHTML = p.imgs.map((s, i) => `<div class="swiper-slide"><img src="${src(s)}" alt="${p.name}, photo ${i + 1}" ${i ? 'loading="lazy"' : ''}></div>`).join('')
+  const many = p.imgs.length > 1
+  $('#pm-prev').hidden = $('#pm-next').hidden = !many
+
+  pm.classList.add('open')
+  document.body.style.overflow = 'hidden'
+  lenis && lenis.stop()
+  if (push) history.replaceState(null, '', '#project-' + p.id)
+
+  if (sw) { sw.destroy(true, true); sw = null }
+  sw = new Swiper('.pm-swiper', {
+    loop: many, speed: 550, grabCursor: true, keyboard: { enabled: true },
+    navigation: many ? { prevEl: '#pm-prev', nextEl: '#pm-next' } : false,
+    on: { init: s => count(s.realIndex, p.imgs.length), slideChange: s => count(s.realIndex, p.imgs.length) }
+  })
+  if (!reduce) {
+    gsap.fromTo('.pm-info > *', { x: -24, opacity: 0 }, { x: 0, opacity: 1, stagger: .05, duration: .5, ease: 'power3.out' })
+    gsap.fromTo('.pm-gal', { opacity: 0, scale: .98 }, { opacity: 1, scale: 1, duration: .5, ease: 'power3.out' })
+  }
+  $('#pm-x').focus()
+}
+function count(i, n) { $('#pm-count').textContent = String(i + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0') }
+function closeProject() {
+  pm.classList.remove('open')
+  document.body.style.overflow = ''
+  lenis && lenis.start()
+  history.replaceState(null, '', location.pathname + location.search)
+  if (lastFocus) { lastFocus.focus({ preventScroll: true }); lastFocus = null }
+}
+grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) { lastFocus = c; openProject(c.dataset.id) } })
+$('#pm-x').addEventListener('click', closeProject)
+$('#pm-nextp').addEventListener('click', () => openProject(P[(cur + 1) % P.length].id))
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && pm.classList.contains('open')) closeProject() })
+if (location.hash.startsWith('#project-')) openProject(location.hash.slice(9), false)
+
+/* ─── Nav ────────────────────────────────────────────────────────── */
+const menu = $('#navMenu'), ham = $('#hamburger')
+ham.addEventListener('click', () => { const o = menu.classList.toggle('open'); ham.classList.toggle('open', o); ham.setAttribute('aria-expanded', o) })
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); ham.classList.remove('open'); ham.setAttribute('aria-expanded', false) }))
+$('#yr').textContent = new Date().getFullYear()
+
+/* email always opens Gmail compose in the browser (mailto does nothing without a mail app) */
+{
+  const q = new URL(document.querySelector('[data-email]').href.replace('mailto:', 'https://x/')).searchParams
+  const gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=bangunasa@bangunasaecos.com&su=' + encodeURIComponent(q.get('subject')) + '&body=' + encodeURIComponent(q.get('body'))
+  document.querySelectorAll('[data-email]').forEach(a => { a.href = gmail; a.target = '_blank'; a.rel = 'noopener' })
+}
+
+/* copyright deterrent: no right-click save / drag on project photos */
+document.addEventListener('contextmenu', e => { if (e.target.closest('.card-img, .pm-gal, .chip')) e.preventDefault() })
+document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG' || e.target.closest('.chip')) e.preventDefault() })
+
+/* little wink when the visitor switches tabs */
+const baseTitle = document.title
+document.addEventListener('visibilitychange', () => { document.title = document.hidden ? 'Come back, we are still building...' : baseTitle })
+
+/* ─── Smooth scroll + animations ─────────────────────────────────── */
+gsap.registerPlugin(ScrollTrigger, Draggable)
+if (!reduce) {
+  lenis = new Lenis()
+  lenis.on('scroll', ScrollTrigger.update)
+  gsap.ticker.add(t => lenis.raf(t * 1000))
+  gsap.ticker.lagSmoothing(0)
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href')); if (!t) return
+    e.preventDefault(); lenis.scrollTo(t, { offset: -70 })
+  }))
+}
+const nav = $('#nav')
+const onScroll = () => nav.classList.toggle('solid', scrollY > 40)
+addEventListener('scroll', onScroll, { passive: true }); onScroll()
+
+// draggable stickers
+Draggable.create('[data-drag]', { bounds: '#hero', inertia: false, onPress() { gsap.to(this.target, { scale: 1.08, rotate: gsap.utils.random(-12, 12), duration: .2 }) }, onRelease() { gsap.to(this.target, { scale: 1, duration: .4, ease: 'elastic.out(1,.4)' }) } })
+
+if (!reduce) {
+  // hero entrance
+  gsap.from('.hero-h .w, .hero-h .chip', { yPercent: 60, opacity: 0, stagger: .07, duration: .9, ease: 'power4.out', delay: .1, clearProps: 'transform,opacity' })
+  gsap.from('.hero-top .tag, .hero-bottom > *', { y: 20, opacity: 0, stagger: .08, duration: .7, ease: 'power3.out', delay: .5, clearProps: 'transform,opacity' })
+  gsap.from('.sticker', { scale: 0, rotate: -40, stagger: .12, duration: .9, ease: 'back.out(2)', delay: .8 })
+
+  // generic reveals (inline styles cleared after, so CSS hovers/rotations keep working)
+  gsap.utils.toArray('.rv').forEach(el => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true }, onComplete: () => { el.classList.remove('rv'); gsap.set(el, { clearProps: 'transform,opacity' }) } }))
+  ScrollTrigger.batch('.card', { start: 'top 92%', once: true, onEnter: b => gsap.from(b, { y: 50, opacity: 0, stagger: .08, duration: .8, ease: 'power3.out', clearProps: 'transform,opacity' }) })
+
+  // manifestos: words light up as you scroll
+  const wrapWords = node => [...node.childNodes].forEach(n => {
+    if (n.nodeType === 3) {
+      const f = document.createDocumentFragment()
+      n.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) f.append(t); else { const s = document.createElement('span'); s.className = 'qw'; s.textContent = t; f.append(s) } })
+      n.replaceWith(f)
+    } else if (n.nodeType === 1) { n.classList.add('qw') }
+  })
+  document.querySelectorAll('.quote').forEach(q => {
+    wrapWords(q)
+    gsap.to(q.querySelectorAll('.qw'), { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: q, start: 'top 80%', end: 'bottom 45%', scrub: true } })
+  })
+
+  // stat counters
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const n = COUNTS[el.dataset.count], o = { v: 0 }
+    el.textContent = 0
+    gsap.to(o, { v: n, duration: 1.4, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: () => el.textContent = Math.round(o.v) })
+  })
+
+  // marquees react to scroll speed
+  let skew = 0
+  ScrollTrigger.create({ onUpdate: s => { const v = gsap.utils.clamp(-8, 8, s.getVelocity() / 300); if (Math.abs(v) > Math.abs(skew)) { skew = v; gsap.to('.marquee span', { skewX: -skew, duration: .3, onComplete: () => { skew = 0; gsap.to('.marquee span', { skewX: 0, duration: .6 }) } }) } } })
+
+  // CTA heading slides in line by line
+  gsap.from('.cta-h', { y: 80, opacity: 0, duration: 1.1, ease: 'power4.out', scrollTrigger: { trigger: '#contact', start: 'top 75%', once: true } })
+}
+
+// "Open" pill follows the pointer over project cards
+if (fine) {
+  const f = $('#follow')
+  const xTo = gsap.quickTo(f, 'left', { duration: .35, ease: 'power3' }), yTo = gsap.quickTo(f, 'top', { duration: .35, ease: 'power3' })
+  addEventListener('mousemove', e => { xTo(e.clientX); yTo(e.clientY) }, { passive: true })
+  grid.addEventListener('mouseover', e => f.classList.toggle('on', !!e.target.closest('.card')))
+  grid.addEventListener('mouseleave', () => f.classList.remove('on'))
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "BAE - Bangun Asa Ekosistem",
+  "url": "https://bangunasaecos.com",
+  "copyrightHolder": { "@type": "Organization", "name": "PT. Bangun Asa Eksplorasi" },
+  "copyrightYear": 2025
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PT. Bangun Asa Ekosistem",
+  "alternateName": "BAE",
+  "description": "Design and Build company specializing in architecture and interior design across Indonesia.",
+  "url": "https://bangunasaecos.com",
+  "logo": "https://bangunasaecos.com/BAE%20LOGO%202.png",
+  "image": "https://bangunasaecos.com/00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg",
+  "telephone": "+6287880345945",
+  "email": "bangunasa@bangunasaecos.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bekasi", "addressRegion": "Jawa Barat", "addressCountry": "ID" },
+  "sameAs": ["https://www.instagram.com/baeconstruction___","https://www.instagram.com/andretecture"],
+  "foundingDate": "2025",
+  "areaServed": [{"@type":"Country","name":"Indonesia"}],
+  "knowsAbout": ["Architecture","Interior Design","Construction","Design and Build"]
+}
+</script>
+</body>
+</html>
