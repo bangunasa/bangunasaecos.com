@@ -51,7 +51,7 @@
     button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
     ::selection { background: var(--blue); color: #fff; }
     :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-    .card img, .pm-gal img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
+    .card img, .pm-gal img, .hero img, .about-img img { pointer-events: none; -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
     .wrap { padding-inline: var(--gut); max-width: 1600px; margin-inline: auto; }
 
     /* ── type ── */
@@ -225,7 +225,13 @@
     .pm-gal { position: relative; background: var(--bg-2); overflow: hidden; min-height: 0; }
     .pm-swiper { width: 100%; height: 100%; }
     .pm-swiper .swiper-slide { display: flex; align-items: center; justify-content: center; padding: clamp(16px, 3vw, 48px); }
+    .pm-swiper .swiper-slide { position: relative; }
     .pm-swiper .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    /* copyright line laid over the photo (not burned in), so it is the same size on every photo;
+       the photo is centred in its slide, so the slide's centre is the photo's centre */
+    .pm-swiper .swiper-slide::after { content: '© PT. Bangun Asa Eksplorasi'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; font-size: 13px; font-weight: 600; white-space: nowrap; color: rgba(255,255,255,.3); pointer-events: none; }
+    /* clear shield over the photo: right-click / long-press hits this, not the image, so there is no "Save image" */
+    .pm-swiper .swiper-slide::before { content: ''; position: absolute; inset: 0; z-index: 1; }
     .pm-nav { position: absolute; bottom: 24px; z-index: 5; width: 48px; height: 48px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; transition: background .2s, color .2s, border-color .2s; }
     .pm-nav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
     .pm-nav:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
@@ -514,7 +520,7 @@ const P = [
     desc:'',
     imgs:['HousingHousing/1.jpg'] }
 ]
-const IMG_V = 'wm11'   // keep in sync with index.html
+const IMG_V = 'wm13'   // keep in sync with index.html
 const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
 const card = p => src(p, 'card')   // 4:3 crop with its own corner mark
 const srcset = p => src(p, 700) + ' 700w, ' + src(p, 1200) + ' 1200w, ' + src(p) + ' 1920w'
@@ -578,8 +584,7 @@ const HERO_MS = 6000
 const heroImgs = HERO.map((h, i) => {
   const im = new Image()
   im.alt = P.find(p => p.id === h.id).name + ', project by BAE'
-  // clean slides (no burned-in mark), made by _watermark.py for the HERO list only
-  im.sizes = '100vw'; im.srcset = src(h.f, 'hero1200') + ' 1200w, ' + src(h.f, 'hero1920') + ' 1920w'; im.src = src(h.f, 'hero1200')
+  im.sizes = '100vw'; im.srcset = srcset(h.f); im.src = src(h.f, 1200)
   if (i) im.loading = 'lazy'; else im.fetchPriority = 'high'
   $('#heroImgs').append(im); return im
 })
@@ -655,6 +660,7 @@ $('#yr').textContent = new Date().getFullYear()
 /* copyright deterrent: no right-click save / drag on photos */
 document.addEventListener('contextmenu', e => { if (e.target.closest('.card-img, .pm-gal, .about-img, .hero')) e.preventDefault() })
 document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault() })
+document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') e.preventDefault() })   // no "Save page"
 
 </script>
 
