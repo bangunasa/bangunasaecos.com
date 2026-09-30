@@ -1,6 +1,8 @@
 *.zip
 .claude/
 
-_foto-asli/
+# originals (full-res, unmarked) stay local; only the generated _web folder is published
+/Image Project/*
+!/Image Project/_web/
 _watermark.py
 

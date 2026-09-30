@@ -16,13 +16,13 @@
   <meta property="og:url" content="https://bangunasaecos.com/">
   <meta property="og:title" content="BAE - Bangun Asa Ekosistem | Design &amp; Build Indonesia">
   <meta property="og:description" content="Design and Build company in Indonesia. Architecture, interior design, and construction.">
-  <meta property="og:image" content="https://bangunasaecos.com/00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg">
+  <meta property="og:image" content="https://bangunasaecos.com/Image%20Project/_web/Strozzi/1P5A4175-HDR-Pano.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="BAE - Bangun Asa Ekosistem">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BAE - Bangun Asa Ekosistem | Design &amp; Build Indonesia">
   <meta name="twitter:description" content="Design and Build company in Indonesia. Architecture, interior design, and construction.">
-  <meta name="twitter:image" content="https://bangunasaecos.com/00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg">
+  <meta name="twitter:image" content="https://bangunasaecos.com/Image%20Project/_web/Strozzi/1P5A4175-HDR-Pano.jpg">
   <link rel="icon" type="image/png" sizes="any" href="BAE%20LOGO%202.png">
   <link rel="apple-touch-icon" href="BAE%20LOGO%202.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +98,9 @@
     .nav-menu a.on { color: var(--ink); border-bottom-color: var(--ink); }
     .pg-h { font-size: clamp(2.2rem, 4.4vw, 4rem); font-weight: 600; line-height: 1.05; letter-spacing: -.03em; max-width: 18ch; margin-top: 14px; }
     .pg-lead { margin-top: 18px; max-width: 56ch; }
+
+    /* headings break into even lines, no lone word on the last line */
+    .pg-h, .cta-h, .hero h1, .pm-name { text-wrap: balance; }
 
     /* ── hero (Works tab only) ── */
     .hero { position: relative; height: calc(88svh - var(--nav-h)); min-height: 440px; overflow: hidden; background: #222; color: #fff; }
@@ -248,11 +251,28 @@
       .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .card, .card.big { grid-column: span 1; }
       .card.big:first-child { grid-column: span 2; }
-      .proc { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+      /* all five steps on one row, a bit tighter */
+      .ps { padding-right: 14px; }
+      .ps p { font-size: .85rem; }
       .contact-grid { grid-template-columns: 1fr 1fr; }
-      #pm.open { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-      .pm-info { border-right: 0; border-bottom: 1px solid var(--line); max-height: 48svh; padding: calc(16px + env(safe-area-inset-top, 0px)) 20px 18px; gap: 14px; }
-      .pm-foot { display: none; }
+
+      /* project view on phones and tablets: one scrolling column,
+         Close bar on top, photo at full width, details underneath */
+      #pm.open { display: flex; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+      .pm-info { display: contents; }
+      .pm-bar { order: 0; position: sticky; top: 0; z-index: 6; background: #fff; padding: calc(12px + env(safe-area-inset-top, 0px)) var(--gut) 12px; border-bottom: 1px solid var(--line); }
+      .pm-gal { order: 1; flex: none; }
+      .pm-swiper { height: auto; }
+      .pm-swiper .swiper-slide { height: auto; padding: 0; }
+      .pm-swiper .swiper-slide img { width: 100%; height: auto; max-height: 75svh; }
+      .pm-info > :not(.pm-bar) { order: 2; margin-inline: var(--gut); }
+      .pm-name { margin-top: 24px; }
+      .pm-meta { margin-top: 18px; }
+      .pm-desc { margin-top: 18px; }
+      .pm-legal { margin-top: 14px; }
+      .pm-foot { margin-top: 24px; margin-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+      .pm-nav { bottom: 12px; width: 44px; height: 44px; }
+      #pm-next { right: 12px; } #pm-prev { right: 62px; }
     }
     @media (max-width: 640px) {
       :root { --nav-h: 64px; }
@@ -271,7 +291,10 @@
       .fbtn { white-space: nowrap; flex-shrink: 0; }
       .sec-head > div:first-child { width: 100%; }
       .hero-in > div:last-child { text-align: left; }
-      #pm-prev { right: 72px; } .pm-nav { bottom: 16px; }
+      .intro-t { font-size: 1.25rem; }
+      /* darker from mid-photo down, so the headline stays readable over bright ceilings and sky */
+      .hero { height: calc(80svh - var(--nav-h)); }
+      .hero::after { background: linear-gradient(180deg, rgba(0,0,0,.05) 20%, rgba(0,0,0,.72) 78%); }
     }
   </style>
 </head>
@@ -466,7 +489,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
 <script>
 /* ─── Project data (same as the live site) ───────────────────────── */
-const DIR = '00-Photoshoot/'
+const DIR = 'Image Project/_web/'
 const P = [
   { id:'strozzi', name:'Strozzi', cat:'Residential', state:'done', status:'Completed 2025', role:'Design',
     desc:'A home with a warm and inviting atmosphere, one that allows its residents to enjoy life, discover comfort, and even create their own. The spaces are wrapped with functional cabinetry, while a thoughtful palette reinforces a deep sense of warmth. Subtle shifts in volume shape intimate corners and generous moments, crafting a distinct spatial experience in every part of the house.',
@@ -520,11 +543,12 @@ const P = [
     desc:'',
     imgs:['HousingHousing/1.jpg'] }
 ]
-const IMG_V = 'wm13'   // keep in sync with index.html
+const IMG_V = 'wm14'   // keep in sync with index.html
 const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
 const card = p => src(p, 'card')   // 4:3 crop with its own corner mark
 const srcset = p => src(p, 700) + ' 700w, ' + src(p, 1200) + ' 1200w, ' + src(p) + ' 1920w'
 const $ = s => document.querySelector(s)
+const stacked = matchMedia('(max-width: 1000px)').matches   // project view as one scrolling column
 
 /* ─── Tabs: the hash picks the page (#works, #about, #services, #contact) ── */
 const VIEWS = ['works','about','services','contact']
@@ -626,8 +650,11 @@ function openProject(id, push = true) {
   sw = new Swiper('.pm-swiper', {
     loop: many, speed: 500, keyboard: { enabled: true },
     navigation: many ? { prevEl: '#pm-prev', nextEl: '#pm-next' } : false,
+    autoHeight: stacked,   // phones/tablets: the gallery takes each photo's own height
     on: { init: s => count(s.realIndex, p.imgs.length), slideChange: s => count(s.realIndex, p.imgs.length) }
   })
+  if (stacked) $('#pm-slides').querySelectorAll('img').forEach(i => i.addEventListener('load', () => sw && sw.updateAutoHeight(0)))
+  pm.scrollTop = 0
   $('#pm-x').focus()
 }
 function count(i, n) { $('#pm-count').textContent = String(i + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0') }
@@ -683,7 +710,7 @@ document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.ke
   "description": "Design and Build company specializing in architecture and interior design across Indonesia.",
   "url": "https://bangunasaecos.com",
   "logo": "https://bangunasaecos.com/BAE%20LOGO%202.png",
-  "image": "https://bangunasaecos.com/00-Photoshoot/Strozzi/1P5A4175-HDR-Pano.jpg",
+  "image": "https://bangunasaecos.com/Image%20Project/_web/Strozzi/1P5A4175-HDR-Pano.jpg",
   "telephone": "+6287880345945",
   "email": "bangunasa@bangunasaecos.com",
   "address": { "@type": "PostalAddress", "addressLocality": "Bekasi", "addressRegion": "Jawa Barat", "addressCountry": "ID" },
