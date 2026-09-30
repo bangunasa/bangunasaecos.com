@@ -297,6 +297,9 @@
       .hero-in > div:last-child { text-align: left; }
       .hero .label { margin-bottom: 10px; }
       .intro-t { font-size: 1.25rem; }
+      /* phones: status right after the project name, same gap on every card (Andreas) */
+      .card-meta { grid-template-columns: auto 1fr; column-gap: 12px; }
+      .card-st { justify-self: start; }
       /* darker from mid-photo down, so the headline stays readable over bright ceilings and sky */
       .hero { height: calc(80svh - var(--nav-h)); }
       .hero::after { background: linear-gradient(180deg, rgba(0,0,0,.05) 20%, rgba(0,0,0,.72) 78%); }
