@@ -143,10 +143,12 @@
     .card-img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #E6E6E2; }
     .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
     .card:hover .card-img img { transform: scale(1.03); }
-    .card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-top: 16px; }
+    /* name | status on one line (status right-aligned, centred on the name), category below */
+    .card-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 16px; row-gap: 4px; padding-top: 16px; }
+    .card-sub { grid-column: 1 / -1; }
     .card-name { font-size: clamp(1.1rem, 1.4vw, 1.3rem); font-weight: 600; letter-spacing: -.01em; line-height: 1.2; }
-    .card-sub { font-size: .85rem; color: var(--muted); margin-top: 4px; }
-    .card-st { font-size: .78rem; font-weight: 500; color: var(--ink-2); white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; padding-top: 4px; }
+    .card-sub { font-size: .85rem; color: var(--muted); }
+    .card-st { font-size: .78rem; font-weight: 500; color: var(--ink-2); white-space: nowrap; display: inline-flex; align-items: center; justify-self: end; gap: 7px; }
     .card-st i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
     .card-st.done i { background: var(--ink); }
     .card-st.wip i { background: var(--blue); }
@@ -290,7 +292,10 @@
       .filters::-webkit-scrollbar { display: none; }
       .fbtn { white-space: nowrap; flex-shrink: 0; }
       .sec-head > div:first-child { width: 100%; }
+      /* all hero text sits together at the bottom: label, headline, then the project link */
+      .hero-in { flex-direction: column; justify-content: flex-end; align-items: flex-start; flex-wrap: nowrap; gap: 22px; padding-bottom: 28px; }
       .hero-in > div:last-child { text-align: left; }
+      .hero .label { margin-bottom: 10px; }
       .intro-t { font-size: 1.25rem; }
       /* darker from mid-photo down, so the headline stays readable over bright ceilings and sky */
       .hero { height: calc(80svh - var(--nav-h)); }
@@ -571,8 +576,9 @@ grid.innerHTML = P.map(p => `
   <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
     <span class="card-img"><img src="${card(p.imgs[0])}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
     <span class="card-meta">
-      <span><span class="card-name" style="display:block">${p.name}</span><span class="card-sub" style="display:block">${p.cat}${p.role ? ' &middot; ' + p.role : ''}</span></span>
+      <span class="card-name">${p.name}</span>
       <span class="card-st ${p.state}"><i></i>${STATE_LABEL[p.state]}</span>
+      <span class="card-sub">${p.cat}${p.role ? ' &middot; ' + p.role : ''}</span>
     </span>
   </button>`).join('')
 
