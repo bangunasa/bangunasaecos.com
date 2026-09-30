@@ -297,9 +297,14 @@
       .hero-in > div:last-child { text-align: left; }
       .hero .label { margin-bottom: 10px; }
       .intro-t { font-size: 1.25rem; }
-      /* phones: status right after the project name, same gap on every card (Andreas) */
-      .card-meta { grid-template-columns: auto 1fr; column-gap: 12px; }
-      .card-st { justify-self: start; }
+      /* phones: status flush with the photo's right edge on every card; the dot goes after the
+         word so dot and text end line up exactly whatever the label length (Andreas) */
+      .card-st { flex-direction: row-reverse; justify-self: end; }
+      .ps { padding-bottom: 26px; }
+      .ps:last-child { padding-bottom: 0; }
+      .founders { margin-top: 56px; }
+      .ft-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .ft-links { flex-direction: column; gap: 6px; }
       /* darker from mid-photo down, so the headline stays readable over bright ceilings and sky */
       .hero { height: calc(80svh - var(--nav-h)); }
       .hero::after { background: linear-gradient(180deg, rgba(0,0,0,.05) 20%, rgba(0,0,0,.72) 78%); }
