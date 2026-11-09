@@ -525,28 +525,28 @@ const P = [
   { id:'kg', name:'KG', cat:'Residential', state:'done', status:'Completed 2026', role:'Design & Build',
     desc:'An apartment transformed into a place of retreat, where every spatial component is optimized into a functional and purposeful space.',
     imgs:['KG/KGC-DSC05717.jpg','KG/KGC-DSC05381.jpg','KG/KGC-DSC05387.jpg','KG/KGC-DSC05595.jpg','KG/KGC-DSC05602.jpg','KG/KGC-DSC05603.jpg','KG/KGC-DSC05750.jpg','KG/KGC-DSC05804.jpg','KG/KGC-DSC05811.jpg','KG/KGC-DSC05827.jpg','KG/KGC-DSC05828.jpg','KG/KGC-DSC05844.jpg','KG/KGC-DSC05904.jpg'] },
-  { id:'tacondo', name:'TA Condo', cat:'Residential', state:'wip', status:'Ongoing', role:'Design & Build',
+  { id:'tacondo', name:'TA Condo', cat:'Residential', state:'wip', status:'Ongoing construction', role:'Design & Build',
     desc:'A condominium apartment conceived with a deliberate avoidance of sharp corners, favoring curved elements to shape its spatial and formal language. The design emphasizes a minimalist and modern expression, where fluid geometries are articulated with restraint to create a calm, refined identity.',
     imgs:['TA Condo/1.jpg','TA Condo/2.jpg','TA Condo/8.jpg','TA Condo/9.jpg','TA Condo/10.jpg'] },
   { id:'padel', name:'Padel Club', cat:'Commercial', state:'idea', status:'Conceptual', role:'Design',
     desc:'By lifting the main program upward, the building allows the lower level to operate more efficiently for operational needs while reducing its impact on the surrounding context. The facade is conceived as a critical interface, designed to capture public attention and define the identity of this commercial architecture.',
     imgs:['Padel Club/1.jpg','Padel Club/2.jpg','Padel Club/3.jpg','Padel Club/8.jpg','Padel Club/13.jpg'] },
-  { id:'bednco', name:'Bed n Co', cat:'Commercial', state:'wip', status:'Ongoing', role:'',
+  { id:'bednco', name:'Bed n Co', cat:'Commercial', state:'wip', status:'Ongoing construction', role:'',
     desc:'A composition of stacked building masses developed through an architectural massing study, in which each floor accommodates distinct functional programs. The building operates as a spatial framework for a multi-brand furniture company, while articulating an expression that balances warmth and monumentality.',
     imgs:['Bed n Co/1.jpg','Bed n Co/2.jpg'] },
-  { id:'piktwo', name:'PIK Two', cat:'Residential', state:'wip', status:'Ongoing', role:'Design & Build',
+  { id:'piktwo', name:'PIK Two', cat:'Residential', state:'idea', status:'Conceptual', role:'Design & Build',
     desc:'The house is articulated through layers of panels that sheath the interior spaces, bringing vitality to the architecture, while the color palette is curated to convey a subtle masculine character.',
     imgs:['PIK two/2.jpg','PIK two/3.jpg','PIK two/5.jpg'] },
-  { id:'bekasiboarding', name:'Bekasi Boarding', cat:'Housing', state:'wip', status:'Ongoing', role:'Design & Build',
+  { id:'bekasiboarding', name:'Bekasi Boarding', cat:'Housing', state:'wip', status:'Ongoing construction', role:'Design & Build',
     desc:'A boarding house set within a green and tranquil setting, conceived as a gentle place to rest. Soft white tones shape the architecture, creating a light, clean, and bright atmosphere that feels calm and welcoming, allowing the building to sit quietly within its natural surroundings.',
     imgs:['Bekasi Boarding/1.jpg'] },
-  { id:'wangsa', name:'The Wangsa', cat:'Housing', state:'wip', status:'Ongoing', role:'Design',
+  { id:'wangsa', name:'The Wangsa', cat:'Masterplanning', state:'wip', status:'Ongoing construction', role:'Design', area:'2.6 ha',
     desc:'A gated housing cluster in Singkawang, where rows of two-storey homes face quiet internal streets, set apart from the main road by a perimeter wall. Pitched roofs and a restrained palette give the neighbourhood a calm and unified character, while a shared pool at the corner offers residents a place to gather.',
     imgs:['The Wangsa/1.jpg'] },
   { id:'grawisa', name:'Grawisa', cat:'Residential', state:'wip', status:'Ongoing', role:'',
     desc:'Three families living under one roof, each bringing its own character into a single building.',
     imgs:['Grawisa/3.jpg','Grawisa/7.jpg'] },
-  { id:'chouse', name:'C House', cat:'Residential', state:'wip', status:'Ongoing', role:'Design',
+  { id:'chouse', name:'C House', cat:'Residential', state:'wip', status:'Ongoing construction', role:'Design',
     desc:'Driven by the owner\'s dissatisfaction with the existing condition, the house was transformed through renovation, expanding its spatial capacity and embracing a more contemporary material expression.',
     imgs:['C House/1.jpg'] },
   { id:'rrrhouse', name:'rrr House', cat:'Residential', state:'idea', status:'Conceptual', role:'Design',
@@ -555,9 +555,12 @@ const P = [
   { id:'housingh', name:'HousingHousing', cat:'Housing', state:'idea', status:'Conceptual, ongoing', role:'',
     desc:'',
     imgs:['HousingHousing/1.jpg'] },
-  { id:'java', name:'Somewhere in Java', cat:'Housing', state:'idea', status:'Conceptual', role:'',
+  { id:'java', name:'Somewhere in Java', cat:'Masterplanning', state:'idea', status:'Conceptual', role:'', area:'1.57 ha',
     desc:'A housing concept that brings the warmth of village life into a planned neighbourhood. Clusters of pitched-roof homes are set along green-edged streets, while the edge of the site opens into a shared landscape of pavilions, a pool, and a greenhouse, a common ground for the community. A row of shophouses at the entrance welcomes everyday life into the neighbourhood.',
-    imgs:['Somewhere in Java/1.jpg'] }
+    imgs:['Somewhere in Java/1.jpg'] },
+  { id:'townhouse', name:'Town House in Singkawang', cat:'Housing', state:'idea', status:'Conceptual', role:'Design',
+    desc:'A compact cluster of ten two-storey townhouses gathered around a single private lane. Each home is framed by a clean white volume and a sheltered carport, while a gated entrance keeps the lane quiet and safe for the families within.',
+    imgs:['Town House in Singkawang/1.jpg'] }
 ]
 const IMG_V = 'wm14'   // keep in sync with index.html
 const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
@@ -580,7 +583,7 @@ addEventListener('hashchange', () => { if (!location.hash.startsWith('#project-'
 show()
 
 /* ─── Works grid ── */
-const CATS = ['Residential','Housing','Commercial','Institutional']
+const CATS = ['Residential','Housing','Masterplanning','Commercial','Institutional']
 const STATE_LABEL = { done:'Completed', wip:'Ongoing', idea:'Concept' }
 const grid = $('#grid')
 grid.innerHTML = P.map(p => `
@@ -654,7 +657,7 @@ function openProject(id, push = true) {
   lastFocus = lastFocus || document.activeElement
   $('#pm-cat').textContent = p.cat
   $('#pm-name').textContent = p.name
-  $('#pm-meta').innerHTML = `<div><small>Category</small><b>${p.cat}</b></div><div><small>Status</small><b>${p.status}</b></div>` + (p.role ? `<div><small>Scope</small><b>${p.role}</b></div>` : '')
+  $('#pm-meta').innerHTML = `<div><small>Category</small><b>${p.cat}</b></div><div><small>Status</small><b>${p.status}</b></div>` + (p.role ? `<div><small>Scope</small><b>${p.role}</b></div>` : '') + (p.area ? `<div><small>Site area</small><b>${p.area}</b></div>` : '')
   $('#pm-desc').textContent = p.desc
   $('#pm-desc').hidden = !p.desc
   $('#pm-slides').innerHTML = p.imgs.map((s, i) => `<div class="swiper-slide"><img src="${src(s, 1200)}" srcset="${srcset(s)}" sizes="(max-width: 1000px) 100vw, 70vw" alt="${p.name}, photo ${i + 1}" ${i ? 'loading="lazy"' : ''}></div>`).join('')
