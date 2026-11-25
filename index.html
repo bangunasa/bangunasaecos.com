@@ -243,8 +243,54 @@
     #pm-prev { right: 80px; }
     #pm-next { right: 24px; }
 
+    /* ── index: every project as one sortable list, each row opens in place ── */
+    .ix-count { font-size: .9rem; font-weight: 500; color: var(--muted); }
+    .ix { border-top: 1px solid var(--ink); }
+    .ix-h, .ix-r { display: grid; grid-template-columns: 44px minmax(0, 2.4fr) minmax(0, 1.3fr) minmax(0, 1.1fr) minmax(0, 1.4fr) 32px; gap: 20px; align-items: center; }
+    .ix-no { font-size: .85rem; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .ix-h { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .ix-h button { text-align: left; font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; transition: color .2s; }
+    .ix-h button:hover, .ix-h button.on { color: var(--ink); }
+    .ix-h button i { font-style: normal; font-size: .8rem; letter-spacing: 0; visibility: hidden; }
+    .ix-h button.on i { visibility: visible; }
+    .ix-r { width: 100%; text-align: left; padding: 18px 0; border-bottom: 1px solid var(--line); font-size: .92rem; color: var(--ink-2); transition: background .2s; }
+    .ix-n { font-size: clamp(1.05rem, 1.3vw, 1.2rem); font-weight: 600; letter-spacing: -.01em; color: var(--ink); transition: color .2s; }
+    .ix-n small { display: none; font-size: .82rem; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+    .ix-r:hover .ix-n { color: var(--blue); }
+    .ix-st { display: inline-flex; align-items: center; gap: 7px; }
+    .ix-st i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); flex: none; }
+    .ix-st.done i { background: var(--ink); }
+    .ix-st.wip i, .ix-st.build i { background: var(--blue); }
+    .ix-st.idea i { background: transparent; border: 1.5px solid var(--muted); }
+    .ix-pl { justify-self: end; width: 22px; height: 22px; position: relative; }
+    .ix-pl::before, .ix-pl::after { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 1.5px; background: var(--ink); transform: translate(-50%, -50%); transition: transform .3s; }
+    .ix-pl::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .ix-it.open .ix-pl::after { transform: translate(-50%, -50%) rotate(0deg); }
+    .ix-it.open .ix-r { border-bottom-color: transparent; }
+    .ix-d { display: none; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); padding: 6px 0 32px; border-bottom: 1px solid var(--line); }
+    .ix-it.open .ix-d { display: grid; animation: vin .35s ease both; }
+    .ix-th { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #E6E6E2; position: relative; }
+    .ix-th img { width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; user-select: none; }
+    .ix-th::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+    .ix-tx { display: flex; flex-direction: column; gap: 18px; max-width: 62ch; }
+    .ix-tx p { color: var(--ink-2); line-height: 1.65; }
+    .ix-tx .ix-meta { font-size: .85rem; color: var(--muted); }
+    .ix-go { align-self: flex-start; font-size: .9rem; font-weight: 600; display: inline-flex; gap: 8px; align-items: center; padding-bottom: 3px; border-bottom: 1px solid var(--ink); transition: color .2s, border-color .2s; }
+    .ix-go:hover { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* ── project icons ── */
+    .pi { display: inline-block; flex: none; }
+    .card-pi { width: 20px; height: 20px; vertical-align: -3px; margin-right: 10px; }
+    .ix-pi { width: 22px; height: 22px; vertical-align: -4px; margin-right: 12px; }
+    .ix-n small { padding-left: 34px; }
+    .pm-icon { display: block; margin-top: 8px; line-height: 0; }
+    .pm-icon .pi { width: 48px; height: 48px; }
+    .pm-icon + .pm-name { margin-top: -6px; }
+
     /* ── responsive ── */
     @media (max-width: 1000px) {
+      .ix-h, .ix-r { grid-template-columns: 40px minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1.5fr) 28px; }
+      .ix .ix-sc { display: none; }
       .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px var(--gut) 16px; }
       .nav-menu.open { display: flex; }
       .nav-menu a { display: block; padding: 14px 0; font-size: 1rem; border-bottom: 1px solid var(--line); }
@@ -269,6 +315,8 @@
       .pm-swiper .swiper-slide img { width: 100%; height: auto; max-height: 75svh; }
       .pm-info > :not(.pm-bar) { order: 2; margin-inline: var(--gut); }
       .pm-name { margin-top: 24px; }
+      .pm-icon { margin-top: 24px; }
+      .pm-icon + .pm-name { margin-top: 14px; }
       .pm-meta { margin-top: 18px; }
       .pm-desc { margin-top: 18px; }
       .pm-legal { margin-top: 14px; }
@@ -291,6 +339,12 @@
       .filters { gap: 22px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gut) * -1); padding-inline: var(--gut); width: calc(100% + var(--gut) * 2); }
       .filters::-webkit-scrollbar { display: none; }
       .fbtn { white-space: nowrap; flex-shrink: 0; }
+      /* index on phones: name (with category underneath), status, + */
+      .ix-h, .ix-r { grid-template-columns: 30px minmax(0, 1fr) auto 24px; gap: 12px; }
+      .ix-r .ix-no { align-self: start; padding-top: 4px; }
+      .ix .ix-ca { display: none; }
+      .ix-n small { display: block; }
+      .ix-d { grid-template-columns: 1fr; gap: 18px; }
       .sec-head > div:first-child { width: 100%; }
       /* all hero text sits together at the bottom: label, headline, then the project link */
       .hero-in { flex-direction: column; justify-content: flex-end; align-items: flex-start; flex-wrap: nowrap; gap: 22px; padding-bottom: 28px; }
@@ -319,6 +373,7 @@
     </a>
     <ul class="nav-menu" id="navMenu">
       <li><a href="#works">Works</a></li>
+      <li><a href="#index">Index</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -356,6 +411,29 @@
 </section>
 
 <!-- ABOUT -->
+<!-- INDEX -->
+<section id="index" class="view sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="pg-h">Index</h2>
+      </div>
+      <p class="ix-count" id="ixCount"></p>
+    </div>
+    <div class="ix" role="table" aria-label="All projects">
+      <div class="ix-h" role="row" id="ixHead">
+        <button data-k="no" role="columnheader">No. <i></i></button>
+        <button data-k="name" role="columnheader">Project <i></i></button>
+        <button data-k="cat" class="ix-ca" role="columnheader">Category <i></i></button>
+        <button data-k="role" class="ix-sc" role="columnheader">Scope <i></i></button>
+        <button data-k="state" role="columnheader">Status <i></i></button>
+        <span></span>
+      </div>
+      <div id="ixList"></div>
+    </div>
+  </div>
+</section>
+
 <section id="about" class="view sec">
   <div class="wrap">
     <p class="label">About BAE</p>
@@ -479,6 +557,7 @@
       <button class="pm-x" id="pm-x" aria-label="Close project">Close
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
+    <span class="pm-icon" id="pm-icon"></span>
     <h2 class="pm-name" id="pm-name"></h2>
     <div class="pm-meta" id="pm-meta"></div>
     <p class="pm-desc" id="pm-desc"></p>
@@ -562,6 +641,53 @@ const P = [
     desc:'A compact cluster of ten two-storey townhouses gathered around a single private lane. Each home is framed by a clean white volume and a sheltered carport, while a gated entrance keeps the lane quiet and safe for the families within.',
     imgs:['Town House in Singkawang/1.jpg'] }
 ]
+/* Project icons: one simple pictogram per project, drawn from the project's key form or idea.
+   48x48 viewBox, ink only (currentColor), so they follow the text colour wherever they sit. */
+const ICONS = {
+  // vertical wood slats wrapping the room + the stone island
+  strozzi: '<path d="M7 6h3v36H7zM14 6h3v36h-3zM21 6h3v36h-3z"/><rect x="29" y="27" width="13" height="15"/>',
+  // white box over a row of fins, breeze-block wall beside it
+  bekasi: '<rect x="6" y="6" width="22" height="20"/><path d="M6 30h3v12H6zM12 30h3v12h-3zM18 30h3v12h-3zM24 30h3v12h-3z"/><path d="M32 16h4v4h-4zM38 16h4v4h-4zM32 23h4v4h-4zM38 23h4v4h-4zM32 30h4v4h-4zM38 30h4v4h-4zM32 37h4v4h-4zM38 37h4v4h-4z"/>',
+  // stepped, folded ceiling layers
+  schoolhall: '<g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M4 15 13 7h22l9 8"/><path d="M9 25l8-7h14l8 7"/><path d="M14 35l7-6h6l7 6"/></g><rect x="4" y="40" width="40" height="3"/>',
+  // tall glass doors beside a dark column
+  sunter: '<g fill="none" stroke="currentColor" stroke-width="3"><rect x="6.5" y="6.5" width="10" height="35"/><rect x="19.5" y="6.5" width="10" height="35"/></g><rect x="33" y="5" width="9" height="38"/>',
+  // arched niche over a checkered floor
+  fayt: '<path d="M12 28V18a12 12 0 0 1 24 0v10z"/><path d="M6 31h6v6H6zM18 31h6v6h-6zM30 31h6v6h-6zM12 37h6v6h-6zM24 37h6v6h-6zM36 37h6v6h-6z"/>',
+  // stacked slabs holding one strong box
+  jhouse: '<path d="M4 11h32v3H4zM10 25h34v3H10zM4 39h40v3H4z"/><rect x="15" y="14" width="17" height="11"/>',
+  // one soft, curved edge
+  honolulu: '<path d="M6 42V22A16 16 0 0 1 22 6h20v8H22a8 8 0 0 0-8 8v20z"/>',
+  // arched mirror and the glow line at its foot
+  kg: '<path d="M15.5 35.5v-21a8.5 8.5 0 0 1 17 0v21z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M6 41.5h36" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M10 37.5h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/>',
+  // no sharp corners
+  tacondo: '<rect x="5.5" y="5.5" width="37" height="37" rx="14" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 33c0-10 8-18 18-18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
+  // the main program lifted up, the ground left free
+  padel: '<path d="M6 26V16L24 6l18 10v10z"/><path d="M9 26h3v12H9zM36 26h3v12h-3z"/><rect x="4" y="38" width="40" height="4"/>',
+  // stacked, shifted masses on an arched base
+  bednco: '<rect x="14" y="4" width="24" height="9"/><rect x="8" y="16" width="26" height="9"/><path d="M6 28h36v14h-5v-5a4 4 0 0 0-8 0v5h-3v-5a4 4 0 0 0-8 0v5h-3v-5a4 4 0 0 0-8 0v5H6z"/>',
+  // layers of panels sheathing the rooms
+  piktwo: '<g fill="none" stroke="currentColor" stroke-width="3"><path d="M6.5 42V6.5H36"/><path d="M13.5 42V13.5H42"/></g><rect x="20" y="20" width="22" height="22"/>',
+  // white block with window frames pushed out
+  bekasiboarding: '<rect x="14" y="6" width="28" height="36"/><g fill="#fff" stroke="currentColor" stroke-width="3"><rect x="6.5" y="11.5" width="15" height="10"/><rect x="6.5" y="26.5" width="15" height="10"/></g>',
+  // rows of homes inside a perimeter wall, pool in the corner
+  wangsa: '<rect x="4.5" y="4.5" width="39" height="39" fill="none" stroke="currentColor" stroke-width="3"/><path d="M10 10h5v6h-5zM17 10h5v6h-5zM24 10h5v6h-5zM31 10h5v6h-5zM10 21h5v6h-5zM17 21h5v6h-5zM24 21h5v6h-5zM31 21h5v6h-5zM10 32h5v6h-5zM17 32h5v6h-5zM24 32h5v6h-5z"/><rect x="31.5" y="32.5" width="7" height="6" fill="none" stroke="currentColor" stroke-width="2"/>',
+  // three families, one roof
+  grawisa: '<rect x="4" y="6" width="40" height="3"/><rect x="6" y="18" width="10" height="24"/><rect x="19" y="12" width="10" height="30"/><rect x="32" y="22" width="10" height="20"/>',
+  // the existing house (dashed) and what the renovation adds
+  chouse: '<rect x="6.5" y="20.5" width="17" height="21" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="4 3"/><rect x="20" y="7" width="22" height="26"/><path d="M27 7h2v26h-2zM34 7h2v26h-2z" fill="#fff"/>',
+  // robust, solid masses under a heavy roof
+  rrrhouse: '<rect x="12" y="6" width="30" height="6"/><path d="M6 42V16h18v8h18v18z"/>',
+  // the same unit, repeated
+  housingh: '<path d="M5 8h3v34H5zM17 8h3v34h-3zM29 8h3v34h-3zM41 8h3v34h-3z"/><path d="M9 16h7v26H9zM21 16h7v26h-7zM33 16h7v26h-7z" opacity=".35"/>',
+  // village roofs gathered around a shared green
+  java: '<path d="M4 42V32l6-6 6 6v10zM18 42V32l6-6 6 6v10zM11 23V13l6-6 6 6v10z"/><circle cx="36" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="33" y="34" width="9" height="8"/>',
+  // ten homes facing one private lane, gate at its end
+  townhouse: '<path d="M8 6h6v11H8zM16 6h6v11h-6zM24 6h6v11h-6zM32 6h6v11h-6zM40 6h5v11h-5zM8 31h6v11H8zM16 31h6v11h-6zM24 31h6v11h-6zM32 31h6v11h-6zM40 31h5v11h-5z"/><path d="M8 24h37" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/><path d="M3 19h2v10H3z"/>'
+}
+const icon = (id, cls = 'pi') => ICONS[id]
+  ? `<svg class="${cls}" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">${ICONS[id]}</svg>`
+  : ''
 const IMG_V = 'wm14'   // keep in sync with index.html
 const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
 const card = p => src(p, 'card')   // 4:3 crop with its own corner mark
@@ -570,7 +696,7 @@ const $ = s => document.querySelector(s)
 const stacked = matchMedia('(max-width: 1000px)').matches   // project view as one scrolling column
 
 /* ─── Tabs: the hash picks the page (#works, #about, #services, #contact) ── */
-const VIEWS = ['works','about','services','contact']
+const VIEWS = ['works','index','about','services','contact']
 function show() {
   const h = location.hash.slice(1)
   const v = VIEWS.includes(h) ? h : 'works'
@@ -590,7 +716,7 @@ grid.innerHTML = P.map(p => `
   <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
     <span class="card-img"><img src="${card(p.imgs[0])}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
     <span class="card-meta">
-      <span class="card-name">${p.name}</span>
+      <span class="card-name">${icon(p.id, 'pi card-pi')}${p.name}</span>
       <span class="card-st ${p.state}"><i></i>${STATE_LABEL[p.state]}</span>
       <span class="card-sub">${p.cat}${p.role ? ' &middot; ' + p.role : ''}</span>
     </span>
@@ -614,6 +740,66 @@ filters.addEventListener('click', e => {
   const cat = b.dataset.cat
   grid.querySelectorAll('.card').forEach(c => c.hidden = cat !== 'all' && c.dataset.cat !== cat)
   layout()
+})
+
+/* ─── Index: all projects in one list, sortable, each row opens in place ── */
+const STATE_ORDER = { done:0, build:1, wip:2, idea:3 }
+const ixList = $('#ixList')
+let ixKey = '', ixDir = 1
+function ixRender() {
+  const rows = P.map((p, i) => ({ p, i }))
+  if (ixKey) rows.sort((a, b) => {
+    const A = a.p, B = b.p
+    const v = ixKey === 'no'    ? a.i - b.i
+            : ixKey === 'state' ? STATE_ORDER[A.state] - STATE_ORDER[B.state]
+            : String(A[ixKey] || '~').localeCompare(String(B[ixKey] || '~'))
+    return (v || a.i - b.i) * ixDir
+  })
+  // the number belongs to the project (its place in P), so it stays the same whichever way the list is sorted
+  ixList.innerHTML = rows.map(({ p, i }) => `
+    <div class="ix-it" role="row" data-id="${p.id}">
+      <button class="ix-r" aria-expanded="false">
+        <span class="ix-no">${String(i + 1).padStart(2, '0')}</span>
+        <span class="ix-n">${icon(p.id, 'pi ix-pi')}${p.name}<small>${p.cat}</small></span>
+        <span class="ix-ca">${p.cat}</span>
+        <span class="ix-sc">${p.role || '-'}</span>
+        <span class="ix-st ${p.state}"><i></i>${STATE_LABEL[p.state]}</span>
+        <span class="ix-pl" aria-hidden="true"></span>
+      </button>
+      <div class="ix-d">
+        <span class="ix-th"><img data-src="${card(p.imgs[0])}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE"></span>
+        <div class="ix-tx">
+          ${p.desc ? `<p>${p.desc}</p>` : ''}
+          <span class="ix-meta">${[p.cat, p.role, p.area ? 'Site area ' + p.area : '', p.status].filter(Boolean).join(' &middot; ')}</span>
+          <button class="ix-go" data-open="${p.id}">View project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
+        </div>
+      </div>
+    </div>`).join('')
+  $('#ixHead').querySelectorAll('button').forEach(b => {
+    const on = b.dataset.k === ixKey
+    b.classList.toggle('on', on)
+    b.querySelector('i').textContent = on ? (ixDir > 0 ? '↑' : '↓') : ''
+  })
+}
+$('#ixCount').textContent = P.length + ' projects'
+ixRender()
+$('#ixHead').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return
+  // first click sorts ascending, second descending, third back to the default order
+  if (ixKey !== b.dataset.k) { ixKey = b.dataset.k; ixDir = 1 }
+  else if (ixDir > 0) ixDir = -1
+  else { ixKey = ''; ixDir = 1 }
+  ixRender()
+})
+ixList.addEventListener('click', e => {
+  const go = e.target.closest('.ix-go')
+  if (go) { lastFocus = go; returnView = 'index'; openProject(go.dataset.open); return }
+  const r = e.target.closest('.ix-r'); if (!r) return
+  const it = r.parentElement, open = !it.classList.contains('open')
+  it.classList.toggle('open', open); r.setAttribute('aria-expanded', open)
+  const im = it.querySelector('img[data-src]')
+  if (open && im) { im.src = im.dataset.src; im.removeAttribute('data-src') }   // load the photo only when the row opens
 })
 
 /* ─── Hero photo ── */
@@ -650,13 +836,14 @@ $('#heroCap').addEventListener('click', e => { lastFocus = e.currentTarget; clea
 
 /* ─── Modal ── */
 const pm = $('#pm')
-let sw = null, cur = -1, lastFocus = null
+let sw = null, cur = -1, lastFocus = null, returnView = 'works'
 function openProject(id, push = true) {
   const idx = P.findIndex(p => p.id === id); if (idx < 0) return
   const p = P[idx]; cur = idx
   lastFocus = lastFocus || document.activeElement
   $('#pm-cat').textContent = p.cat
   $('#pm-name').textContent = p.name
+  $('#pm-icon').innerHTML = icon(p.id, 'pi')
   $('#pm-meta').innerHTML = `<div><small>Category</small><b>${p.cat}</b></div><div><small>Status</small><b>${p.status}</b></div>` + (p.role ? `<div><small>Scope</small><b>${p.role}</b></div>` : '') + (p.area ? `<div><small>Site area</small><b>${p.area}</b></div>` : '')
   $('#pm-desc').textContent = p.desc
   $('#pm-desc').hidden = !p.desc
@@ -682,7 +869,8 @@ function closeProject() {
   typeof heroRun === 'function' && heroRun()
   pm.classList.remove('open')
   document.body.style.overflow = ''
-  history.replaceState(null, '', '#works')
+  history.replaceState(null, '', '#' + returnView)   // back to the tab the project was opened from
+  returnView = 'works'
   if (lastFocus) { lastFocus.focus({ preventScroll: true }); lastFocus = null }
 }
 grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) { lastFocus = c; openProject(c.dataset.id) } })
@@ -705,7 +893,7 @@ $('#yr').textContent = new Date().getFullYear()
 }
 
 /* copyright deterrent: no right-click save / drag on photos */
-document.addEventListener('contextmenu', e => { if (e.target.closest('.card-img, .pm-gal, .about-img, .hero')) e.preventDefault() })
+document.addEventListener('contextmenu', e => { if (e.target.closest('.card-img, .pm-gal, .about-img, .hero, .ix-th')) e.preventDefault() })
 document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault() })
 document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') e.preventDefault() })   // no "Save page"
 
