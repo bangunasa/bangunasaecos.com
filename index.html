@@ -232,9 +232,6 @@
     .pm-swiper .swiper-slide { display: flex; align-items: center; justify-content: center; padding: clamp(16px, 3vw, 48px); }
     .pm-swiper .swiper-slide { position: relative; }
     .pm-swiper .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    /* copyright line laid over the photo (not burned in), so it is the same size on every photo;
-       the photo is centred in its slide, so the slide's centre is the photo's centre */
-    .pm-swiper .swiper-slide::after { content: '© PT. Bangun Asa Eksplorasi'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; font-size: 13px; font-weight: 600; white-space: nowrap; color: rgba(255,255,255,.3); pointer-events: none; }
     /* clear shield over the photo: right-click / long-press hits this, not the image, so there is no "Save image" */
     .pm-swiper .swiper-slide::before { content: ''; position: absolute; inset: 0; z-index: 1; }
     .pm-nav { position: absolute; bottom: 24px; z-index: 5; width: 48px; height: 48px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; transition: background .2s, color .2s, border-color .2s; }
@@ -688,7 +685,7 @@ const ICONS = {
 const icon = (id, cls = 'pi') => ICONS[id]
   ? `<svg class="${cls}" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">${ICONS[id]}</svg>`
   : ''
-const IMG_V = 'wm14'   // keep in sync with index.html
+const IMG_V = 'wm15'   // bump when the photos are regenerated, so browsers fetch the new files
 const src = (p, w) => encodeURI(DIR + (w ? '_' + w + '/' : '') + p) + '?v=' + IMG_V
 const card = p => src(p, 'card')   // 4:3 crop with its own corner mark
 const srcset = p => src(p, 700) + ' 700w, ' + src(p, 1200) + ' 1200w, ' + src(p) + ' 1920w'
