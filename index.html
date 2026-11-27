@@ -213,7 +213,10 @@
     .eco-strip .wrap { display: grid; grid-template-columns: 1.1fr 2fr 2fr; }
     .es-lead { padding: 26px 24px 26px 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
     .es-lead .label { margin-bottom: 6px; }
-    .es-lead b { font-size: 1.05rem; font-weight: 700; letter-spacing: -.01em; }
+    .es-lead b { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
+    @media (min-width: 1001px) {   /* the group cell reads as the parent: a quiet grey panel, like the ribbon on phones */
+      .es-lead { background: var(--bg-2); padding-left: var(--gut); margin-left: calc(-1 * var(--gut)); }
+    }
     .es-dv { display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-right: 1px solid var(--line); transition: background .2s; }
     .es-dv:last-child { border-right: 0; }
     .es-dv:hover { background: var(--bg-2); }
@@ -228,17 +231,18 @@
     .es-box { width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center; }
     .es-dv .es-box img.es-wide, .dv .es-box img.es-wide { width: 48px; height: auto; border-radius: 0; }
     @media (max-width: 1000px) {
-      .eco-strip .wrap { grid-template-columns: 1fr 1fr; column-gap: 12px; padding-block: 20px 24px; }
-      .es-lead { grid-column: 1 / -1; border: 0; padding: 0 0 14px; gap: 10px; }
-      .es-eco { height: 26px; }
-      .es-lead b { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-      .es-dv { position: relative; flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 14px 18px; border: 1px solid var(--line); }
-      .es-dv:last-child { border-right: 1px solid var(--line); }
-      .es-dv svg { position: absolute; top: 14px; right: 12px; margin: 0; }
-      .es-dv img, .es-dv .es-box { width: 40px; height: 40px; }
-      .es-dv .es-box img.es-wide { width: 40px; }
-      .es-n { font-size: clamp(.78rem, 3.4vw, .95rem); letter-spacing: 0; }
-      .es-r { font-size: .74rem; line-height: 1.4; }
+      /* phone/tablet: the group is a ribbon of its own, the studios an editorial list under it (no boxes) */
+      .eco-strip .wrap { grid-template-columns: 1fr 1fr; column-gap: 16px; padding-block: 0 4px; }
+      .es-lead { grid-column: 1 / -1; border: 0; gap: 12px; margin: 0 calc(-1 * var(--gut)); padding: 14px var(--gut); background: var(--bg-2); border-bottom: 1px solid var(--line); }
+      .es-eco { height: 30px; }
+      .es-lead b { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
+      .es-dv { flex-direction: row; align-items: center; gap: 10px; padding: 14px 0; border: 0; }
+      .es-dv:hover { background: none; }
+      .es-dv svg, .es-more { display: none; }
+      .es-dv img, .es-dv .es-box { width: 26px; height: 26px; }
+      .es-dv .es-box img.es-wide { width: 26px; }
+      .es-n { font-size: clamp(.64rem, 3vw, .84rem); font-weight: 700; letter-spacing: .01em; line-height: 1.2; white-space: nowrap; }
+      .es-r { font-size: .72rem; line-height: 1.3; margin-top: 1px; }
     }
 
     /* ── services ── */
@@ -474,8 +478,8 @@
   <div class="eco-strip">
     <div class="wrap">
       <div class="es-lead"><img class="es-eco" src="ekosistem-logo.png" alt="The BAE Ecosystem logo"><div><b>The BAE Ecosystem</b></div></div>
-      <a class="es-dv" href="https://instagram.com/andretecture" target="_blank" rel="noopener"><img src="andretecture-logo.png" alt="ANDRETECTURE logo"><div><div class="es-n">ANDRETECTURE</div><div class="es-r">Design studio &middot; Architecture, Interior, Master Planning</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      <a class="es-dv" href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener"><span class="es-box"><img class="es-wide" src="bae-construction-logo.png" alt="BAE Construction logo"></span><div><div class="es-n">BAE CONSTRUCTION</div><div class="es-r">Construction division &middot; Build only, Design &amp; Build</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="es-dv" href="https://instagram.com/andretecture" target="_blank" rel="noopener"><img src="andretecture-logo.png" alt="ANDRETECTURE logo"><div><div class="es-n">ANDRETECTURE</div><div class="es-r">Design studio<span class="es-more"> &middot; Architecture, Interior, Master Planning</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="es-dv" href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener"><span class="es-box"><img class="es-wide" src="bae-construction-logo.png" alt="BAE Construction logo"></span><div><div class="es-n">BAE CONSTRUCTION</div><div class="es-r">Construction<span class="es-more"> division &middot; Build only, Design &amp; Build</span></div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
     </div>
   </div>
   <div class="wrap">
