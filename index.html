@@ -143,6 +143,20 @@
     .card-img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #E6E6E2; }
     .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
     .card:hover .card-img img { transform: scale(1.03); }
+    /* swipeable photos on a card: scroll-snap strip, arrows on hover (mouse), dots */
+    .card-img { position: relative; }
+    .cg { display: flex; width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+    .cg::-webkit-scrollbar { display: none; }
+    .cg img { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+    .card:hover .cg img { transform: none; }   /* no hover zoom in a strip: it would show a sliver of the next photo */
+    .cg-nav { position: absolute; top: 50%; z-index: 2; width: 34px; height: 34px; margin-top: -17px; border-radius: 50%; background: rgba(255,255,255,.94); color: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,.18); opacity: 0; transition: opacity .2s, transform .2s; cursor: pointer; }
+    .cg-prev { left: 10px; } .cg-next { right: 10px; }
+    .card:hover .cg-nav, .card:focus-visible .cg-nav { opacity: 1; }
+    .cg-nav:hover { transform: scale(1.08); }
+    .cg-dots { position: absolute; left: 50%; bottom: 10px; z-index: 2; transform: translateX(-50%); display: flex; gap: 5px; pointer-events: none; }
+    .cg-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 0 3px rgba(0,0,0,.35); transition: background .2s, transform .2s; }
+    .cg-dots i.on { background: #fff; transform: scale(1.25); }
+    @media (hover: none) { .cg-nav { display: none; } }
     /* name | status on one line (status right-aligned, centred on the name), category below */
     .card-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 16px; row-gap: 4px; padding-top: 16px; }
     .card-sub { grid-column: 1 / -1; }
@@ -214,10 +228,17 @@
     .es-box { width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center; }
     .es-dv .es-box img.es-wide, .dv .es-box img.es-wide { width: 48px; height: auto; border-radius: 0; }
     @media (max-width: 1000px) {
-      .eco-strip .wrap { grid-template-columns: 1fr; }
-      .es-lead { border-right: 0; border-bottom: 1px solid var(--line); padding: 20px 0; }
-      .es-dv { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .es-dv:last-child { border-bottom: 0; }
+      .eco-strip .wrap { grid-template-columns: 1fr 1fr; column-gap: 12px; padding-block: 20px 24px; }
+      .es-lead { grid-column: 1 / -1; border: 0; padding: 0 0 14px; gap: 10px; }
+      .es-eco { height: 26px; }
+      .es-lead b { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+      .es-dv { position: relative; flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 14px 18px; border: 1px solid var(--line); }
+      .es-dv:last-child { border-right: 1px solid var(--line); }
+      .es-dv svg { position: absolute; top: 14px; right: 12px; margin: 0; }
+      .es-dv img, .es-dv .es-box { width: 40px; height: 40px; }
+      .es-dv .es-box img.es-wide { width: 40px; }
+      .es-n { font-size: clamp(.78rem, 3.4vw, .95rem); letter-spacing: 0; }
+      .es-r { font-size: .74rem; line-height: 1.4; }
     }
 
     /* ── services ── */
@@ -278,12 +299,14 @@
     .pm-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line); }
     .pm-count { font-size: .85rem; font-weight: 600; font-variant-numeric: tabular-nums; }
     .pm-nextp { font-size: .9rem; font-weight: 600; display: inline-flex; gap: 8px; align-items: center; }
-    .pm-nextp:hover { color: var(--blue); }
+    .pm-nextp:hover, .pm-prevp:hover { color: var(--blue); }
+    .pm-prevp { font-size: .9rem; font-weight: 600; display: inline-flex; gap: 8px; align-items: center; }
+    .pm-pn { display: inline-flex; gap: 22px; align-items: center; }
     .pm-gal { position: relative; background: var(--bg-2); overflow: hidden; min-height: 0; }
     .pm-swiper { width: 100%; height: 100%; }
     .pm-swiper .swiper-slide { display: flex; align-items: center; justify-content: center; padding: clamp(16px, 3vw, 48px); }
     .pm-swiper .swiper-slide { position: relative; }
-    .pm-swiper .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .pm-swiper .swiper-slide img, .pm-swiper .swiper-slide video { max-width: 100%; max-height: 100%; object-fit: contain; }
     /* clear shield over the photo: right-click / long-press hits this, not the image, so there is no "Save image" */
     .pm-swiper .swiper-slide::before { content: ''; position: absolute; inset: 0; z-index: 1; }
     .pm-nav { position: absolute; bottom: 24px; z-index: 5; width: 48px; height: 48px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; transition: background .2s, color .2s, border-color .2s; }
@@ -361,7 +384,7 @@
       .pm-gal { order: 1; flex: none; }
       .pm-swiper { height: auto; }
       .pm-swiper .swiper-slide { height: auto; padding: 0; }
-      .pm-swiper .swiper-slide img { width: 100%; height: auto; max-height: 75svh; }
+      .pm-swiper .swiper-slide img, .pm-swiper .swiper-slide video { width: 100%; height: auto; max-height: 75svh; }
       .pm-info > :not(.pm-bar) { order: 2; margin-inline: var(--gut); }
       .pm-name { margin-top: 24px; }
       .pm-icon { margin-top: 24px; }
@@ -639,11 +662,14 @@
     <h2 class="pm-name" id="pm-name"></h2>
     <div class="pm-meta" id="pm-meta"></div>
     <p class="pm-desc" id="pm-desc"></p>
-    <p class="pm-legal">&copy; PT. Bangun Asa Eksplorasi. Photos and design may not be used without permission.</p>
+    <p class="pm-legal">&copy; PT. Bangun Asa Eksplorasi. Photos and design may not be used without permission.<span id="pm-credit"></span></p>
     <div class="pm-foot">
       <span class="pm-count" id="pm-count"></span>
-      <button class="pm-nextp" id="pm-nextp">Next project
+      <span class="pm-pn">
+        <button class="pm-prevp" id="pm-prevp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Previous</button>
+        <button class="pm-nextp" id="pm-nextp">Next project
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </span>
     </div>
   </div>
   <div class="pm-gal">
@@ -688,7 +714,7 @@ const P = [
   { id:'padel', name:'Padel Club', cat:'Commercial', state:'idea', status:'Conceptual', role:'Design',
     desc:'By lifting the main program upward, the building allows the lower level to operate more efficiently for operational needs while reducing its impact on the surrounding context. The facade is conceived as a critical interface, designed to capture public attention and define the identity of this commercial architecture.',
     imgs:['Padel Club/1.jpg','Padel Club/2.jpg','Padel Club/3.jpg','Padel Club/8.jpg','Padel Club/13.jpg'] },
-  { id:'bednco', name:'Bed n Co', cat:'Commercial', state:'build', status:'Ongoing construction', role:'',
+  { id:'bednco', name:'Bed n Co', cat:'Commercial', state:'build', status:'Ongoing construction', role:'Design',
     desc:'A composition of stacked building masses developed through an architectural massing study, in which each floor accommodates distinct functional programs. The building operates as a spatial framework for a multi-brand furniture company, while articulating an expression that balances warmth and monumentality.',
     imgs:['Bed n Co/1.jpg','Bed n Co/2.jpg'] },
   { id:'piktwo', name:'PIK Two', cat:'Residential', state:'idea', status:'Conceptual', role:'Design & Build',
@@ -700,7 +726,7 @@ const P = [
   { id:'wangsa', name:'The Wangsa', cat:'Masterplanning', state:'build', status:'Ongoing construction', role:'Design', area:'2.6 ha',
     desc:'A gated housing cluster in Singkawang, where rows of two-storey homes face quiet internal streets, set apart from the main road by a perimeter wall. Pitched roofs and a restrained palette give the neighbourhood a calm and unified character, while a shared pool at the corner offers residents a place to gather.',
     imgs:['The Wangsa/1.jpg'] },
-  { id:'grawisa', name:'Grawisa', cat:'Residential', state:'wip', status:'Ongoing', role:'',
+  { id:'grawisa', name:'Grawisa', cat:'Residential', state:'wip', status:'In design', role:'Design',
     desc:'Three families living under one roof, each bringing its own character into a single building.',
     imgs:['Grawisa/3.jpg','Grawisa/7.jpg'] },
   { id:'chouse', name:'C House', cat:'Residential', state:'build', status:'Ongoing construction', role:'Design',
@@ -709,15 +735,18 @@ const P = [
   { id:'rrrhouse', name:'rrr House', cat:'Residential', state:'idea', status:'Conceptual', role:'Design',
     desc:'A renovated house redefined with a modern architectural language, emphasizing a robust and solid presence.',
     imgs:['rrr House/6.jpg','rrr House/A.jpg','rrr House/3.jpg'] },
-  { id:'housingh', name:'HousingHousing', cat:'Housing', state:'idea', status:'Conceptual, ongoing', role:'',
+  { id:'housingh', name:'HousingHousing', cat:'Housing', state:'idea', status:'Conceptual, ongoing', role:'Design',
     desc:'',
     imgs:['HousingHousing/1.jpg'] },
-  { id:'java', name:'Somewhere in Java', cat:'Masterplanning', state:'idea', status:'Conceptual', role:'', area:'1.57 ha',
+  { id:'java', name:'Somewhere in Java', cat:'Masterplanning', state:'idea', status:'Conceptual', role:'Design', area:'1.57 ha',
     desc:'A housing concept that brings the warmth of village life into a planned neighbourhood. Clusters of pitched-roof homes are set along green-edged streets, while the edge of the site opens into a shared landscape of pavilions, a pool, and a greenhouse, a common ground for the community. A row of shophouses at the entrance welcomes everyday life into the neighbourhood.',
     imgs:['Somewhere in Java/1.jpg'] },
   { id:'townhouse', name:'Town House in Singkawang', cat:'Housing', state:'idea', status:'Conceptual', role:'Design',
     desc:'A compact cluster of ten two-storey townhouses gathered around a single private lane. Each home is framed by a clean white volume and a sheltered carport, while a gated entrance keeps the lane quiet and safe for the families within.',
-    imgs:['Town House in Singkawang/1.jpg'] }
+    imgs:['Town House in Singkawang/1.jpg'] },
+  { id:'musifork', name:'The Musi Fork', cat:'Housing', state:'wip', status:'In design', role:'Design',
+    desc:'A boarding house in Palembang, a city that grew on water. The plan borrows the meeting of two rivers: two rows of rooms start out straight, then one steps inward toward the street, the way a river bends to join another. The gaps this leaves bring daylight down to the ground and let the breeze move through the middle of the building, while a round terracotta stair marks the meeting point at the entrance.', credit:'River map data © OpenStreetMap contributors',
+    imgs:['The Musi Fork/1.jpg', 'The Musi Fork/2.mp4', 'The Musi Fork/3.jpg', 'The Musi Fork/4.jpg', 'The Musi Fork/5.jpg', 'The Musi Fork/6.jpg', 'The Musi Fork/7.jpg'] }
 ]
 /* Project icons: one simple pictogram per project, drawn from the project's key form or idea.
    48x48 viewBox, ink only (currentColor), so they follow the text colour wherever they sit. */
@@ -761,6 +790,7 @@ const ICONS = {
   // village roofs gathered around a shared green
   java: '<path d="M4 42V32l6-6 6 6v10zM18 42V32l6-6 6 6v10zM11 23V13l6-6 6 6v10z"/><circle cx="36" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><rect x="33" y="34" width="9" height="8"/>',
   // ten homes facing one private lane, gate at its end
+  musifork: '<rect x="7" y="6" width="10" height="36"/><path d="M31 6h10v12h-3v12h-3v12H25V30h3V18h3z"/>',
   townhouse: '<path d="M8 6h6v11H8zM16 6h6v11h-6zM24 6h6v11h-6zM32 6h6v11h-6zM40 6h5v11h-5zM8 31h6v11H8zM16 31h6v11h-6zM24 31h6v11h-6zM32 31h6v11h-6zM40 31h5v11h-5z"/><path d="M8 24h37" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/><path d="M3 19h2v10H3z"/>'
 }
 const icon = (id, cls = 'pi') => ICONS[id]
@@ -788,11 +818,21 @@ show()
 
 /* ─── Works grid ── */
 const CATS = ['Residential','Housing','Masterplanning','Commercial','Institutional']
-const STATE_LABEL = { done:'Completed', build:'Ongoing construction', wip:'Ongoing', idea:'Concept' }
+const STATE_LABEL = { done:'Completed', build:'Ongoing construction', wip:'In design', idea:'Concept' }
 const grid = $('#grid')
+const ARW = d => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="${d}"/></svg>`
+function cardGallery(p) {
+  const pics = p.imgs.map((s, i) => [s, i]).filter(([s]) => !/\.mp4$/i.test(s)).slice(0, 6)   // a taste on the card; the full set is in the project view
+  const imgs = pics.map(([s, i], k) => `<img src="${card(s)}" data-i="${i}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE${k ? ', photo ' + (k + 1) : ''}" loading="lazy" decoding="async">`).join('')
+  if (pics.length < 2) return imgs
+  return `<span class="cg">${imgs}</span>`
+    + `<span class="cg-nav cg-prev" role="button" aria-label="Previous photo">${ARW('M15 18l-6-6 6-6')}</span>`
+    + `<span class="cg-nav cg-next" role="button" aria-label="Next photo">${ARW('M9 18l6-6-6-6')}</span>`
+    + `<span class="cg-dots">${pics.map((_, k) => `<i${k ? '' : ' class="on"'}></i>`).join('')}</span>`
+}
 grid.innerHTML = P.map(p => `
   <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
-    <span class="card-img"><img src="${card(p.imgs[0])}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE" loading="lazy" decoding="async"></span>
+    <span class="card-img">${cardGallery(p)}</span>
     <span class="card-meta">
       <span class="card-name">${icon(p.id, 'pi card-pi')}${p.name}</span>
       <span class="card-st ${p.state}"><i></i>${STATE_LABEL[p.state]}</span>
@@ -800,6 +840,17 @@ grid.innerHTML = P.map(p => `
     </span>
   </button>`).join('')
 
+grid.querySelectorAll('.card-img').forEach(ci => {
+  const g = ci.querySelector('.cg'); if (!g) return
+  const dots = [...ci.querySelectorAll('.cg-dots i')], n = dots.length
+  const at = () => Math.round(g.scrollLeft / g.clientWidth)
+  g.addEventListener('scroll', () => requestAnimationFrame(() => { const i = at(); dots.forEach((d, k) => d.classList.toggle('on', k === i)) }), { passive: true })
+  ci.querySelectorAll('.cg-nav').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation(); e.preventDefault()
+    const i = (at() + (b.classList.contains('cg-next') ? 1 : -1) + n) % n
+    g.scrollTo({ left: i * g.clientWidth, behavior: 'smooth' })
+  }))
+})
 const filters = $('#filters')
 filters.innerHTML = [['all','All',P.length], ...CATS.map(c => [c, c, P.filter(p => p.cat === c).length])]
   .map(([k,l,n], i) => `<button class="fbtn${i ? '' : ' active'}" data-cat="${k}" aria-pressed="${!i}">${l}<sup>${n}</sup></button>`).join('')
@@ -915,7 +966,7 @@ $('#heroCap').addEventListener('click', e => { lastFocus = e.currentTarget; clea
 /* ─── Modal ── */
 const pm = $('#pm')
 let sw = null, cur = -1, lastFocus = null, returnView = 'works'
-function openProject(id, push = true) {
+function openProject(id, push = true, start = 0) {
   const idx = P.findIndex(p => p.id === id); if (idx < 0) return
   const p = P[idx]; cur = idx
   lastFocus = lastFocus || document.activeElement
@@ -925,7 +976,10 @@ function openProject(id, push = true) {
   $('#pm-meta').innerHTML = `<div><small>Category</small><b>${p.cat}</b></div><div><small>Status</small><b>${p.status}</b></div>` + (p.role ? `<div><small>Scope</small><b>${p.role}</b></div>` : '') + (p.area ? `<div><small>Site area</small><b>${p.area}</b></div>` : '')
   $('#pm-desc').textContent = p.desc
   $('#pm-desc').hidden = !p.desc
-  $('#pm-slides').innerHTML = p.imgs.map((s, i) => `<div class="swiper-slide"><img src="${src(s, 1200)}" srcset="${srcset(s)}" sizes="(max-width: 1000px) 100vw, 70vw" alt="${p.name}, photo ${i + 1}" ${i ? 'loading="lazy"' : ''}></div>`).join('')
+  $('#pm-credit').textContent = p.credit ? ' ' + p.credit + '.' : ''
+  $('#pm-slides').innerHTML = p.imgs.map((s, i) => /\.mp4$/i.test(s)
+    ? `<div class="swiper-slide"><video src="${src(s)}" poster="${src(s.replace(/\.mp4$/i, '-poster.jpg'))}" autoplay muted loop playsinline preload="metadata" aria-label="${p.name}, diagram animation" controlslist="nodownload" disablepictureinpicture></video></div>`
+    : `<div class="swiper-slide"><img src="${src(s, 1200)}" srcset="${srcset(s)}" sizes="(max-width: 1000px) 100vw, 70vw" alt="${p.name}, photo ${i + 1}" ${i ? 'loading="lazy"' : ''}></div>`).join('')
   const many = p.imgs.length > 1
   $('#pm-prev').hidden = $('#pm-next').hidden = !many
   pm.classList.add('open')
@@ -933,7 +987,7 @@ function openProject(id, push = true) {
   if (push) history.replaceState(null, '', '#project-' + p.id)
   if (sw) { sw.destroy(true, true); sw = null }
   sw = new Swiper('.pm-swiper', {
-    loop: many, speed: 500, keyboard: { enabled: true },
+    loop: many, speed: 500, keyboard: { enabled: true }, initialSlide: start,
     navigation: many ? { prevEl: '#pm-prev', nextEl: '#pm-next' } : false,
     autoHeight: stacked,   // phones/tablets: the gallery takes each photo's own height
     on: { init: s => count(s.realIndex, p.imgs.length), slideChange: s => count(s.realIndex, p.imgs.length) }
@@ -951,9 +1005,16 @@ function closeProject() {
   returnView = 'works'
   if (lastFocus) { lastFocus.focus({ preventScroll: true }); lastFocus = null }
 }
-grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) { lastFocus = c; openProject(c.dataset.id) } })
+grid.addEventListener('click', e => {
+  const c = e.target.closest('.card'); if (!c) return
+  lastFocus = c
+  const g = c.querySelector('.cg'); let start = 0
+  if (g) { const im = g.querySelectorAll('img')[Math.round(g.scrollLeft / g.clientWidth)]; start = im ? +im.dataset.i : 0 }
+  openProject(c.dataset.id, true, start)
+})
 $('#pm-x').addEventListener('click', closeProject)
 $('#pm-nextp').addEventListener('click', () => openProject(P[(cur + 1) % P.length].id))
+$('#pm-prevp').addEventListener('click', () => openProject(P[(cur - 1 + P.length) % P.length].id))
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && pm.classList.contains('open')) closeProject() })
 if (location.hash.startsWith('#project-')) openProject(location.hash.slice(9), false)
 
