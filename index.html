@@ -213,11 +213,12 @@
 
     /* ── ecosystem strip (home) ── */
     .eco-strip { border-bottom: 1px solid var(--line); }
-    .eco-strip .wrap { display: grid; grid-template-columns: 1.1fr 2fr 2fr; }
-    .es-lead { padding: 26px 24px 26px 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+    .eco-strip .wrap { display: flex; flex-wrap: wrap; }   /* header row on top, studios share the width equally: room to grow */
+    .es-lead { flex: 0 0 100%; grid-column: 1 / -1; padding: 16px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+    .es-lead + .es-dv { padding-left: 0; }
     .es-lead .label { margin-bottom: 6px; }
     .es-lead b { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
-    .es-dv { display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-right: 1px solid var(--line); transition: background .2s; }
+    .es-dv { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-right: 1px solid var(--line); transition: background .2s; }
     .es-dv:last-child { border-right: 0; }
     .es-dv:hover { background: var(--bg-2); }
     .es-dv img, .es-dv .dv-mark { width: 48px; height: 48px; border-radius: 50%; flex: none; }
@@ -227,13 +228,13 @@
     .es-dv:hover svg { color: var(--blue); transform: translate(2px,-2px); }
     .es-dv.ph .es-n { color: var(--muted); }
     .es-lead { flex-direction: row !important; align-items: center; justify-content: flex-start !important; gap: 14px; }
-    .es-eco { height: 52px; width: auto; flex: none; }
+    .es-eco { height: 32px; width: auto; flex: none; }
     .es-box { width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center; }
     .es-dv .es-box img.es-wide, .dv .es-box img.es-wide { width: 48px; height: auto; border-radius: 0; }
     @media (max-width: 1000px) {
       /* phone/tablet: the group is a ribbon of its own, the studios an editorial list under it (no boxes) */
-      .eco-strip .wrap { grid-template-columns: 1fr 1fr; column-gap: 16px; padding-block: 0 4px; }
-      .es-lead { grid-column: 1 / -1; border: 0; gap: 12px; margin: 0 calc(-1 * var(--gut)); padding: 14px var(--gut); background: var(--bg-2); border-bottom: 1px solid var(--line); }
+      .eco-strip .wrap { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; padding-block: 0 4px; }
+      .es-lead { grid-column: 1 / -1; border: 0; gap: 12px; margin: 0 calc(-1 * var(--gut)); padding: 14px var(--gut); border-bottom: 1px solid var(--line); }
       .es-eco { height: 30px; }
       .es-lead b { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
       .es-dv { flex-direction: row; align-items: center; gap: 10px; padding: 14px 0; border: 0; }
