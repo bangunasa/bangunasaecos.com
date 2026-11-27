@@ -145,9 +145,10 @@
     .card:hover .card-img img { transform: scale(1.03); }
     /* swipeable photos on a card: scroll-snap strip, arrows on hover (mouse), dots */
     .card-img { position: relative; }
-    .cg { display: flex; width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+    .cg { display: flex; gap: 10px; background: #fff; width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
     .cg::-webkit-scrollbar { display: none; }
-    .cg img { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+    .cg img, .cg video { flex: 0 0 100%; width: 100%; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+    .cg video { object-fit: contain; background: #fff; pointer-events: none; }   /* portrait diagram film sits whole on white */
     .card:hover .cg img { transform: none; }   /* no hover zoom in a strip: it would show a sliver of the next photo */
     .cg-nav { position: absolute; top: 50%; z-index: 2; width: 34px; height: 34px; margin-top: -17px; border-radius: 50%; background: rgba(255,255,255,.94); color: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,.18); opacity: 0; transition: opacity .2s, transform .2s; cursor: pointer; }
     .cg-prev { left: 10px; } .cg-next { right: 10px; }
@@ -156,6 +157,8 @@
     .cg-dots { position: absolute; left: 50%; bottom: 10px; z-index: 2; transform: translateX(-50%); display: flex; gap: 5px; pointer-events: none; }
     .cg-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 0 3px rgba(0,0,0,.35); transition: background .2s, transform .2s; }
     .cg-dots i.on { background: #fff; transform: scale(1.25); }
+    .on-vid .cg-dots i { background: rgba(0,0,0,.18); box-shadow: none; }
+    .on-vid .cg-dots i.on { background: var(--ink); }
     @media (hover: none) { .cg-nav { display: none; } }
     /* name | status on one line (status right-aligned, centred on the name), category below */
     .card-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 16px; row-gap: 4px; padding-top: 16px; }
@@ -215,7 +218,8 @@
     .es-lead .label { margin-bottom: 6px; }
     .es-lead b { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
     @media (min-width: 1001px) {   /* the group cell reads as the parent: a quiet grey panel, like the ribbon on phones */
-      .es-lead { background: var(--bg-2); padding-left: var(--gut); margin-left: calc(-1 * var(--gut)); }
+      .es-lead { position: relative; background: var(--bg-2); padding-left: var(--gut); margin-left: calc(-1 * var(--gut)); }
+      .es-lead::before { content: ''; position: absolute; top: 0; bottom: 0; right: 100%; width: 100vw; background: var(--bg-2); }   /* panel runs to the screen edge on wide screens */
     }
     .es-dv { display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-right: 1px solid var(--line); transition: background .2s; }
     .es-dv:last-child { border-right: 0; }
@@ -822,19 +826,25 @@ show()
 
 /* ─── Works grid ── */
 const CATS = ['Residential','Housing','Masterplanning','Commercial','Institutional']
+// Works order (what a first-time visitor sees first). The Index keeps the P order, so project numbers never change.
+const WORKS_ORDER = ['strozzi', 'musifork', 'rrrhouse', 'jhouse', 'schoolhall', 'bednco', 'fayt', 'chouse', 'bekasi', 'padel',
+  'grawisa', 'sunter', 'kg', 'bekasiboarding', 'piktwo', 'tacondo', 'honolulu', 'housingh', 'wangsa', 'java', 'townhouse']
+const WORKS = [...WORKS_ORDER.map(id => P.find(p => p.id === id)).filter(Boolean), ...P.filter(p => !WORKS_ORDER.includes(p.id))]
 const STATE_LABEL = { done:'Completed', build:'Ongoing construction', wip:'In design', idea:'Concept' }
 const grid = $('#grid')
 const ARW = d => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="${d}"/></svg>`
 function cardGallery(p) {
-  const pics = p.imgs.map((s, i) => [s, i]).filter(([s]) => !/\.mp4$/i.test(s)).slice(0, 6)   // a taste on the card; the full set is in the project view
-  const imgs = pics.map(([s, i], k) => `<img src="${card(s)}" data-i="${i}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE${k ? ', photo ' + (k + 1) : ''}" loading="lazy" decoding="async">`).join('')
+  const pics = p.imgs.map((s, i) => [s, i]).slice(0, 6)   // a taste on the card; the full set is in the project view
+  const imgs = pics.map(([s, i], k) => /\.mp4$/i.test(s)
+    ? `<video class="cg-vid" data-i="${i}" data-src="${src(s)}" poster="${src(s.replace(/\.mp4$/i, '-poster.jpg'))}" muted loop playsinline preload="none" aria-label="${p.name}, diagram animation"></video>`
+    : `<img src="${card(s)}" data-i="${i}" alt="${p.name}, ${p.cat.toLowerCase()} project by BAE${k ? ', photo ' + (k + 1) : ''}" loading="lazy" decoding="async">`).join('')
   if (pics.length < 2) return imgs
   return `<span class="cg">${imgs}</span>`
     + `<span class="cg-nav cg-prev" role="button" aria-label="Previous photo">${ARW('M15 18l-6-6 6-6')}</span>`
     + `<span class="cg-nav cg-next" role="button" aria-label="Next photo">${ARW('M9 18l6-6-6-6')}</span>`
     + `<span class="cg-dots">${pics.map((_, k) => `<i${k ? '' : ' class="on"'}></i>`).join('')}</span>`
 }
-grid.innerHTML = P.map(p => `
+grid.innerHTML = WORKS.map(p => `
   <button class="card" data-cat="${p.cat}" data-id="${p.id}" aria-label="Open project ${p.name}">
     <span class="card-img">${cardGallery(p)}</span>
     <span class="card-meta">
@@ -847,12 +857,20 @@ grid.innerHTML = P.map(p => `
 grid.querySelectorAll('.card-img').forEach(ci => {
   const g = ci.querySelector('.cg'); if (!g) return
   const dots = [...ci.querySelectorAll('.cg-dots i')], n = dots.length
-  const at = () => Math.round(g.scrollLeft / g.clientWidth)
-  g.addEventListener('scroll', () => requestAnimationFrame(() => { const i = at(); dots.forEach((d, k) => d.classList.toggle('on', k === i)) }), { passive: true })
+  const pitch = () => (g.children[1] ? g.children[1].offsetLeft - g.children[0].offsetLeft : g.clientWidth)
+  const at = () => Math.round(g.scrollLeft / pitch())
+  const items = [...g.children]
+  const sync = () => {
+    const i = at(); dots.forEach((d, k) => d.classList.toggle('on', k === i))
+    ci.classList.toggle('on-vid', !!items[i] && items[i].tagName === 'VIDEO')
+    items.forEach((el, k) => { if (el.tagName !== 'VIDEO') return
+      if (k === i) { if (!el.src) el.src = el.dataset.src; el.play().catch(() => {}) } else el.pause() })
+  }
+  g.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true })
   ci.querySelectorAll('.cg-nav').forEach(b => b.addEventListener('click', e => {
     e.stopPropagation(); e.preventDefault()
     const i = (at() + (b.classList.contains('cg-next') ? 1 : -1) + n) % n
-    g.scrollTo({ left: i * g.clientWidth, behavior: 'smooth' })
+    g.scrollTo({ left: items[i].offsetLeft, behavior: 'smooth' })
   }))
 })
 const filters = $('#filters')
@@ -1013,12 +1031,13 @@ grid.addEventListener('click', e => {
   const c = e.target.closest('.card'); if (!c) return
   lastFocus = c
   const g = c.querySelector('.cg'); let start = 0
-  if (g) { const im = g.querySelectorAll('img')[Math.round(g.scrollLeft / g.clientWidth)]; start = im ? +im.dataset.i : 0 }
+  if (g) { const pi = g.children[1] ? g.children[1].offsetLeft - g.children[0].offsetLeft : g.clientWidth; const im = g.children[Math.round(g.scrollLeft / pi)]; start = im && im.dataset.i ? +im.dataset.i : 0 }
   openProject(c.dataset.id, true, start)
 })
 $('#pm-x').addEventListener('click', closeProject)
-$('#pm-nextp').addEventListener('click', () => openProject(P[(cur + 1) % P.length].id))
-$('#pm-prevp').addEventListener('click', () => openProject(P[(cur - 1 + P.length) % P.length].id))
+const wIdx = () => WORKS.findIndex(p => p.id === P[cur].id)
+$('#pm-nextp').addEventListener('click', () => openProject(WORKS[(wIdx() + 1) % WORKS.length].id))
+$('#pm-prevp').addEventListener('click', () => openProject(WORKS[(wIdx() - 1 + WORKS.length) % WORKS.length].id))
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && pm.classList.contains('open')) closeProject() })
 if (location.hash.startsWith('#project-')) openProject(location.hash.slice(9), false)
 
