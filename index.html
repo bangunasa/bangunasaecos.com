@@ -170,6 +170,56 @@
     .fd-bio { color: var(--ink-2); }
     .fd-q { font-size: clamp(1.05rem, 1.3vw, 1.2rem); font-weight: 500; line-height: 1.5; padding-left: 20px; border-left: 2px solid var(--blue); margin-top: auto; }
 
+
+    /* ── ecosystem / divisions ── */
+    .eco { margin-top: clamp(64px, 8vw, 112px); }
+    .eco-h { font-size: clamp(1.6rem, 2.6vw, 2.4rem); font-weight: 600; letter-spacing: -.025em; line-height: 1.15; max-width: 30ch; margin-top: 14px; }
+    .eco-h span { color: var(--muted); }
+    .eco-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 3vw, 40px); margin-top: clamp(32px, 4vw, 56px); }
+    .dv { border-top: 1px solid var(--ink); padding-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .dv-top { display: flex; align-items: center; gap: 14px; }
+    .dv-logo { width: 52px; height: 52px; border-radius: 50%; }
+    .dv-mark { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--line); }
+    .dv-name { font-size: clamp(1.3rem, 1.8vw, 1.6rem); font-weight: 700; letter-spacing: .02em; }
+    .dv-kind { font-size: .8rem; color: var(--muted); font-weight: 500; }
+    .dv-line { font-size: clamp(1.05rem, 1.3vw, 1.2rem); font-weight: 500; line-height: 1.45; color: var(--ink); }
+    .dv-tag { font-size: .8rem; color: var(--muted); }
+    .dv-meta { margin-top: auto; display: flex; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); font-size: .82rem; color: var(--muted); }
+    .dv-meta a { color: var(--ink); font-weight: 600; }
+    .dv-meta a:hover { color: var(--blue); }
+    .dv.ph { border-top-style: dashed; border-top-color: var(--muted); }
+    .dv.ph .dv-name, .dv.ph .dv-line { color: var(--muted); }
+    .ft-eco { font-size: .82rem; color: rgba(255,255,255,.7); padding-top: 22px; }
+    .ft-eco b { color: #fff; font-weight: 600; }
+    @media (max-width: 1000px) { .eco-grid { grid-template-columns: 1fr; } }
+
+
+    /* ── ecosystem strip (home) ── */
+    .eco-strip { border-bottom: 1px solid var(--line); }
+    .eco-strip .wrap { display: grid; grid-template-columns: 1.1fr 2fr 2fr; }
+    .es-lead { padding: 26px 24px 26px 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+    .es-lead .label { margin-bottom: 6px; }
+    .es-lead b { font-size: 1.05rem; font-weight: 700; letter-spacing: -.01em; }
+    .es-dv { display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-right: 1px solid var(--line); transition: background .2s; }
+    .es-dv:last-child { border-right: 0; }
+    .es-dv:hover { background: var(--bg-2); }
+    .es-dv img, .es-dv .dv-mark { width: 48px; height: 48px; border-radius: 50%; flex: none; }
+    .es-n { font-size: 1.15rem; font-weight: 700; letter-spacing: .02em; }
+    .es-r { font-size: .82rem; color: var(--muted); }
+    .es-dv svg { margin-left: auto; flex: none; color: var(--muted); transition: color .2s, transform .2s; }
+    .es-dv:hover svg { color: var(--blue); transform: translate(2px,-2px); }
+    .es-dv.ph .es-n { color: var(--muted); }
+    .es-lead { flex-direction: row !important; align-items: center; justify-content: flex-start !important; gap: 14px; }
+    .es-eco { height: 52px; width: auto; flex: none; }
+    .es-box { width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center; }
+    .es-dv .es-box img.es-wide, .dv .es-box img.es-wide { width: 48px; height: auto; border-radius: 0; }
+    @media (max-width: 1000px) {
+      .eco-strip .wrap { grid-template-columns: 1fr; }
+      .es-lead { border-right: 0; border-bottom: 1px solid var(--line); padding: 20px 0; }
+      .es-dv { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .es-dv:last-child { border-bottom: 0; }
+    }
+
     /* ── services ── */
     
     .svc { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
@@ -178,6 +228,8 @@
     .sv-h { font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 600; letter-spacing: -.02em; margin: 14px 0 12px; }
     .sv p { color: var(--ink-2); }
     .sv-tag { font-size: .8rem; color: var(--muted); margin-top: 16px; }
+    .sv-by { font-size: .8rem; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+    .sv-by b { color: var(--ink); font-weight: 700; letter-spacing: .02em; }
     .proc-h { margin-top: clamp(64px, 8vw, 104px); margin-bottom: 24px; }
     .proc { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); counter-reset: s; }
     .ps { padding: 22px 20px 0 0; position: relative; }
@@ -396,6 +448,13 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button><p class="hero-copy">&copy; PT. Bangun Asa Eksplorasi</p></div>
     </div>
   </div>
+  <div class="eco-strip">
+    <div class="wrap">
+      <div class="es-lead"><img class="es-eco" src="ekosistem-logo.png" alt="The BAE Ecosystem logo"><div><b>The BAE Ecosystem</b></div></div>
+      <a class="es-dv" href="https://instagram.com/andretecture" target="_blank" rel="noopener"><img src="andretecture-logo.png" alt="ANDRETECTURE logo"><div><div class="es-n">ANDRETECTURE</div><div class="es-r">Design studio &middot; Architecture, Interior, Master Planning</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="es-dv" href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener"><span class="es-box"><img class="es-wide" src="bae-construction-logo.png" alt="BAE Construction logo"></span><div><div class="es-n">BAE CONSTRUCTION</div><div class="es-r">Construction division &middot; Build only, Design &amp; Build</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </div>
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -454,6 +513,25 @@
         <div class="nl"><div class="nl-w">Eksplorasi<small>exploration</small></div><p>Our drive to keep learning, innovating, and improving, always looking for better ways to create meaningful, lasting spaces.</p></div>
       </div>
     </div>
+
+    <div class="eco">
+      <p class="label">The BAE Ecosystem</p>
+      <h2 class="eco-h">One group, several studios. <span>Each with its own craft, all under BAE.</span></h2>
+      <div class="eco-grid">
+        <article class="dv">
+          <div class="dv-top"><img class="dv-logo" src="andretecture-logo.png" alt="ANDRETECTURE logo"><div><div class="dv-name">ANDRETECTURE</div><div class="dv-kind">Design studio</div></div></div>
+          <p class="dv-line">Architecture that belongs to the people who inhabit it.</p>
+          <div class="dv-tag">Architecture &middot; Interior &middot; Master Planning</div>
+          <div class="dv-meta"><span>Indonesia</span><a href="https://instagram.com/andretecture" target="_blank" rel="noopener">@andretecture</a></div>
+        </article>
+        <article class="dv">
+          <div class="dv-top"><span class="es-box"><img class="es-wide" src="bae-construction-logo.png" alt="BAE Construction logo"></span><div><div class="dv-name">BAE CONSTRUCTION</div><div class="dv-kind">Construction division</div></div></div>
+          <p class="dv-line">Building with care, from the ground up.</p>
+          <div class="dv-tag">Construction</div>
+          <div class="dv-meta"><span>Indonesia</span><a href="https://instagram.com/baeconstruction___" target="_blank" rel="noopener">@baeconstruction___</a></div>
+        </article>
+      </div>
+    </div>
     <div class="founders">
       <article class="fd">
         <div>
@@ -486,18 +564,21 @@
         <h3 class="sv-h">Design only</h3>
         <p>Architecture, interior design, and master planning rooted in real thought. Every layout and every detail is carefully considered before a single line is drawn.</p>
         <div class="sv-tag">Architecture &middot; Interior &middot; Planning</div>
+        <div class="sv-by">by <b>ANDRETECTURE</b></div>
       </article>
       <article class="sv">
         <div class="sv-n">02</div>
         <h3 class="sv-h">Build only</h3>
         <p>Construction carried out deliberately, with skilled hands and a genuine commitment to getting it right, with the same care and precision that went into every drawing.</p>
         <div class="sv-tag">Construction</div>
+        <div class="sv-by">by <b>BAE CONSTRUCTION</b></div>
       </article>
       <article class="sv">
         <div class="sv-n">03</div>
         <h3 class="sv-h">Design &amp; Build</h3>
         <p>We build what we design. Designers and builders at the same table, from the first sketch to the final handover.</p>
         <div class="sv-tag">Design &middot; Construction</div>
+        <div class="sv-by">by <b>ANDRETECTURE</b> + <b>BAE CONSTRUCTION</b></div>
       </article>
     </div>
 
@@ -910,8 +991,9 @@ document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.ke
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "PT. Bangun Asa Ekosistem",
-  "alternateName": "BAE",
+  "name": "BAE",
+  "legalName": "PT. Bangun Asa Eksplorasi",
+  "alternateName": ["PT. Bangun Asa Eksplorasi", "PT. Bangun Asa Ekosistem", "Bangun Asa Ekosistem", "Bangun Asa Eksplorasi"],
   "description": "Design and Build company specializing in architecture and interior design across Indonesia.",
   "url": "https://bangunasaecos.com",
   "logo": "https://bangunasaecos.com/BAE%20LOGO%202.png",
@@ -922,7 +1004,11 @@ document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.ke
   "sameAs": ["https://www.instagram.com/baeconstruction___","https://www.instagram.com/andretecture"],
   "foundingDate": "2025",
   "areaServed": [{"@type":"Country","name":"Indonesia"}],
-  "knowsAbout": ["Architecture","Interior Design","Construction","Design and Build"]
+  "knowsAbout": ["Architecture","Interior Design","Construction","Design and Build"],
+  "subOrganization": [
+    { "@type": "Organization", "name": "ANDRETECTURE", "description": "Design studio of BAE. Architecture, interior, and master planning.", "logo": "https://bangunasaecos.com/andretecture-logo.png", "sameAs": ["https://www.instagram.com/andretecture"] },
+    { "@type": "Organization", "name": "BAE Construction", "description": "Construction division of BAE.", "logo": "https://bangunasaecos.com/bae-construction-logo.png", "sameAs": ["https://www.instagram.com/baeconstruction___"] }
+  ]
 }
 </script>
 </body>
