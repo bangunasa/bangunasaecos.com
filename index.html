@@ -160,6 +160,9 @@
     .on-vid .cg-dots i { background: rgba(0,0,0,.18); box-shadow: none; }
     .on-vid .cg-dots i.on { background: var(--ink); }
     @media (hover: none) { .cg-nav { display: none; } }
+    /* film still buffering: a small spinner so the poster never reads as a dead still */
+    .card-img.vid-wait::after { content: ''; position: absolute; z-index: 2; top: 14px; right: 14px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(0,0,0,.12); border-top-color: var(--ink); animation: vspin .8s linear infinite; pointer-events: none; }
+    @keyframes vspin { to { transform: rotate(360deg); } }
     /* name | status on one line (status right-aligned, centred on the name), category below */
     .card-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 16px; row-gap: 4px; padding-top: 16px; }
     .card-sub { grid-column: 1 / -1; }
@@ -856,12 +859,23 @@ grid.querySelectorAll('.card-img').forEach(ci => {
   const dots = [...ci.querySelectorAll('.cg-dots i')], n = dots.length
   const pitch = () => (g.children[1] ? g.children[1].offsetLeft - g.children[0].offsetLeft : g.clientWidth)
   const at = () => Math.round(g.scrollLeft / pitch())
-  const items = [...g.children]
+  const items = [...g.children], vids = items.filter(el => el.tagName === 'VIDEO')
+  const arm = v => { if (!v.src) { v.preload = 'auto'; v.src = v.dataset.src } }
+  // spinner while the film on screen is not yet moving
+  vids.forEach(v => {
+    const wait = () => ci.classList.toggle('vid-wait', items[at()] === v && v.readyState < 3)
+    ;['waiting', 'stalled', 'loadstart'].forEach(ev => v.addEventListener(ev, wait))
+    ;['playing', 'canplay', 'pause'].forEach(ev => v.addEventListener(ev, () => ci.classList.remove('vid-wait')))
+  })
+  // start buffering the film as soon as the card nears the screen, so it is ready before the swipe
+  if (vids.length) new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { vids.forEach(arm); o.disconnect() } },
+    { rootMargin: '300px 0px' }).observe(ci)
   const sync = () => {
     const i = at(); dots.forEach((d, k) => d.classList.toggle('on', k === i))
     ci.classList.toggle('on-vid', !!items[i] && items[i].tagName === 'VIDEO')
     items.forEach((el, k) => { if (el.tagName !== 'VIDEO') return
-      if (k === i) { if (!el.src) el.src = el.dataset.src; el.play().catch(() => {}) } else el.pause() })
+      if (k === i) { arm(el); el.play().catch(() => {}); ci.classList.toggle('vid-wait', el.readyState < 3) } else el.pause() })
+    if (!items[i] || items[i].tagName !== 'VIDEO') ci.classList.remove('vid-wait')
   }
   g.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true })
   ci.querySelectorAll('.cg-nav').forEach(b => b.addEventListener('click', e => {
